@@ -1,0 +1,9 @@
+{
+  "@okta/generator-samples": {
+    "type": "frontend",
+    "environment": "JS",
+    "framework": "react",
+    "name": "samples-js-react",
+    "version": "1.6.0"
+  }
+}

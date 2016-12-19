@@ -1,0 +1,12 @@
+{
+  "extends": "airbnb",
+  "root": "true",
+  "rules": {
+    "strict": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/no-unresolved": "off",
+    "import/extensions": "off",
+    "class-methods-use-this": "off",
+    "max-len": ["error", 130]
+  }
+}
