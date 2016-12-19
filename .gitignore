@@ -1,0 +1,6 @@
+build2
+node_modules
+dist
+npm-debug.log
+travis_phantomjs
+.DS_Store
