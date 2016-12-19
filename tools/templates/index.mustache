@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>App</title>
+  <link href="/css/okta-sign-in.min.css" type="text/css" rel="stylesheet"/>
+  <link href="/css/okta-theme.css" type="text/css" rel="stylesheet"/>
+  <base href="/"/>
+</head>
+<body>
+  <div id="app-container"></div>
+
+  <script src="/webpack-dev-server.js"></script>
+  <script src="/bundle.js"></script>
+  <script>
+    var options = {
+      container: '#app-container',
+      oktaUrl: '{{{oidc.oktaUrl}}}',
+      clientId: '{{oidc.clientId}}',
+      redirectUri: '{{{oidc.redirectUri}}}'
+    };
+
+    {{#user}}
+      options.user = {
+        email: '{{user.email}}',
+        iss: '{{user.claims.iss}}',
+        iat: {{user.claims.iat}},
+        exp: {{user.claims.exp}}
+      };
+    {{/user}}
+
+    bundle.bootstrap(options);
+  </script>
+</body>
+</html>
