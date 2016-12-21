@@ -10,22 +10,6 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-import SignIn from '@okta/okta-signin-widget';
+import LoginRedirect from './LoginRedirect';
 
-export default function render(config) {
-  const signIn = new SignIn({
-    baseUrl: config.oktaUrl,
-    clientId: config.clientId,
-    redirectUri: config.redirectUri,
-    authParams: {
-      responseType: 'code',
-      scopes: ['openid', 'email', 'profile'],
-    },
-    i18n: {
-      en: {
-        'primaryauth.title': 'Sign in with john/Asdf1234',
-      },
-    },
-  });
-  signIn.renderEl({ el: config.container }, () => {});
-}
+export default LoginRedirect;

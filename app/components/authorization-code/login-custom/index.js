@@ -10,9 +10,6 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-import template from './scenarios.hbs';
+import LoginCustom from './LoginCustom';
 
-export default function render(config) {
-  const container = document.querySelector(config.container);
-  container.innerHTML = template();
-}
+export default LoginCustom;
