@@ -10,29 +10,24 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-/* eslint no-console:0 */
-import renderScenarios from './scenarios';
-import renderProfile from './profile';
-import renderLoginRedirectOkta from './login-redirect';
-import renderLoginCustom from './login-custom';
+import React from 'react';
+import { render } from 'react-dom';
+import { Router, Route, browserHistory } from 'react-router';
+
+import Scenarios from './components/scenarios';
+import LoginRedirect from './components/authorization-code/login-redirect';
+import LoginCustom from './components/authorization-code/login-custom';
+import Profile from './components/authorization-code/profile';
 
 export function bootstrap(config) {
-  switch (window.location.pathname) {
-    case '/':
-      renderScenarios(config);
-      break;
-    case '/authorization-code/profile':
-      renderProfile(config);
-      break;
-    case '/authorization-code/login-redirect':
-      renderLoginRedirectOkta(config);
-      break;
-    case '/authorization-code/login-custom':
-      renderLoginCustom(config);
-      break;
-    default:
-      break;
-  }
+  render((
+    <Router history={browserHistory}>
+      <Route path="/authorization-code/login-redirect" component={LoginRedirect} config={config} />
+      <Route path="/authorization-code/login-custom" component={LoginCustom} config={config} />
+      <Route path="/authorization-code/profile" component={Profile} config={config} />
+      <Route path="/" component={Scenarios} />
+    </Router>
+  ), document.querySelector(config.container));
 }
 
 export default bootstrap;

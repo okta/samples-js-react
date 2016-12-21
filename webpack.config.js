@@ -40,13 +40,8 @@ module.exports = {
         test: /\.js$/,
         include: path.join(__dirname, 'app'),
         query: {
-          presets: ['es2015'],
+          presets: ['es2015', 'react'],
         },
-      },
-      {
-        test: /\.hbs$/,
-        loader: 'handlebars-loader',
-        include: path.join(__dirname, 'app'),
       },
     ],
   },
