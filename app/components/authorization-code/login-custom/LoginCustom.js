@@ -27,7 +27,7 @@ class LoginCustom extends React.Component {
       },
       i18n: {
         en: {
-          'primaryauth.title': 'Sign in with john/Asdf1234',
+          'primaryauth.title': 'Use john/Asdf1234 for the mock Okta server',
         },
       },
     });

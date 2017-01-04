@@ -10,24 +10,6 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-import React from 'react';
-import { Link } from 'react-router';
+import Overview from './Overview';
 
-function Scenarios() {
-  return (
-    <ul data-se="scenarios">
-      <li>
-        <Link to="authorization-code/login-redirect" data-se="auth-code-login-redirect">
-          Authorization Code: Login with Okta
-        </Link>
-      </li>
-      <li>
-        <Link to="authorization-code/login-custom" data-se="auth-code-login-custom">
-          Authorization Code: Login using a custom login form
-        </Link>
-      </li>
-    </ul>
-  );
-}
-
-export default Scenarios;
+export default Overview;
