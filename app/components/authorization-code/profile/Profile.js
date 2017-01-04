@@ -35,12 +35,36 @@ class Profile extends React.Component {
 
   render() {
     return (
-      <p>
-        <strong data-se="email">{this.state.user.email}</strong> is logged in!<br />
-        {this.state.user.iat} - {this.state.iatFormatted}<br />
-        {this.state.user.exp} - {this.state.expFormatted}<br />
-        <a onClick={this.logout} data-se="logout-link" href="">Logout</a>
-      </p>
+      <div className="profile">
+        <h2 className="ui icon header">
+          <i className="hand peace icon" />
+          <div className="content">
+            Signed In
+          </div>
+        </h2>
+        <table className="ui collapsing celled table inverted black">
+          <thead>
+            <tr>
+              <th colSpan="2">Some claims from the id_token</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>email</td><td data-se="email">{this.state.user.email}</td></tr>
+            <tr><td>exp</td><td>{this.state.expFormatted}</td></tr>
+          </tbody>
+        </table>
+        <p>
+          <button
+            id="logout"
+            data-se="logout-link"
+            onClick={this.logout}
+            className="ui grey icon button"
+          >
+            <i className="sign out icon" />
+            Sign out
+          </button>
+        </p>
+      </div>
     );
   }
 }

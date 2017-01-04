@@ -10,6 +10,12 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-import Scenarios from './Scenarios';
+import React from 'react';
 
-export default Scenarios;
+function Overview() {
+  return (
+    <div id="default-app-text">Samples render here</div>
+  );
+}
+
+export default Overview;

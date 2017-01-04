@@ -35,12 +35,34 @@ class LoginRedirect extends React.Component {
 
   render() {
     return (
-      <p>
-        Click the &quot;Login with Okta&quot; link, and use these credentials:<br />
-        User: <strong>george</strong><br />
-        Pass: <strong>Asdf1234</strong><br />
-        <a href="" onClick={this.login} data-se="login-link">Login with Okta</a>
-      </p>
+      <div>
+        <p>
+          Click <strong>Login with Okta</strong> to redirect to your Okta org for
+          authentication.
+        </p>
+        <table className="ui collapsing celled table compact inverted grey">
+          <thead>
+            <tr>
+              <th colSpan="2">If you&rsquo;re using the mock-okta server:</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>User</td><td><strong>george</strong></td></tr>
+            <tr><td>Pass</td><td><strong>Asdf1234</strong></td></tr>
+          </tbody>
+        </table>
+        <p>
+          <button
+            id="login"
+            data-se="login-link"
+            className="ui icon button blue"
+            onClick={this.login}
+          >
+            <i className="sign in icon" />
+            Login with Okta
+          </button>
+        </p>
+      </div>
     );
   }
 }
