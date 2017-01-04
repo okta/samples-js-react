@@ -1,0 +1,128 @@
+<div class="doc-overview">
+  <h2 class="ui dividing header" data-se="overview-doc-header">
+    Code Samples
+  </h2>
+
+  <h3 class="ui header">
+    <i class="settings icon"></i>
+    Configuring your Okta org
+  </h3>
+  <p>
+    If you don't
+    <a href="https://www.okta.com/developer/signup/">
+      have an Okta org
+    </a>
+    or haven't
+    <a href="https://help.okta.com/en/prev/Content/Topics/Apps/Apps_App_Integration_Wizard.htm?Highlight=openid%20connect#OIDCWizard">
+      set up an OIDC app
+    </a>
+    yet,
+    you can use the included mock Okta server for quick testing:
+  </p>
+  <pre><code class="bash"># Start the mock-okta server on http://127.0.0.1:{{config.mockOkta.port}}
+[samples]$ npm run mock-okta
+
+  </code></pre>
+
+  <p>
+    To test these samples against your own Okta org and OIDC app, update
+    the following settings in <strong>.samples.config.json</strong> and restart
+    your server:
+  </p>
+  <table class="ui table compact collapsing">
+    <thead>
+      <tr>
+        <th>Setting</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>oidc.oktaUrl</td>
+        <td>The base url for your okta org, i.e. https://your-org.okta.com</td>
+      </tr>
+      <tr>
+        <td>oidc.clientId</td>
+        <td>
+          The clientId for your OIDC app.
+        </td>
+      </tr>
+      <tr>
+        <td>oidc.clientSecret</td>
+        <td>The clientSecret for your OIDC app</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="ui modal" data-se="overview-modal">
+    <i class="close icon"></i>
+    <div class="header">
+      Building a New Frontend Sample
+    </div>
+    <div class="content">
+      <p>
+        This is a generated sample app built in Vanilla Javascript - it contains
+        the markup and logic you'll need to build your own sample.
+      </p>
+      <strong>What you need to do:</strong>
+      <div class="ui list">
+        <div class="item">
+          <i class="code icon"></i>
+          <div class="content">
+            <div class="header">
+              Replace the vanilla JS files in the app/ directory with code for
+              your frontend framework.
+            </div>
+            <div class="description">
+              <div class="ui bulleted list">
+                <div class="item">
+                  The sample renders to the right hand column - you should not
+                  need to modify the doc templates.
+                </div>
+                <div class="item">
+                  See the
+                  <a target="_blank" href="https://github.com/okta/samples-js-angular-1/tree/master/app">
+                    Angular 1 Sample
+                  </a>
+                  for an example of how to do this.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <i class="terminal icon"></i>
+          <div class="content">
+            <div class="header">
+              Run "npm test" to verify that you've implemented the views correctly.
+            </div>
+            <div class="description">
+              This is a set of end-to-end selenium tests that cover the scenarios
+              we care about.
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <i class="hand peace icon"></i>
+          <div class="content">
+            <div class="header">
+              Once you've passed the tests, you're done! Well, almost.
+            </div>
+            <div class="description">
+              Follow the guidelines to
+              <a target="_blank" href="https://github.com/okta/generator-samples#publishing-your-samples">
+                publish your sample
+              </a>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="ui positive right labeled icon button" data-se="overview-modal-btn">
+        Okay, I'm ready to begin!
+        <i class="checkmark icon"></i>
+      </div>
+    </div>
+  </div>
+</div>
