@@ -1,35 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>App</title>
-  <link href="/css/okta-sign-in.min.css" type="text/css" rel="stylesheet"/>
-  <link href="/css/okta-theme.css" type="text/css" rel="stylesheet"/>
-  <base href="/"/>
-</head>
-<body>
-  <div id="app-container"></div>
+  <head>
+    <meta charset="UTF-8">
+    <title>App</title>
+    <link href="/css/okta-sign-in.min.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/okta-theme.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/hljs/tomorrow.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/semantic-ui/semantic.min.css" type="text/css" rel="stylesheet"/>
+    <link href="/css/samples.css" type="text/css" rel="stylesheet"/>
+    <base href="/"/>
+  </head>
+  <body id="samples">
+    <div class="ui inverted left fixed vertical menu">
+      <a id="item-overview" class="item" href="/">Overview</a>
+      <div id="section-authorization-code" class="item">
+        <div class="header">Authorization Code</div>
+        <div class="menu">
+          <a id="item-login-redirect" data-se="auth-code-login-redirect" class="item" href="/authorization-code/login-redirect">
+            Login by redirecting to Okta
+          </a>
+          <a id="item-login-custom" data-se="auth-code-login-custom" class="item" href="/authorization-code/login-custom">
+            Create a custom login page
+          </a>
+        </div>
+      </div>
+    </div>
 
-  <script src="/webpack-dev-server.js"></script>
-  <script src="/bundle.js"></script>
-  <script>
-    var options = {
-      container: '#app-container',
-      oktaUrl: '{{{oidc.oktaUrl}}}',
-      clientId: '{{oidc.clientId}}',
-      redirectUri: '{{{oidc.redirectUri}}}'
-    };
+    <div id="content" class="ui padded grid relaxed">
+        <div id="doc" class="column eight wide">{{> doc}}</div>
+        <div class="column seven wide sample-col right floated">
+          <div class="ui orange labels">
+            <div class="ui label" data-tooltip="Backend" data-inverted="" data-position="bottom center">
+              {{#config.server.environment}}
+                {{#config.server.framework}}
+                  {{config.server.framework}}
+                  <div class="detail">{{config.server.environment}}</div>
+                {{/config.server.framework}}
+                {{^config.server.framework}}
+                  {{config.server.environment}}
+                {{/config.server.framework}}
+              {{/config.server.environment}}
+              {{^config.server.environment}}
+                Express <div class="detail">NodeJS</div>
+              {{/config.server.environment}}
+            </div>
+            <div class="ui label" data-tooltip="Frontend" data-inverted="" data-position="bottom center">
+              <span id="frontend-framework">
+                <span data-se="js-loading" class="ui active inline loader mini inverted"></span>
+              </span>
+              <div class="detail" id="frontend-environment"></div>
+            </div>
+          </div>
+          <div id="app-container">
+            <div id="default-app-text">{{=<% %>=}}{{ Samples render here }}<%={{ }}=%></div>
+          </div>
+        </div>
+    </div>
 
-    {{#user}}
-      options.user = {
-        email: '{{user.email}}',
-        iss: '{{user.claims.iss}}',
-        iat: {{user.claims.iat}},
-        exp: {{user.claims.exp}}
-      };
-    {{/user}}
+    <script src="/webpack-dev-server.js"></script>
+    <script src="/bundle.js"></script>
+    <script>
+     var options = {
+       container: '#app-container',
+       oktaUrl: '{{{config.oidc.oktaUrl}}}',
+       clientId: '{{config.oidc.clientId}}',
+       redirectUri: '{{{config.oidc.redirectUri}}}'
+     };
 
-    bundle.bootstrap(options);
-  </script>
-</body>
+     {{#user}}
+     options.user = {
+       email: '{{user.email}}',
+       iss: '{{user.claims.iss}}',
+       iat: {{user.claims.iat}},
+       exp: {{user.claims.exp}}
+     };
+     {{/user}}
+
+     bundle.bootstrap(options);
+    </script>
+  </body>
 </html>

@@ -13,6 +13,8 @@
 /* eslint import/no-unresolved:0 import/no-extraneous-dependencies:0 */
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
+const config = require('./.yo-rc.json')['@okta/generator-samples'];
 
 module.exports = {
   entry: [
@@ -28,10 +30,20 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin([
       { from: 'app' },
+      { from: 'tools/templates/assets/css', to: 'css' },
+      { from: 'node_modules/highlight.js/styles', to: 'css/hljs' },
+      { from: 'node_modules/semantic-ui-css', to: 'css/semantic-ui' },
       { from: 'node_modules/@okta/okta-signin-widget/dist/css', to: 'css' },
       { from: 'node_modules/@okta/okta-signin-widget/dist/font', to: 'font' },
       { from: 'node_modules/@okta/okta-signin-widget/dist/img', to: 'img' },
     ]),
+    new webpack.ProvidePlugin({
+      jQuery: 'jquery',
+    }),
+    new webpack.DefinePlugin({
+      ENVIRONMENT: JSON.stringify(config.environment),
+      FRAMEWORK: JSON.stringify(config.framework || ''),
+    }),
   ],
   module: {
     loaders: [
@@ -42,6 +54,11 @@ module.exports = {
         query: {
           presets: ['es2015', 'react'],
         },
+      },
+      {
+        test: /\.hbs$/,
+        loader: 'handlebars-loader',
+        include: path.join(__dirname, 'app'),
       },
     ],
   },

@@ -58,6 +58,7 @@
     "express": "4.14.0",
     "express-session": "1.14.2",
     "handlebars-loader": "1.4.0",
+    "highlight.js": "9.9.0",
     "jasmine-reporters": "2.2.0",
     "jws": "3.1.4",
     "minimist": "1.2.0",
@@ -68,6 +69,7 @@
     "react-dom": "15.4.1",
     "react-router": "3.0.0",
     "request": "2.73.0",
+    "semantic-ui-css": "2.2.4",
     "webpack": "1.13.3",
     "webpack-dev-server": "1.16.2",
     "yakbak": "2.5.0"

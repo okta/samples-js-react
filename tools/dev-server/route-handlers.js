@@ -29,7 +29,8 @@ const cachedJwks = {};
  * Route: /
  */
 handlers.scenarios = (req, res) => {
-  res.render('index', { oidc: config.oidc });
+  const partials = { doc: 'docs/overview' };
+  res.render('index', { config, partials });
 };
 
 /**
@@ -44,7 +45,8 @@ handlers.loginRedirect = (req, res) => {
     res.redirect(302, '/authorization-code/profile');
     return;
   }
-  res.render('index', { oidc: config.oidc });
+  const partials = { doc: 'docs/login-redirect' };
+  res.render('index', { config, partials });
 };
 
 /**
@@ -61,7 +63,8 @@ handlers.loginCustom = (req, res) => {
     res.redirect(302, '/authorization-code/profile');
     return;
   }
-  res.render('index', { oidc: config.oidc });
+  const partials = { doc: 'docs/login-custom' };
+  res.render('index', { config, partials });
 };
 
 /**
@@ -75,7 +78,8 @@ handlers.profile = (req, res) => {
     res.redirect(302, '/');
     return;
   }
-  res.render('index', { user: req.session.user, oidc: config.oidc });
+  const partials = { doc: 'docs/profile' };
+  res.render('index', { user: req.session.user, config, partials });
 };
 
 
