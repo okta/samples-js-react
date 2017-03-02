@@ -10,32 +10,41 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-/* eslint import/no-unresolved:0 import/no-extraneous-dependencies:0 */
+/* eslint import/no-unresolved:0 import/no-extraneous-dependencies:0, no-console:0 */
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const config = require('./.yo-rc.json')['@okta/generator-samples'];
 
+const oswDir = path.dirname(require.resolve('@okta/okta-signin-widget/README.md'));
+const semanticUiDir = path.dirname(require.resolve('semantic-ui-css/semantic.min.css'));
+const outPath = process.env.DIST_OUT || path.resolve(__dirname, 'dist');
+
+console.log(`Building frontend assets into ${outPath}`);
+
 module.exports = {
-  entry: [
-    'babel-polyfill',
-    './app/app.js',
-  ],
+  entry: {
+    bundle: [
+      'babel-polyfill',
+      './app/app.js',
+    ],
+    doc: ['./app/util/doc.js'],
+  },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-    library: 'bundle',
+    path: outPath,
+    filename: '[name].js',
+    library: '[name]',
   },
   devtool: 'source-map',
   plugins: [
     new CopyWebpackPlugin([
       { from: 'app' },
       { from: 'tools/templates/assets/css', to: 'css' },
-      { from: 'node_modules/highlight.js/styles', to: 'css/hljs' },
-      { from: 'node_modules/semantic-ui-css', to: 'css/semantic-ui' },
-      { from: 'node_modules/@okta/okta-signin-widget/dist/css', to: 'css' },
-      { from: 'node_modules/@okta/okta-signin-widget/dist/font', to: 'font' },
-      { from: 'node_modules/@okta/okta-signin-widget/dist/img', to: 'img' },
+      { from: require.resolve('highlight.js/styles/tomorrow.css'), to: 'css/hljs' },
+      { from: semanticUiDir, to: 'css/semantic-ui' },
+      { from: `${oswDir}/dist/css`, to: 'css' },
+      { from: `${oswDir}/dist/font`, to: 'font' },
+      { from: `${oswDir}/dist/img`, to: 'img' },
     ]),
     new webpack.ProvidePlugin({
       jQuery: 'jquery',

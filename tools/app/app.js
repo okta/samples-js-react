@@ -15,7 +15,6 @@ import 'semantic-ui-css/semantic.min';
 import renderProfile from './profile';
 import renderLoginRedirectOkta from './login-redirect';
 import renderLoginCustom from './login-custom';
-import initDoc from './doc';
 
 export function bootstrap(config) {
   const path = window.location.pathname;
@@ -39,8 +38,6 @@ export function bootstrap(config) {
     jQuery('#doc').prepend(gettingStartedEl);
   }
   // ---------------------------------------------------------------------------
-
-  initDoc();
 
   switch (path) {
     case '/authorization-code/profile':

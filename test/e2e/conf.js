@@ -14,7 +14,7 @@
 /* global jasmine */
 const jasmineReporters = require('jasmine-reporters');
 const startAndWaitFor = require('../../tools/start-and-wait-for');
-const samplesConfig = require('../../.samples.config.json');
+const samplesConfig = require('../../.samples.config.json').oktaSample;
 
 const promises = Promise.all([
   startAndWaitFor('npm', ['start'], samplesConfig.server.startSignal, 'green'),

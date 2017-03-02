@@ -35,7 +35,7 @@ function setHtml(id, html) {
 }
 
 // Initialize the non-sample JS code - you should not need to change this
-export default function initDoc() {
+export function initDoc() {
   const path = window.location.pathname;
 
   // Add syntax highlighting to code examples in documentation
@@ -65,3 +65,5 @@ export default function initDoc() {
     document.getElementById('frontend-environment').remove();
   }
 }
+
+export default initDoc;

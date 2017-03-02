@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8">
     <title>App</title>
-    <link href="/css/okta-sign-in.min.css" type="text/css" rel="stylesheet"/>
-    <link href="/css/okta-theme.css" type="text/css" rel="stylesheet"/>
-    <link href="/css/hljs/tomorrow.css" type="text/css" rel="stylesheet"/>
-    <link href="/css/semantic-ui/semantic.min.css" type="text/css" rel="stylesheet"/>
-    <link href="/css/samples.css" type="text/css" rel="stylesheet"/>
+    <link href="/assets/css/okta-sign-in.min.css" type="text/css" rel="stylesheet"/>
+    <link href="/assets/css/okta-theme.css" type="text/css" rel="stylesheet"/>
+    <link href="/assets/css/hljs/tomorrow.css" type="text/css" rel="stylesheet"/>
+    <link href="/assets/css/semantic-ui/semantic.min.css" type="text/css" rel="stylesheet"/>
+    <link href="/assets/css/samples.css" type="text/css" rel="stylesheet"/>
     <base href="/"/>
   </head>
   <body id="samples">
@@ -27,7 +27,51 @@
     </div>
 
     <div id="content" class="ui padded grid relaxed">
-        <div id="doc" class="column eight wide">{{> doc}}</div>
+        <div id="doc" class="column eight wide"><div class="doc-login-custom">
+  <h2 class="ui dividing header">
+    Create a custom login page
+    <div class="sub header">Authorization code grant</div>
+  </h2>
+
+  <p>
+    Use the
+    <a href="http://developer.okta.com/code/javascript/okta_sign-in_widget.html">
+      Sign-In Widget
+    </a>
+    to quickly and easily create a custom login page for your app. The widget is
+    a Javascript wrapper around the
+    <a href="http://developer.okta.com/docs/api/resources/authn.html">
+      Authentication API
+    </a> - it implements a UI layer for the Primary Auth, MFA, and Recovery flows.
+  </p>
+  <p>
+    Read more about
+    configuration options in the
+    <a href="https://github.com/okta/okta-signin-widget#configuration">README</a>.
+  </p>
+  <div class="example">
+    <h3>Example</h3>
+    <div class="ui segment">
+      <pre><code class="javascript">const signIn = new SignIn({
+  baseUrl: '{{config.oidc.oktaUrl}}',
+  clientId: '{{config.oidc.clientId}}',
+  redirectUri: '{{config.oidc.redirectUri}}',
+  authParams: {
+    responseType: 'code',
+    scopes: ['openid', 'email', 'profile'],
+  },
+  i18n: {
+    en: {
+      'primaryauth.title': 'Use john/Asdf1234 for the mock Okta server',
+    },
+  },
+});
+
+signIn.renderEl({ el: '#app-container' }, () => {});</code></pre>
+    </div>
+  </div>
+</div>
+</div>
         <div class="column seven wide sample-col right floated">
           <div class="ui orange labels">
             <div class="ui label" data-tooltip="Backend" data-inverted="" data-position="bottom center">
@@ -52,13 +96,17 @@
             </div>
           </div>
           <div id="app-container">
-            <div id="default-app-text">{{=<% %>=}}{{ Samples render here }}<%={{ }}=%></div>
+            <div id="default-app-text">&lbrace;&lbrace; Samples render here &rbrace;&rbrace;</div>
           </div>
         </div>
     </div>
 
+    {{#config.server.useWebpackDevServer}}
     <script src="/webpack-dev-server.js"></script>
-    <script src="/bundle.js"></script>
+    {{/config.server.useWebpackDevServer}}
+
+    <script src="/assets/bundle.js"></script>
+    <script src="/assets/doc.js"></script>
     <script>
      var options = {
        container: '#app-container',
@@ -76,6 +124,7 @@
      };
      {{/user}}
 
+     doc.initDoc();
      bundle.bootstrap(options);
     </script>
   </body>

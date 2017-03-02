@@ -18,10 +18,8 @@ import Overview from './components/overview';
 import LoginRedirect from './components/authorization-code/login-redirect';
 import LoginCustom from './components/authorization-code/login-custom';
 import Profile from './components/authorization-code/profile';
-import initDoc from './util/doc';
 
 export function bootstrap(config) {
-  initDoc();
   render((
     <Router history={browserHistory}>
       <Route path="/authorization-code/login-redirect" component={LoginRedirect} config={config} />
