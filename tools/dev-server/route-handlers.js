@@ -16,7 +16,7 @@
 
 const request = require('request');
 const querystring = require('querystring');
-const config = require('../../.samples.config.json');
+const config = require('../../.samples.config.json').oktaSample;
 const jws = require('jws');
 const jwk2pem = require('pem-jwk').jwk2pem;
 
@@ -29,8 +29,7 @@ const cachedJwks = {};
  * Route: /
  */
 handlers.scenarios = (req, res) => {
-  const partials = { doc: 'docs/overview' };
-  res.render('index', { config, partials });
+  res.render('overview', { config });
 };
 
 /**
@@ -45,8 +44,7 @@ handlers.loginRedirect = (req, res) => {
     res.redirect(302, '/authorization-code/profile');
     return;
   }
-  const partials = { doc: 'docs/login-redirect' };
-  res.render('index', { config, partials });
+  res.render('login-redirect', { config });
 };
 
 /**
@@ -63,8 +61,7 @@ handlers.loginCustom = (req, res) => {
     res.redirect(302, '/authorization-code/profile');
     return;
   }
-  const partials = { doc: 'docs/login-custom' };
-  res.render('index', { config, partials });
+  res.render('login-custom', { config });
 };
 
 /**
@@ -78,8 +75,7 @@ handlers.profile = (req, res) => {
     res.redirect(302, '/');
     return;
   }
-  const partials = { doc: 'docs/profile' };
-  res.render('index', { user: req.session.user, config, partials });
+  res.render('profile', { user: req.session.user, config });
 };
 
 

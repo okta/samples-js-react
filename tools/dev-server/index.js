@@ -23,7 +23,7 @@ const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const webpackConfig = require('../../webpack.config');
 const handlers = require('./route-handlers');
-const config = require('../../.samples.config.json');
+const config = require('../../.samples.config.json').oktaSample;
 
 const templateDir = path.resolve(__dirname, '../templates');
 
@@ -61,6 +61,7 @@ const server = new WebpackDevServer(webpack(webpackConfig), {
   noInfo: false,
   lazy: false,
   stats: { colors: true },
+  publicPath: '/assets/',
 });
 
 server.listen(config.server.port, () => {

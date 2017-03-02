@@ -1,19 +1,22 @@
 {
-  "oidc": {
-    "oktaUrl": "http://127.0.0.1:7777",
-    "clientId": "zYVNoNIeSwul32vpNiOz",
-    "clientSecret": "8UxQqreZu4WQBK-KIqKQItqvtv5UlWRlqI36l4sb",
-    "redirectUri": "http://localhost:3000/authorization-code/callback"
-  },
-  "server": {
-    "staticDir": "dist",
-    "startSignal": "bundle is now VALID",
-    "port": 3000
-  },
-  "mockOkta": {
-    "port": 7777,
-    "proxy": "http://127.0.0.1",
-    "proxied": "http://rain.okta1.com:1802",
-    "cdn": "http://cdn.okta1.com"
+  "oktaSample": {
+    "oidc": {
+      "oktaUrl": "http://127.0.0.1:7777",
+      "clientId": "zYVNoNIeSwul32vpNiOz",
+      "clientSecret": "8UxQqreZu4WQBK-KIqKQItqvtv5UlWRlqI36l4sb",
+      "redirectUri": "http://localhost:3000/authorization-code/callback"
+    },
+    "server": {
+      "staticDir": "dist",
+      "startSignal": "webpack: Compiled successfully",
+      "port": 3000,
+      "useWebpackDevServer": true
+    },
+    "mockOkta": {
+      "port": 7777,
+      "proxy": "http://127.0.0.1",
+      "proxied": "http://rain.okta1.com:1802",
+      "cdn": "http://cdn.okta1.com"
+    }
   }
 }

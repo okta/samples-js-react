@@ -25,7 +25,7 @@ const parseArgs = require('minimist');
 const debug = require('debug')('mock-okta');
 const util = require('./util');
 const keys = require('./keys-test');
-const config = require('../../.samples.config.json').mockOkta;
+const config = require('../../.samples.config.json').oktaSample.mockOkta;
 
 // ----------------------------------------------------------------------------
 // Command line arguments
