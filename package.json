@@ -1,6 +1,6 @@
 {
   "name": "@okta/samples-js-react",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -31,7 +31,7 @@
     "@okta/ci-update-package": "1.4.0",
     "@okta/ci-pkginfo": "1.2.0"
   },
-  "devDependencies": { 
+  "devDependencies": {
     "chalk": "1.1.3",
     "cli-table2": "0.2.0",
     "connect": "3.5.0",
