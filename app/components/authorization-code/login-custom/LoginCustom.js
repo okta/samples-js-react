@@ -22,6 +22,7 @@ class LoginCustom extends React.Component {
       clientId: config.clientId,
       redirectUri: config.redirectUri,
       authParams: {
+        issuer: config.issuer,
         responseType: 'code',
         scopes: ['openid', 'email', 'profile'],
       },
