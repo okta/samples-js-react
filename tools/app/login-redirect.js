@@ -16,6 +16,7 @@ import template from './login-redirect.hbs';
 export default function render(config) {
   const auth = new OktaAuth({
     url: config.oktaUrl,
+    issuer: config.issuer,
     clientId: config.clientId,
     redirectUri: config.redirectUri,
     scopes: ['openid', 'email', 'profile'],

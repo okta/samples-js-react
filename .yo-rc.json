@@ -4,7 +4,7 @@
     "environment": "JS",
     "framework": "react",
     "name": "samples-js-react",
-    "version": "1.12.0",
+    "version": "1.16.0",
     "parentType": "sample"
   }
 }

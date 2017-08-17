@@ -138,6 +138,7 @@ util.mapRequestToCache = (req) => {
   delete headers['x-okta-user-agent-extended'];
   delete headers['if-none-match'];
   delete headers['if-modified-since'];
+  delete headers.expect;
   delete headers.referer;
 
   // Enforce a consistent userAgent to prevent differences returned from
@@ -290,7 +291,6 @@ function swapIdToken(idToken, data) {
   claims.exp = exp;
 
   logDiff('Swapping id_token.payload claims', origClaims, claims);
-
   return jws.sign({
     header: decoded.header,
     payload: claims,
@@ -363,13 +363,17 @@ util.mapCachedBodyToResponse = (chunk, data) => {
   // Replace any proxied urls with the proxy server
   let newChunk = replaceUrls(chunk, data);
 
+  // Set the issuer to be the proxy + OAuth 2.0 auth server
+  const issuer = `${data.proxy}/oauth2/default`;
+
   // When the responseMode is okta_post_message, we must swap the id_token
   // and replace the state from the html body of the response
   if (data.isAuthorizeReq && data.responseMode === 'okta_post_message') {
     const idToken = newChunk.match(/data.id_token = '([^']+)'/)[1];
+
     const newIdToken = swapIdToken(idToken, {
       nonce: data.nonce,
-      iss: data.proxy,
+      iss: issuer,
     });
     newChunk = newChunk
       .replace('STATE', data.state)
@@ -382,7 +386,7 @@ util.mapCachedBodyToResponse = (chunk, data) => {
     const idToken = newChunk.match(/"id_token":"([^"]+)"/)[1];
     const newIdToken = swapIdToken(idToken, {
       nonce: data.nonce,
-      iss: data.proxy,
+      iss: issuer,
     });
     newChunk = newChunk.replace(idToken, newIdToken);
   }

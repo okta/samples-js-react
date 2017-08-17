@@ -28,7 +28,7 @@ module.exports = {
       'babel-polyfill',
       './app/app.js',
     ],
-    doc: ['./app/util/doc.js'],
+    doc: './app/doc.js',
   },
   output: {
     path: outPath,
@@ -61,7 +61,7 @@ module.exports = {
         test: /\.js$/,
         include: path.join(__dirname, 'app'),
         query: {
-          presets: ['es2015', 'react'],
+          presets: ['es2015'],
         },
       },
       {

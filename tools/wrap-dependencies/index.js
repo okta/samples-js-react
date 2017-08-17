@@ -37,8 +37,8 @@ const execSync = require('child_process').execSync;
 // ----------------------------------------------------------------------------
 // Setup
 
-// Use 4.0.2, which includes many fixes to make shrinkwraps more consistent
-const expectedNpmVersion = '4.0.2';
+// Use 4.1.2, which includes many fixes to make shrinkwraps more consistent
+const expectedNpmVersion = '4.1.2';
 const rootDir = path.resolve(__dirname, '../../');
 
 // ----------------------------------------------------------------------------

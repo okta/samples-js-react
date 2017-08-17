@@ -57,6 +57,7 @@
   clientId: '{{config.oidc.clientId}}',
   redirectUri: '{{config.oidc.redirectUri}}',
   authParams: {
+    issuer: '{{config.oidc.issuer}}',
     responseType: 'code',
     scopes: ['openid', 'email', 'profile'],
   },
@@ -111,6 +112,7 @@ signIn.renderEl({ el: '#app-container' }, () => {});</code></pre>
      var options = {
        container: '#app-container',
        oktaUrl: '{{{config.oidc.oktaUrl}}}',
+       issuer: '{{{config.oidc.issuer}}}',
        clientId: '{{config.oidc.clientId}}',
        redirectUri: '{{{config.oidc.redirectUri}}}'
      };
