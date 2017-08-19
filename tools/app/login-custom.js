@@ -18,6 +18,7 @@ export default function render(config) {
     clientId: config.clientId,
     redirectUri: config.redirectUri,
     authParams: {
+      issuer: config.issuer,
       responseType: 'code',
       scopes: ['openid', 'email', 'profile'],
     },

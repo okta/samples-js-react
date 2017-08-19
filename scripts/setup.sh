@@ -7,7 +7,7 @@ cd ${OKTA_HOME}/${REPO}
 npm config set cache-min 10
 
 # Use newer, faster npm
-npm install -g npm@4.0.2
+npm install -g npm@4.1.2
 
 SHRINKWRAP="$OKTA_HOME/$REPO/tools/wrap-dependencies/npm-shrinkwrap-ci.json"
 if [ -f "$SHRINKWRAP" ];

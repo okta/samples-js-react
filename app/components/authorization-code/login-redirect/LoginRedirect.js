@@ -21,6 +21,7 @@ class LoginRedirect extends React.Component {
     const config = this.props.route.config;
     this.authClient = new OktaAuth({
       url: config.oktaUrl,
+      issuer: config.issuer,
       clientId: config.clientId,
       redirectUri: config.redirectUri,
       scopes: ['openid', 'email', 'profile'],

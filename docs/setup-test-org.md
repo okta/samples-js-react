@@ -13,32 +13,9 @@ You will need the following features enabled:
 
 1. Navigate to the admin app
 
-2. Enable CORS for the sample app server `/admin/access/api/corsList`
-
-    - Check the *Enable CORS for the following base URLs* checkbox
-    - Enter `http://localhost:3000` in the textbox
-
-3. Create an OpenId Connect group `/admin/groups`
-
-    | Setting           | Value                        |
-    | ----------------- | ---------------------------- |
-    | Name              | OpenId Connect Group         |
-    | Group Description | OpenId Connect Samples Group |
-
-4. Create an OpenId Connect app `/admin/apps/oauth2-wizard/create?applicationType=WEB`
-
-    | Setting             | Value                                               |
-    | ------------------- | --------------------------------------------------- |
-    | Application Name    | OpenId Connect App                                  |
-    | Redirect URIs       | `http://localhost:3000/authorization-code/callback` |
-    | Allowed grant types | Authorization Code                                  |
-
-5. Assign the `OpenId Connect App` to the `OpenId Connect Group` in the `Groups` tab
-
-
-6. Add the sample users, activate, and set these passwords `/admin/users`
-
-    **Note:** Add all users to the `OpenId Connect Group`
+2. Create a new **Web** application `dev/console/apps/new`
+3. Copy the **Client ID** and **Client Secret**, as it will be needed for the client configuration.
+4. Add the sample users, activate, and set these passwords `/admin/users`
 
     | Name              | Username        | Password | What is this user for?                    |
     | ----------------- | --------------- | -------- | ----------------------------------------- |

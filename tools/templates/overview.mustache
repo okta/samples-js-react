@@ -68,7 +68,11 @@
     <tbody>
       <tr>
         <td>oktaSample.oidc.oktaUrl</td>
-        <td>The base url for your okta org, i.e. https://your-org.okta.com</td>
+        <td>The base url for your okta org, i.e. https://{yourOktaDomain}.com</td>
+      </tr>
+      <tr>
+        <td>oktaSample.oidc.issuer</td>
+        <td>The url for your default okta authorization server, i.e. https://{yourOktaDomain}.com/oauth2/default</td>
       </tr>
       <tr>
         <td>oktaSample.oidc.clientId</td>
@@ -195,6 +199,7 @@
      var options = {
        container: '#app-container',
        oktaUrl: '{{{config.oidc.oktaUrl}}}',
+       issuer: '{{{config.oidc.issuer}}}',
        clientId: '{{config.oidc.clientId}}',
        redirectUri: '{{{config.oidc.redirectUri}}}'
      };

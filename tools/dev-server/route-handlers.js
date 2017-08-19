@@ -143,7 +143,7 @@ handlers.callback = (req, res) => {
   });
 
   const options = {
-    url: `${config.oidc.oktaUrl}/oauth2/v1/token?${query}`,
+    url: `${config.oidc.issuer}/v1/token?${query}`,
     method: 'POST',
     headers: {
       Authorization: `Basic ${secret}`,
@@ -182,9 +182,9 @@ handlers.callback = (req, res) => {
         return;
       }
 
-      // If it's not in the cache, get the latest JWKS from /oauth2/v1/keys
+      // If it's not in the cache, get the latest JWKS from /oauth2/default/v1/keys
       const options = {
-        url: `${config.oidc.oktaUrl}/oauth2/v1/keys`,
+        url: `${config.oidc.issuer}/v1/keys`,
         json: true,
       };
       request(options, (err, resp, json) => {
@@ -224,8 +224,8 @@ handlers.callback = (req, res) => {
 
       // Verify that the issuer is Okta, and specifically the endpoint that we
       // performed authorization against.
-      if (config.oidc.oktaUrl !== claims.iss) {
-        res.status(401).send(`id_token issuer ${claims.iss} does not match our issuer ${config.oidc.oktaUrl}`);
+      if (config.oidc.issuer !== claims.iss) {
+        res.status(401).send(`id_token issuer ${claims.iss} does not match our issuer ${config.oidc.issuer}`);
         return;
       }
 

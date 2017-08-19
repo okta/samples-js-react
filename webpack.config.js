@@ -28,7 +28,7 @@ module.exports = {
       'babel-polyfill',
       './app/app.js',
     ],
-    doc: ['./app/util/doc.js'],
+    doc: './app/util/doc.js',
   },
   output: {
     path: outPath,

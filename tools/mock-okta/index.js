@@ -141,7 +141,7 @@ function getResponseBody(headers, chunks, data) {
 // Middleware
 
 /**
- * For the /oauth2/v1/keys request, skip the proxy and return our mock JWKS.
+ * For the /oauth2/default/v1/keys request, skip the proxy and return our mock JWKS.
  */
 function handleKeys(req, res) {
   res.setHeader('Content-Type', 'application/json');
@@ -235,11 +235,16 @@ function transform(req, res, next) {
     const redirectUrl = res._headers && res._headers.location;
     const redirectQuery = (redirectUrl && util.parseQuery(redirectUrl)) || {};
 
+    // Capture the okta_key from the nested fromURI param
+    const fromUri = (Object.keys(redirectQuery).length !== 0 &&
+      redirectQuery.fromURI &&
+      util.parseQuery(redirectQuery.fromURI)) || {};
+
     // Store data if we're redirecting between authorization flow pages
-    if (data.isAuthorizeReq && data.responseMode === 'query' && redirectQuery.okta_key) {
-      debug(`Storing okta_key properties: ${redirectQuery.okta_key}`);
+    if (data.isAuthorizeReq && data.responseMode === 'query' && fromUri.okta_key) {
+      debug(`Storing okta_key properties: ${fromUri.okta_key}`);
       debug(data);
-      store[redirectQuery.okta_key] = { state: data.state, nonce: data.nonce };
+      store[fromUri.okta_key] = { state: data.state, nonce: data.nonce };
     }
 
     // Store data if we're redirecting to the redirectUri in preparation for
@@ -264,7 +269,7 @@ function transform(req, res, next) {
 const app = connect();
 const tapeDir = path.resolve(__dirname, 'tapes');
 
-app.use('/oauth2/v1/keys', handleKeys);
+app.use('/oauth2/default/v1/keys', handleKeys);
 app.use(transform);
 app.use(yakbak(config.proxied, { dirname: tapeDir, noRecord: !record }));
 
