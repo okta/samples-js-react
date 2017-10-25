@@ -23,7 +23,7 @@ class OverviewPage {
   }
 
   load() {
-    browser.get('http://localhost:3000/');
+    browser.get('http://localhost:8080/');
     return this.waitForPageLoad();
   }
 

@@ -9,7 +9,7 @@ var path = require("path");
  * accept: application/json
  * x-okta-xsrftoken: 
  * user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:48.0) Gecko/20100101 Firefox/48.0
- * origin: http://localhost:3000
+ * origin: http://localhost:8080
  * content-type: application/json
  * accept-encoding: gzip
  * accept-language: en-US
@@ -21,13 +21,13 @@ module.exports = function (req, res) {
   res.statusCode = 200;
 
   res.setHeader("server", "Apache-Coyote/1.1");
-  res.setHeader("x-okta-request-id", "reqTQHJuN_jRE2AwptBFWiqCg");
+  res.setHeader("x-okta-request-id", "req2HN2JQFoRXORJErjSftr3g");
   res.setHeader("p3p", "CP=\"HONK\"");
-  res.setHeader("set-cookie", ["sid=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/","JSESSIONID=3C62FE49C7C98B26011795EB6CF7B278; Path=/","DT=DI0EHQm0Qj4R4Kjx-Jg7nja5g; Expires=Sat, 10-Aug-2019 23:14:55 GMT; Path=/"]);
+  res.setHeader("set-cookie", ["sid=\"\"; Expires=Thu, 01-Jan-1970 00:00:10 GMT; Path=/","JSESSIONID=A749472A6768095517519FC5A432A270; Path=/","DT=DI08Y3JSvv6RBKSPA5LpAYZuw; Expires=Fri, 25-Oct-2019 18:32:30 GMT; Path=/"]);
   res.setHeader("x-rate-limit-limit", "1200");
   res.setHeader("x-rate-limit-remaining", "1197");
-  res.setHeader("x-rate-limit-reset", "1502406950");
-  res.setHeader("access-control-allow-origin", "http://localhost:3000");
+  res.setHeader("x-rate-limit-reset", "1508956392");
+  res.setHeader("access-control-allow-origin", "http://localhost:8080");
   res.setHeader("access-control-allow-credentials", "true");
   res.setHeader("access-control-allow-headers", "Content-Type");
   res.setHeader("cache-control", "no-cache, no-store");
@@ -35,11 +35,11 @@ module.exports = function (req, res) {
   res.setHeader("expires", "0");
   res.setHeader("content-type", "application/json;charset=UTF-8");
   res.setHeader("transfer-encoding", "chunked");
-  res.setHeader("date", "Thu, 10 Aug 2017 23:14:55 GMT");
+  res.setHeader("date", "Wed, 25 Oct 2017 18:32:30 GMT");
 
   res.setHeader("x-yakbak-tape", path.basename(__filename, ".js"));
 
-  res.write(new Buffer("eyJleHBpcmVzQXQiOiIyMDE3LTA4LTEwVDIzOjE5OjU1LjAwMFoiLCJzdGF0dXMiOiJTVUNDRVNTIiwic2Vzc2lvblRva2VuIjoiMjAxMTFwVUUyckdKSmZDMkRRZ1MybjRzVFRSVnJlNFRvejhXSS1DSU9PZld3V1FQT3FZQTlxUCIsIl9lbWJlZGRlZCI6eyJ1c2VyIjp7ImlkIjoiMDB1b28zSm5tU2F4RFl2aXgwZzMiLCJwYXNzd29yZENoYW5nZWQiOiIyMDE3LTA4LTA5VDIyOjM5OjA4LjAwMFoiLCJwcm9maWxlIjp7ImxvZ2luIjoiam9obkBhY21lLmNvbSIsImZpcnN0TmFtZSI6IkpvaG4iLCJsYXN0TmFtZSI6IkFkYW1zIiwibG9jYWxlIjoiZW4iLCJ0aW1lWm9uZSI6IkFtZXJpY2EvTG9zX0FuZ2VsZXMifX19fQ==", "base64"));
+  res.write(new Buffer("eyJleHBpcmVzQXQiOiIyMDE3LTEwLTI1VDE4OjM3OjMwLjAwMFoiLCJzdGF0dXMiOiJTVUNDRVNTIiwic2Vzc2lvblRva2VuIjoiMjAxMTFqMTJxZ1I2bFUxRWVBQ3J4X01DYktQQTFYRFhVZS1xRlA0R2dkRFFQdS1sLThvNjlPdyIsIl9lbWJlZGRlZCI6eyJ1c2VyIjp7ImlkIjoiMDB1c2lhVjN3bDNGOVg1N08wZzMiLCJwYXNzd29yZENoYW5nZWQiOiIyMDE3LTEwLTI1VDE4OjExOjM2LjAwMFoiLCJwcm9maWxlIjp7ImxvZ2luIjoiam9obkBhY21lLmNvbSIsImZpcnN0TmFtZSI6ImpvaG4iLCJsYXN0TmFtZSI6ImpvaG4iLCJsb2NhbGUiOiJlbiIsInRpbWVab25lIjoiQW1lcmljYS9Mb3NfQW5nZWxlcyJ9fX19", "base64"));
   res.end();
 
   return __filename;
