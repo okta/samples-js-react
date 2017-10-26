@@ -3,13 +3,13 @@
     "oidc": {
       "oktaUrl": "http://127.0.0.1:7777",
       "issuer": "http://127.0.0.1:7777/oauth2/default",
-      "clientId": "0oaom8GeLzZeX7oYZ0g3",
-      "clientSecret": "XIZPoGtuyhu0V8MsQzGOsOSn6oSff3vO8Vp2nmLY",
-      "redirectUri": "http://localhost:3000/authorization-code/callback"
+      "clientId": "0oascqmdCbwmPbsRl0g3",
+      "clientSecret": "IfgvI6FRab-jK18OvB_Pz1B6728MwmTEDA4OSNoJ",
+      "redirectUri": "http://localhost:8080/authorization-code/callback"
     },
     "server": {
       "staticDir": "dist",
-      "port": 3000,
+      "port": 8080,
       "useWebpackDevServer": true
     },
     "mockOkta": {

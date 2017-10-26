@@ -22,7 +22,7 @@ class ScenariosPage {
   }
 
   load() {
-    return browser.get('http://localhost:3000/');
+    return browser.get('http://localhost:8080/');
   }
 
   waitForPageLoad() {

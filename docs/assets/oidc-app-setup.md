@@ -9,7 +9,7 @@ These steps require an Okta account - if you do not have one, sign up for a free
     | Setting             | Value                                               |
     | ------------------- | --------------------------------------------------- |
     | Application Name    | OpenId Connect App                                  |
-    | Redirect URIs       | `http://localhost:3000/authorization-code/callback` |
+    | Redirect URIs       | `http://localhost:8080/authorization-code/callback` |
     | Allowed grant types | Authorization Code                                  |
 3. Click **Finish** to redirect back to the *General Settings* of your application.
 4. Copy the **Client ID**, as it will be needed for the client configuration.
@@ -17,18 +17,18 @@ These steps require an Okta account - if you do not have one, sign up for a free
 6. Enable [CORS access](http://developer.okta.com/docs/api/getting_started/enabling_cors.html) to your Okta organization:
   - In the navigation bar, select **Security** then **API**.
   - Select the *CORS* tab
-  - Click the **Edit** button and add `http://localhost:3000`
+  - Click the **Edit** button and add `http://localhost:8080`
   - **Save**
 7. Create an OpenID Connect group:
   - In the navigation bar, select **Directory** then **Groups**
   - Select the `Add Group` button
   - Enter the following information for your new group:
-  
-    | Setting           | Value                        | 
+
+    | Setting           | Value                        |
     | ----------------- | ---------------------------- |
     | Name              | OpenID Connect Group         |
     | Group Description | OpenID Connect Samples Group |
-    
+
 8. Add new or existing users to your `OpenID Connect Group`:
 
     | Name              | Username        | Password | Group                 |

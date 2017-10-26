@@ -173,7 +173,7 @@ function transform(req, res, next) {
   debug(JSON.stringify(hashedReqParams, null, 2));
 
   // It is important to use a proxy host that is different from the local
-  // server - for example, using localhost:3000 for the server and
+  // server - for example, using localhost:8080 for the server and
   // localhost:7777 will not work because cookies are shared across ports.
   data.proxy = `${config.proxy}:${config.port}`;
   data.proxied = config.proxied;

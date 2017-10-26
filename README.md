@@ -8,7 +8,7 @@ react Samples
   - [Using a different back end](#using-a-different-back-end)
   - [Support](#support)
   - [License](#license)
- 
+
 ## Introduction
 
 This repository contains the react front-end code that can be used by our full end-to-end samples.
@@ -43,11 +43,11 @@ To run this sample:
 4. In a different terminal window, run the Express server.
 
     ```bash
-    # Starts the sample back end on http://localhost:3000
+    # Starts the sample back end on http://localhost:8080
     [samples-js-react]$ npm start
     ```
 
-5. You're all set! Open a browser window to [http://localhost:3000](http://localhost:3000).
+5. You're all set! Open a browser window to [http://localhost:8080](http://localhost:8080).
 
 ## Using a different back end
 
@@ -77,7 +77,7 @@ To run the full sample integrated with a different back-end web framework or lan
 
 4. Follow the end-to-end instructions to run the web server. You should be up and running with react!
 
-## Support 
+## Support
 
 Have a question or see a bug? Email developers@okta.com. For feature requests, feel free to open an issue on this repo. If you find a security vulnerability, please follow our [Vulnerability Reporting Process](https://www.okta.com/vulnerability-reporting-policy/).
 
