@@ -12,25 +12,16 @@
     "lint:report": "eslint -f checkstyle -o build2/reports/lint/eslint-checkstyle-result.xml --ignore-path .gitignore .",
     "lint": "eslint --ignore-path .gitignore .",
     "build": "webpack --config webpack.config.js",
-    "start": "node tools/dev-server",
-    "ci-update-package": "ci-update-package",
-    "ci-pkginfo:dataload": "ci-pkginfo -t dataload"
+    "start": "node tools/dev-server"
   },
   "author": "",
   "license": "Apache-2.0",
-  "publishConfig": {
-    "registry": "https://artifacts.aue1d.saasure.com/artifactory/api/npm/npm-okta"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/okta/samples-js-react.git"
   },
   "bugs": "https://github.com/okta/samples-js-react/issues",
   "homepage": "https://github.com/okta/samples-js-react",
-  "optionalDependencies": {
-    "@okta/ci-update-package": "1.4.0",
-    "@okta/ci-pkginfo": "1.2.0"
-  },
   "devDependencies": {
     "chalk": "1.1.3",
     "cli-table2": "0.2.0",
