@@ -3,7 +3,7 @@
   "version": "1.4.0",
   "description": "React Sample Applications for Okta",
   "scripts": {
-    "test": "eslint -c .eslintrc.json --ext .js --ext .jsx okta-hosted-login/src/"
+    "test": "eslint -c .eslintrc.json --ext .js --ext .jsx okta-hosted-login/src/ custom-login/src/"
   },
   "author": "",
   "license": "Apache-2.0",
