@@ -2,21 +2,21 @@ import { withAuth } from '@okta/okta-react';
 import React, { Component } from 'react';
 import { Container, Button, Header } from 'semantic-ui-react';
 import Navbar from './Navbar';
+import { checkAuthentication } from './helpers';
 
 export default withAuth(class Home extends Component {
   constructor(props) {
     super(props);
     this.state = { authenticated: null, userinfo: null };
+    this.checkAuthentication = checkAuthentication.bind(this);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.checkAuthentication();
   }
 
-  async checkAuthentication() {
-    const authenticated = await this.props.auth.isAuthenticated();
-    const userinfo = await this.props.auth.getUser();
-    this.setState({ authenticated, userinfo });
+  async componentDidUpdate() {
+    this.checkAuthentication();
   }
 
   render() {
@@ -36,7 +36,7 @@ export default withAuth(class Home extends Component {
         <Navbar />
         {this.state.authenticated !== null &&
         <Container text style={{ marginTop: '7em' }}>
-          <Header as="h1">Okta-React Sample app (Custom Login Page with Sign In Widget)</Header>
+          <Header as="h1">Custom Login Page with Sign In Widget</Header>
           {this.state.authenticated &&
             <div>
               <p>Welcome back, {this.state.userinfo.name}!</p>

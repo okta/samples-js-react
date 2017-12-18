@@ -2,23 +2,30 @@ import React, { Component } from 'react';
 import { withAuth } from '@okta/okta-react';
 import { Container, Header, Icon, Table } from 'semantic-ui-react';
 
+import { checkAuthentication } from './helpers';
 import Navbar from './Navbar';
 
 export default withAuth(class Profile extends Component {
   constructor(props) {
     super(props);
-    this.state = { userinfo: null };
+    this.state = { userinfo: null, ready: false };
+    this.checkAuthentication = checkAuthentication.bind(this);
   }
 
-  componentDidMount() {
-    this.getUserInfo();
+  async componentDidMount() {
+    await this.checkAuthentication();
+    this.applyClaims();
   }
 
-  async getUserInfo() {
-    if (!this.state.userinfo) {
-      const userinfo = await this.props.auth.getUser();
-      const claims = Object.entries(userinfo);
-      this.setState({ userinfo, claims });
+  async componentDidUpdate() {
+    await this.checkAuthentication();
+    this.applyClaims();
+  }
+
+  async applyClaims() {
+    if (this.state.userinfo && !this.state.claims) {
+      const claims = Object.entries(this.state.userinfo);
+      this.setState({ claims, ready: true });
     }
   }
 
@@ -27,8 +34,8 @@ export default withAuth(class Profile extends Component {
       <div>
         <Navbar />
         <Container text style={{ marginTop: '7em' }}>
-          {!this.state.userinfo && <p>Fetching user profile..</p>}
-          {this.state.userinfo &&
+          {!this.state.ready && <p>Fetching user profile..</p>}
+          {this.state.ready &&
           <div>
             <Header as="h1"><Icon name="drivers license outline" /> My User Profile (ID Token Claims) </Header>
             <p>
