@@ -57,10 +57,11 @@ export default withAuth(class Home extends Component {
             <div>
               <p>If you&lsquo;re viewing this page then you have successfully started this React application.</p>
               <p>
-                This example shows you how to use the
+                <span>This example shows you how to use the </span>
                 <a href="https://github.com/okta/okta-oidc-js/tree/master/packages/okta-react">Okta React Library</a>
-                to add the <a href="https://developer.okta.com/authentication-guide/implementing-authentication/implicit.html">Implicit Flow</a>
-                to your application.
+                <span> to add the </span>
+                <a href="https://developer.okta.com/authentication-guide/implementing-authentication/implicit.html">Implicit Flow</a>
+                <span> to your application.</span>
               </p>
               <p>
                 When you click the login button below, you will be redirected to the login page on your Okta org.

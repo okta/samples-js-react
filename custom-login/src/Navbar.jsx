@@ -1,6 +1,6 @@
 import { withAuth } from '@okta/okta-react';
 import React, { Component } from 'react';
-import { Container, Icon, Menu } from 'semantic-ui-react';
+import { Container, Icon, Image, Menu } from 'semantic-ui-react';
 import { checkAuthentication } from './helpers';
 
 export default withAuth(class Navbar extends Component {
@@ -24,6 +24,8 @@ export default withAuth(class Navbar extends Component {
         <Menu fixed="top" inverted>
           <Container>
             <Menu.Item as="a" header href="/">
+              <Image size="mini" src="/react.svg" />
+              &nbsp;
               Okta-React Sample Project
             </Menu.Item>
             {this.state.authenticated === true && <Menu.Item as="a" href="/messages"><Icon name="mail outline" />Messages</Menu.Item>}
