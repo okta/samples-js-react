@@ -67,7 +67,7 @@ export default withAuth(class Home extends Component {
                 When you click the login button below, you will be redirected to the login page on your Okta org.
                 After you authenticate, you will be returned to this application with an ID Token and Access Token.  These tokens will be stored in local storage and can be retrieved at a later time.
               </p>
-              <Button primary onClick={this.props.auth.login}>Login</Button>
+              <Button id="login-button" primary onClick={this.props.auth.login}>Login</Button>
             </div>
           }
 

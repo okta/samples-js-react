@@ -70,7 +70,7 @@ export default withAuth(class Home extends Component {
                 After this you will be redirected back to the application with an ID Token and Access Token.
                 The tokens will be stored in local storage for future use.
               </p>
-              <Button primary onClick={this.props.auth.login}>Login</Button>
+              <Button id="login-button" primary onClick={this.props.auth.login}>Login</Button>
             </div>
           }
 

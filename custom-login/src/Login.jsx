@@ -11,7 +11,12 @@ export default class LoginPage extends Component {
   constructor(props) {
     super(props);
     this.signIn = new OktaSignIn({
-      baseUrl: config.oktaSample.widget.baseUrl,
+      /**
+       * Note: when using the Sign-In Widget for an ODIC flow, it still
+       * needs to be configured with the base URL for your Okta Org. Here
+       * we derive it from the given issuer for convenience.
+       */
+      baseUrl: config.oktaSample.oidc.issuer.split('/oauth2')[0],
       clientId: config.oktaSample.oidc.clientId,
       redirectUri: config.oktaSample.oidc.redirectUri,
       logo: '/react.svg',
@@ -24,7 +29,7 @@ export default class LoginPage extends Component {
         responseType: ['id_token', 'token'],
         issuer: config.oktaSample.oidc.issuer,
         display: 'page',
-        scopes: ['openid', 'profile'],
+        scopes: config.oktaSample.oidc.scope.split(' '),
       },
     });
   }

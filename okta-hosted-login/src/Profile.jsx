@@ -53,7 +53,8 @@ export default withAuth(class Profile extends Component {
                 {this.state.claims.map((claimEntry) => {
                   const claimName = claimEntry[0];
                   const claimValue = claimEntry[1];
-                  return <tr key={claimName}><td>{claimName}</td><td>{claimValue}</td></tr>;
+                  const claimId = `claim-${claimName}`;
+                  return <tr key={claimName}><td>{claimName}</td><td id={claimId}>{claimValue}</td></tr>;
                 })}
               </tbody>
             </Table>

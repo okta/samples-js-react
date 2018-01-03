@@ -23,14 +23,17 @@ export default withAuth(class Profile extends Component {
             Authorization: `Bearer ${accessToken}`,
           },
         });
+        let index = 0;
         const data = await response.json();
         const messages = data.messages.map((message) => {
           const date = new Date(message.date);
           const day = date.toLocaleDateString();
           const time = date.toLocaleTimeString();
+          index += 1;
           return {
             date: `${day} ${time}`,
             text: message.text,
+            id: `message-${index}`,
           };
         });
         this.setState({ messages, failed: false });
@@ -73,7 +76,7 @@ export default withAuth(class Profile extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.state.messages.map(message => <tr key={message.date + message.text}><td>{message.date}</td><td>{message.text}</td></tr>)}
+                  {this.state.messages.map(message => <tr id={message.id} key={message.id}><td>{message.date}</td><td>{message.text}</td></tr>)}
                 </tbody>
               </Table>
             </div>
