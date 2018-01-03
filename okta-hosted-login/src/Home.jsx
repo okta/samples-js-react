@@ -1,7 +1,6 @@
 import { withAuth } from '@okta/okta-react';
 import React, { Component } from 'react';
-import { Container, Button, Header } from 'semantic-ui-react';
-import Navbar from './Navbar';
+import { Button, Header } from 'semantic-ui-react';
 import { checkAuthentication } from './helpers';
 
 export default withAuth(class Home extends Component {
@@ -33,9 +32,8 @@ export default withAuth(class Home extends Component {
 
     return (
       <div>
-        <Navbar />
         {this.state.authenticated !== null &&
-        <Container text style={{ marginTop: '7em' }}>
+        <div>
           <Header as="h1">Implicit Flow w/ Okta Hosted Login Page</Header>
           {this.state.authenticated &&
             <div>
@@ -71,7 +69,7 @@ export default withAuth(class Home extends Component {
             </div>
           }
 
-        </Container>
+        </div>
         }
       </div>
     );
