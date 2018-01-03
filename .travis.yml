@@ -3,8 +3,7 @@ node_js:
 - '5.8'
 install:
 - npm install
-script:
-- npm test
+script: ./scripts/travis.sh
 
 # From the phantomjs-prebuilt documentation:
 # https://www.npmjs.com/package/phantomjs-prebuilt
