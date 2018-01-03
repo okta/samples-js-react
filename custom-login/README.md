@@ -41,7 +41,7 @@ export default {
   oktaSample: {
     widget: {
       /**
-       * Note: even when using the Sign-In Widget for an ODIC flow,
+       * Note: even when using the Sign-In Widget for an OIDC flow,
        * it must be configured with the base URL for your Okta Org.
        */
       baseUrl: 'https://{yourOktaDomain}.com',
@@ -70,7 +70,7 @@ You can login with the same account that you created when signing up for your De
 
 Once you have logged in you will be redirected through your authorization server (the issuer defined in config) to create a session for Single-Sign-On (SSO).  After this you will be redirected back to the application where you should see information about your login state.
 
-**Note:** If you are currently using your Developer Console, you already have a Single-Sign On (SSO) session for your Org.  You will be automatically logged into your application as the same user that is using the Developer Console.
+**Note:** If you are currently using your Developer Console, you already have a Single Sign-On (SSO) session for your Org.  You will be automatically logged into your application as the same user that is using the Developer Console.
 
 
 ## Integrating The Resource Server

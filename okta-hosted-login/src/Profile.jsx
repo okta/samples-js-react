@@ -36,7 +36,7 @@ export default withAuth(class Profile extends Component {
         <div>
           <Header as="h1"><Icon name="drivers license outline" /> My User Profile (ID Token Claims) </Header>
           <p>
-            Below is the information from your ID Token which was obtained during the &nbsp;
+            Below is the information from your ID token which was obtained during the &nbsp;
             <a href="https://developer.okta.com/authentication-guide/implementing-authentication/implicit">Implicit Flow</a> and is now stored in local storage.
           </p>
           <p>This route is protected with the <code>&lt;SecureRoute&gt;</code> component, which will ensure that this page cannot be accessed until you have authenticated.</p>

@@ -39,8 +39,8 @@ export default withAuth(class Home extends Component {
             <div>
               <p>Welcome back, {this.state.userinfo.name}!</p>
               <p>
-                You have successfully authenticated against your Okta org, and have been redirected back to this application.  You now have an ID Token and access token in local storage.
-                Visit the <a href="/profile">My Profile</a> page to take a look inside the ID Token.
+                You have successfully authenticated against your Okta org, and have been redirected back to this application.  You now have an ID token and access token in local storage.
+                Visit the <a href="/profile">My Profile</a> page to take a look inside the ID token.
               </p>
               <h3>Next Steps</h3>
               <p>Currently this application is a stand-alone front end application.  At this point you can use the access token to authenticate yourself against resource servers that you control.</p>
@@ -66,7 +66,7 @@ export default withAuth(class Home extends Component {
               </p>
               <p>
                 Once you have logged in you will be redirected through your authorization server (the issuer defined in config) to create a session for Single-Sign-On (SSO).
-                After this you will be redirected back to the application with an ID Token and Access Token.
+                After this you will be redirected back to the application with an ID token and access token.
                 The tokens will be stored in local storage for future use.
               </p>
               <Button id="login-button" primary onClick={this.props.auth.login}>Login</Button>

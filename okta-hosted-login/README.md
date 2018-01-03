@@ -1,6 +1,6 @@
 # Okta React + Okta Hosted Login Example
 
-This example shows you how to use the [Okta React Library][] to login a user to a React application.  The login is achieved through the [OAuth 2.0 Implicit Flow][], where the user is redirected to the Okta-Hosted login page.  After the user authenticates they are redirected back to the application with an ID Token and Access Token.
+This example shows you how to use the [Okta React Library][] to login a user to a React application.  The login is achieved through the [OAuth 2.0 Implicit Flow][], where the user is redirected to the Okta-Hosted login page.  After the user authenticates they are redirected back to the application with an ID token and access token.
 
 This example is built with [Create React App][].
 
@@ -67,7 +67,7 @@ You can login with the same account that you created when signing up for your De
 
 Once you have logged in you will be redirected back to the application where you should see information about your login state.
 
-**Note:** If you are currently using your Developer Console, you already have a Single-Sign On (SSO) session for your Org.  You will be automatically logged into your application as the same user that is using the Developer Console.
+**Note:** If you are currently using your Developer Console, you already have a Single Sign-On (SSO) session for your Org.  You will be automatically logged into your application as the same user that is using the Developer Console.
 
 ## Integrating The Resource Server
 
