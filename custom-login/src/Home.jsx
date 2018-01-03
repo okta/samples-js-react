@@ -61,7 +61,8 @@ export default withAuth(class Home extends Component {
                 <a href="https://github.com/okta/okta-signin-widget">Okta Sign-In Widget</a>
                 <span> to add the </span>
                 <a href="https://developer.okta.com/authentication-guide/implementing-authentication/implicit.html">Implicit Flow</a>
-                <span> to your application. This combination is useful when you want to leverage the features of the Sign-In Widget, and the authentication helper components from the <code>okta-react</code> module.</span>
+                <span> to your application. This combination is useful when you want to leverage the features of the Sign-In Widget, </span>
+                <span> and the authentication helper components from the <code>okta-react</code> module.</span>
               </p>
               <p>
                 Once you have logged in you will be redirected through your authorization server (the issuer defined in config) to create a session for Single-Sign-On (SSO).
