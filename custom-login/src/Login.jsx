@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import * as OktaSignIn from '@okta/okta-signin-widget';
-import { Container } from 'semantic-ui-react';
 import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
 import '@okta/okta-signin-widget/dist/css/okta-theme.css';
 
-import Navbar from './Navbar';
 import config from './.samples.config';
 
 export default class LoginPage extends Component {
@@ -50,10 +48,7 @@ export default class LoginPage extends Component {
   render() {
     return (
       <div>
-        <Navbar />
-        <Container text style={{ marginTop: '7em' }}>
-          <div id="sign-in-widget" />
-        </Container>
+        <div id="sign-in-widget" />
       </div>
     );
   }
