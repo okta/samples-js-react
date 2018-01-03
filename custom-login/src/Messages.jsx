@@ -2,6 +2,8 @@ import { withAuth } from '@okta/okta-react';
 import React, { Component } from 'react';
 import { Header, Icon, Message, Table } from 'semantic-ui-react';
 
+import config from './.samples.config';
+
 export default withAuth(class Profile extends Component {
   constructor(props) {
     super(props);
@@ -17,11 +19,17 @@ export default withAuth(class Profile extends Component {
       try {
         const accessToken = await this.props.auth.getAccessToken();
         /* global fetch */
-        const response = await fetch('http://localhost:8000/api/messages', {
+        const response = await fetch(config.oktaSample.resourceServer.messagesUrl, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
         });
+
+        if (response.status !== 200) {
+          this.setState({ failed: true });
+          return;
+        }
+
         let index = 0;
         const data = await response.json();
         const messages = data.messages.map((message) => {
@@ -38,7 +46,8 @@ export default withAuth(class Profile extends Component {
         this.setState({ messages, failed: false });
       } catch (err) {
         this.setState({ failed: true });
-        throw err;
+        /* eslint-disable no-console */
+        console.error(err);
       }
     }
   }
