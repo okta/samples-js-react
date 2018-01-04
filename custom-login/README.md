@@ -48,7 +48,7 @@ export default {
     },
     oidc: {
       issuer: 'https://{yourOktaDomain}.com/oauth2/default',
-      clientId: '{yourClientId}',
+      clientId: '{yourSpaApplicationClientId}',
       redirectUri: 'http://localhost:8080/implicit/callback',
     },
   },
