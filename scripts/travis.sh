@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sh scripts/update-samples-config.sh
 cd custom-login
 npm install
 cd ..
