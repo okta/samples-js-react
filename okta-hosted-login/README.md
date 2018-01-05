@@ -55,7 +55,7 @@ Now start the app server:
 npm start
 ```
 
-Now navigate to http://localhost:8000 in your browser.
+Now navigate to http://localhost:8080 in your browser.
 
 If you see a home page that prompts you to login, then things are working!  Clicking the **Log in** button will redirect you to the Okta hosted sign-in page.
 
