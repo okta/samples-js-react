@@ -13,9 +13,9 @@ class App extends Component {
     return (
       <Router>
         <Security
-          issuer={config.oktaSample.oidc.issuer}
-          client_id={config.oktaSample.oidc.clientId}
-          redirect_uri={config.oktaSample.oidc.redirectUri}
+          issuer={config.oidc.issuer}
+          client_id={config.oidc.clientId}
+          redirect_uri={config.oidc.redirectUri}
         >
           <Navbar />
           <Container text style={{ marginTop: '7em' }}>

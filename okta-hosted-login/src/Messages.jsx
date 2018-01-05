@@ -19,7 +19,7 @@ export default withAuth(class Profile extends Component {
       try {
         const accessToken = await this.props.auth.getAccessToken();
         /* global fetch */
-        const response = await fetch(config.oktaSample.resourceServer.messagesUrl, {
+        const response = await fetch(config.resourceServer.messagesUrl, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },

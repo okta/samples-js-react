@@ -8,8 +8,8 @@ This example is built with [Create React App][].
 
 Before running this sample, you will need the following:
 
-* An Okta Developer Org, you can sign up for one at https://developer.okta.com/signup/.
-* An OIDC application in your Org, configured for Single-Page Application mode. You can find instructions [here][OIDC SPA Setup Instructions].  When following the wizard, use the default properties.  They are are designed to work with our sample applications.
+* An Okta Developer Account, you can sign up for one at https://developer.okta.com/signup/.
+* An Okta Application, configured for Singe-Page App (SPA) mode. This is done from the Okta Developer Console and you can find instructions [here][OIDC SPA Setup Instructions].  When following the wizard, use the default properties.  They are are designed to work with our sample applications.
 
 
 ## Running This Example
@@ -27,50 +27,41 @@ Then install dependencies:
 npm install
 ```
 
-You will need to provide these values to the sample application:
+Now you need to gather the following information from the Okta Developer Console:
 
-* Issuer
-* Client ID
-* Redirect URI
+- **Client Id** - The client ID of the SPA application that you created earlier. This can be found on the "General" tab of an application, or the list of applications.  This identifies the application that tokens will be minted for.
+- **Issuer** - This is the URL of the authorization server that will perform authentication.  All Developer Accounts have a "default" authorization server.  The issuer is a combination of your Org URL (found in the upper right of the console home page) and `/oauth2/default`. For example, `https://dev-1234.oktapreview.com/oauth2/default`.
 
-These are application settings for the [OAuth 2.0 Implicit Flow][] and can be found in the Developer Console when looking at the Application that you created earlier.  Place them into this configuration block in  `src/.samples.config.js`:
-
+Now place these values into the file `src/.samples.config.js` that was created for you in the root of this project:
 
 ```javascript
 export default {
-  oktaSample: {
-    widget: {
-      /**
-       * Note: even when using the Sign-In Widget for an OIDC flow,
-       * it must be configured with the base URL for your Okta Org.
-       */
-      baseUrl: 'https://{yourOktaDomain}.com',
-    },
-    oidc: {
-      issuer: 'https://{yourOktaDomain}.com/oauth2/default',
-      clientId: '{yourSpaApplicationClientId}',
-      redirectUri: 'http://localhost:8080/implicit/callback',
-    },
+  oidc: {
+    clientId: '{clientId}',
+    issuer: 'https://{yourOktaDomain}.com/oauth2/default',
+    redirectUri: 'http://localhost:8080/implicit/callback',
+    scope: 'openid profile email',
+  },
+  resourceServer: {
+    messagesUrl: 'http://localhost:8000/api/messages',
   },
 };
 
 ```
 
-Now you should be able to run the app server:
+Now start the app server:
 
 ```
 npm start
 ```
 
-At this point you should be able to navigate to http://localhost:8080
+Now navigate to http://localhost:8000 in your browser.
 
-If you see a home page that prompts you to login, the app is working!  When you click the login button you should be shown the Sign In Widget on the `/login` page.
+If you see a home page that prompts you to login, then things are working!  Clicking the **Log in** button will render a custom login page component that uses the Okta Sign-In Widget to perform authentication.
 
-You can login with the same account that you created when signing up for your Developer Org, or you can use a known user in your Okta Directory.
+You can login with the same account that you created when signing up for your Developer Org, or you can use a known username and password from your Okta Directory.
 
-Once you have logged in you will be redirected through your authorization server (the issuer defined in config) to create a session for Single-Sign-On (SSO).  After this you will be redirected back to the application where you should see information about your login state.
-
-**Note:** If you are currently using your Developer Console, you already have a Single Sign-On (SSO) session for your Org.  You will be automatically logged into your application as the same user that is using the Developer Console.
+**Note:** If you are currently using your Developer Console, you already have a Single Sign-On (SSO) session for your Org.  You will be automatically logged into your application as the same user that is using the Developer Console.  You may want to use an incognito tab to test the flow from a blank slate.
 
 
 ## Integrating The Resource Server
@@ -78,7 +69,6 @@ Once you have logged in you will be redirected through your authorization server
 This sample contains the same "Messages" page that is included in the [Okta Hosted Login](/okta-hosted-login) sample, please refer to that sample for instructions on setting up the resource server.
 
 [Create React App]: https://github.com/facebookincubator/create-react-app
-[OAuth 2.0 Implicit Flow]: https://developer.okta.com/authentication-guide/implementing-authentication/implicit
 [Okta React Library]: https://github.com/okta/okta-oidc-js/tree/master/packages/okta-react
 [OIDC SPA Setup Instructions]: https://developer.okta.com/authentication-guide/implementing-authentication/implicit#1-setting-up-your-application
 [Okta Sign In Widget]: https://github.com/okta/okta-signin-widget

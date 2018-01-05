@@ -19,6 +19,6 @@ module.exports = function createConfigFile() {
   if (!fs.existsSync(newFilePath)) {
     console.log('Creating default configuration file..');
     fs.writeFileSync(newFilePath, defaultFile);
-    console.log(colors.green('\nSample project is ready to go!  Please add your configuration to src/.samples.config.js, see the README for instructions.\n'));
   }
+  console.log(colors.green('\nSample project is ready to go!  Please add your configuration to src/.samples.config.js, see the README for instructions.\n'));
 };

@@ -14,9 +14,9 @@ export default class LoginPage extends Component {
        * needs to be configured with the base URL for your Okta Org. Here
        * we derive it from the given issuer for convenience.
        */
-      baseUrl: config.oktaSample.oidc.issuer.split('/oauth2')[0],
-      clientId: config.oktaSample.oidc.clientId,
-      redirectUri: config.oktaSample.oidc.redirectUri,
+      baseUrl: config.oidc.issuer.split('/oauth2')[0],
+      clientId: config.oidc.clientId,
+      redirectUri: config.oidc.redirectUri,
       logo: '/react.svg',
       i18n: {
         en: {
@@ -25,9 +25,9 @@ export default class LoginPage extends Component {
       },
       authParams: {
         responseType: ['id_token', 'token'],
-        issuer: config.oktaSample.oidc.issuer,
+        issuer: config.oidc.issuer,
         display: 'page',
-        scopes: config.oktaSample.oidc.scope.split(' '),
+        scopes: config.oidc.scope.split(' '),
       },
     });
   }
