@@ -1,7 +1,0 @@
-{
-  "env": {
-    "jasmine": true,
-    "node": true,
-    "protractor": true
-  }
-}

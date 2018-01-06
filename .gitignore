@@ -5,3 +5,4 @@ npm-debug.log
 travis_phantomjs
 .DS_Store
 .vscode
+.samples.config.js
