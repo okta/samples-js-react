@@ -3,7 +3,14 @@
   "version": "1.4.0",
   "description": "React Sample Applications for Okta",
   "scripts": {
-    "test": "eslint -c .eslintrc.json --ext .js --ext .jsx okta-hosted-login/src/ custom-login/src/"
+    "test": "eslint -c .eslintrc.json --ext .js --ext .jsx okta-hosted-login/src/ custom-login/src/ && npm run test:e2e",
+    "okta-hosted-login-server": "npm start --prefix okta-hosted-login/",
+    "test:okta-hosted-login": "protractor okta-oidc-tck/e2e-tests/okta-hosted-login/conf.js",
+    "custom-login-server": "npm start --prefix custom-login/",
+    "test:custom-login": "protractor okta-oidc-tck/e2e-tests/custom-login/conf.js",
+    "test:e2e": "npm run get-oidc-tck && npm run test:okta-hosted-login && npm run test:custom-login",
+    "get-oidc-tck": "rm -rf okta-oidc-tck && git clone https://github.com/okta/okta-oidc-tck.git && git --git-dir=okta-oidc-tck/.git --work-tree=okta-oidc-tck checkout e2eTests",
+    "pretest": "webdriver-manager update --gecko false"
   },
   "author": "",
   "license": "Apache-2.0",
@@ -18,7 +25,11 @@
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.5.1"
+    "eslint-plugin-react": "^7.5.1",
+    "forever-monitor": "1.7.1",
+    "jasmine-reporters": "2.2.0",
+    "protractor": "^5.1.0",
+    "wait-on": "2.0.2"
   },
   "bin": {},
   "dependencies": {},
