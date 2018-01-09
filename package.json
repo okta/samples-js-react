@@ -9,7 +9,7 @@
     "custom-login-server": "npm start --prefix custom-login/",
     "test:custom-login": "protractor okta-oidc-tck/e2e-tests/custom-login/conf.js",
     "test:e2e": "npm run get-oidc-tck && npm run test:okta-hosted-login && npm run test:custom-login",
-    "get-oidc-tck": "rm -rf okta-oidc-tck && git clone https://github.com/okta/okta-oidc-tck.git && git --git-dir=okta-oidc-tck/.git --work-tree=okta-oidc-tck checkout e2eTests",
+    "get-oidc-tck": "[ ! -d okta-oidc-tck/ ] && git clone https://github.com/okta/okta-oidc-tck.git && git --git-dir=okta-oidc-tck/.git --work-tree=okta-oidc-tck checkout e2eTests",
     "pretest": "webdriver-manager update --gecko false"
   },
   "author": "",
