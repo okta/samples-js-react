@@ -4,6 +4,7 @@ dist
 npm-debug.log
 travis_phantomjs
 okta-oidc-tck
+samples-nodejs-express-4
 .DS_Store
 .vscode
 .samples.config.js
