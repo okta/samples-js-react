@@ -18,8 +18,10 @@ Please find the sample that fits your use-case from the table below.
 
 E2E Tests will be run against the Custom Login and Okta-Hosted Login servers
 
-Before running the tests locally, install all the dependencies 
+In addition to running npm install in the root of the project (to install the dev dependencies for testing), you will also need to install the dependencies of each library:
+
 ```bash
+npm install
 cd okta-hosted-login
 npm install
 cd ../custom-login
@@ -37,7 +39,7 @@ export OKTA_DOMAIN={{yourOktaOrgDomain}}
 
 * E.g - If your org url is https://myorg.oktapreview.okta.com, your OKTA_DOMAIN should be myorg.oktapreview
 
-After setting up the environment variables, you need to run a script to update the configuration 
+After setting up the environment variables, you need to run a script to update the configuration
 
 ```bash
 sh scripts/setup-env.sh
@@ -48,7 +50,7 @@ Note that the USERNAME should be of the form "username@email.com"
 
 ```bash
 export USERNAME={{userName}}
-export PASSWORD={{password}} 
+export PASSWORD={{password}}
 ```
 
 Then run the E2E tests:
@@ -56,3 +58,4 @@ Then run the E2E tests:
 ```bash
 npm test
 ```
+
