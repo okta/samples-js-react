@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sh scripts/setup-env.sh
 cd custom-login
 npm install
 cd ..
