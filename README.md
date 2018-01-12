@@ -32,7 +32,7 @@ Then you need to setup the following environment variables
 
 ```bash
 export CLIENT_ID={{yourAppClientId}}
-export OKTA_DOMAIN={{yourOktaOrgDomain}}
+export OKTA_DOMAIN={{yourOktaOrgDomain}} 
 ```
 
 **NOTE:** Use only the domain part of your org url while setting OKTA_DOMAIN environment.
@@ -58,3 +58,4 @@ Then run the E2E tests:
 ```bash
 npm test
 ```
+
