@@ -31,8 +31,8 @@ cd ..
 Then you need to setup the following environment variables
 
 ```bash
-export CLIENT_ID={{yourAppClientId}}
-export OKTA_DOMAIN={{yourOktaOrgDomain}} 
+export CLIENT_ID={yourAppClientId}
+export OKTA_DOMAIN={yourOktaOrgDomain}
 ```
 
 **NOTE:** Use only the domain part of your org url while setting OKTA_DOMAIN environment.
@@ -49,8 +49,8 @@ A final step is update the following environment variables with username & passw
 Note that the USERNAME should be of the form "username@email.com"
 
 ```bash
-export USERNAME={{userName}}
-export PASSWORD={{password}}
+export USERNAME={userName}
+export PASSWORD={password}
 ```
 
 Then run the E2E tests:
@@ -58,4 +58,3 @@ Then run the E2E tests:
 ```bash
 npm test
 ```
-
