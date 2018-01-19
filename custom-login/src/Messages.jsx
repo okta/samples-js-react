@@ -64,7 +64,7 @@ export default withAuth(class Profile extends Component {
         {this.state.failed === null && <p>Fetching Messages..</p>}
         {this.state.messages &&
           <div>
-            <p>This component makes a GET request to the resource server example, which must be running at <code>localhost:8080/api/messages</code></p>
+            <p>This component makes a GET request to the resource server example, which must be running at <code>localhost:8000/api/messages</code></p>
             <p>
               It attaches your current access token in the <code>Authorization</code> header on the request,
               and the resource server will attempt to authenticate this access token.

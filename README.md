@@ -37,9 +37,9 @@ export OKTA_DOMAIN={yourOktaOrgDomain}
 
 **NOTE:** Use only the domain part of your org url while setting OKTA_DOMAIN environment.
 
-* E.g - If your org url is https://myorg.oktapreview.okta.com, your OKTA_DOMAIN should be myorg.oktapreview
+* E.g - If your org url is https://myorg.oktapreview.com, your OKTA_DOMAIN should be myorg.oktapreview
 
-After setting up the environment variables, you need to run a script to update the configuration
+After setting up the environment variables, you need to run a script to update the configuration & also clone the express resource server repo, which will be used to test `/messages` page in the sample application
 
 ```bash
 sh scripts/setup-env.sh
