@@ -10,3 +10,5 @@ samples-nodejs-express-4
 .samples.config.js
 custom-login/src/.samples.config.js--
 okta-hosted-login/src/.samples.config.js--
+.samples.config.js--
+
