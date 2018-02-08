@@ -8,3 +8,8 @@ samples-nodejs-express-4
 .DS_Store
 .vscode
 .samples.config.js
+custom-login/package-lock.json
+okta-hosted-login/package-lock.json
+custom-login/src/.samples.config.js--
+okta-hosted-login/src/.samples.config.js--
+package-lock.json

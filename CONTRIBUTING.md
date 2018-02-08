@@ -39,3 +39,48 @@ If you do not see an exact emoji match, use the best matching emoji.
     Updates Contributing.md with new template
 
     Resolves: OKTA-12345
+
+## Running E2E Tests locally before commits
+
+> **NOTE:** Due to some dependencies in the shell script, the E2E tests will not run on windows. You can test your code on *nix based machines before commiting.
+
+E2E Tests can be run against the Custom Login and Okta-Hosted Login servers
+
+In addition to running npm install in the root of the project (to install the dev dependencies for testing), you will also need to install the dependencies of each sample app. This can be performed via the `npm install` command:
+
+```bash
+# At project root
+npm install
+```
+
+Then you need to setup the following environment variables
+
+```bash
+export CLIENT_ID={{yourAppClientId}}
+export OKTA_DOMAIN={{yourOktaOrgDomain}}
+```
+
+> **NOTE:** Use only the domain part of your org url while setting OKTA_DOMAIN environment.
+
+* E.g - If your org url is https://myorg.oktapreview.okta.com, your OKTA_DOMAIN should be myorg.oktapreview
+
+After setting up the environment variables, you need to run a script to update the configuration
+
+```bash
+sh scripts/setup-env.sh
+```
+
+A final step is update the following environment variables with username & password of the user you want to use in your tests
+
+Note that the USERNAME should be of the form "username@email.com"
+
+```bash
+export USERNAME={{userName}}
+export PASSWORD={{password}}
+```
+
+Then run the E2E tests:
+
+```bash
+npm test
+```
