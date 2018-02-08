@@ -12,7 +12,9 @@
     "test:e2e": "cross-env TEST_TYPE=implicit && npm run get-oidc-tck && npm run test:okta-hosted-login && npm run test:custom-login",
     "get-oidc-tck": "[ ! -d okta-oidc-tck/ ] && git clone https://github.com/okta/okta-oidc-tck.git || echo \"TCK already cloned\"",
     "pretest": "webdriver-manager update --gecko false",
-    "postinstall": "(cd custom-login && npm install) && (cd ../okta-hosted-login || cd okta-hosted-login && npm install)"
+    "postinstall": "npm run install-custom-login && npm run install-okta-hosted-login",
+    "install-custom-login": "cd custom-login && npm install",
+    "install-okta-hosted-login": "cd okta-hosted-login && npm install"
   },
   "author": "",
   "license": "Apache-2.0",
