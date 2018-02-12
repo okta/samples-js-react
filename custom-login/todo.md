@@ -1,5 +1,0 @@
-- remove usage of authjs in the custom login example?
-- what happens when tokens expire?
-- make sure all the READMEs are accurate
-- make sure tests are passing (eslint)
-- write the PR and describe that refactoring is a TODO, and enumerate some options
