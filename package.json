@@ -3,6 +3,7 @@
   "version": "1.4.0",
   "description": "React Sample Applications for Okta",
   "scripts": {
+    "banners": "node tools/maintain-banners.js {okta-hosted-login,custom-login,tools}/{*js,src/**/*{js,jsx,css}}",
     "test": "eslint -c .eslintrc.json --ext .js --ext .jsx okta-hosted-login/src/ custom-login/src/ && npm run test:e2e",
     "okta-hosted-login-server": "npm start --prefix okta-hosted-login/",
     "test:okta-hosted-login": "protractor okta-oidc-tck/e2e-tests/okta-hosted-login/conf.js",
@@ -32,6 +33,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.5.1",
     "forever-monitor": "1.7.1",
+    "globby": "^8.0.0",
     "jasmine-reporters": "2.2.0",
     "protractor": "^5.1.0",
     "wait-on": "2.0.2"
