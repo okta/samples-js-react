@@ -1,25 +1,28 @@
 /* eslint-disable consistent-return, no-console */
 
+'use strict';
+
 const fs = require('fs');
-const { exec } = require('child_process');
+const { execSync } = require('child_process');
 const path = require('path');
 
-function sleep(millis) {
-  return new Promise(resolve => setTimeout(resolve, millis));
-}
-
 function executeCommand(command) {
-  exec(command, (err, stdout) => {
-    if (err !== null) {
-      return console.error(err);
-    }
-    return console.log(stdout);
-  });
+  console.log(`Executing command ${command}`);
+  execSync(command);
 }
 
 function copyConfig() {
-  const command1 = 'cp okta-hosted-login/util/default-config.js okta-hosted-login/src/.samples.config.js';
-  const command2 = 'cp custom-login/util/default-config.js custom-login/src/.samples.config.js';
+  let command1;
+  let command2;
+
+  if (process.platform === 'Win32') {
+    command1 = 'copy okta-hosted-login/util/default-config.js okta-hosted-login/src/.samples.config.js';
+    command2 = 'copy custom-login/util/default-config.js custom-login/src/.samples.config.js';
+  } else {
+    command1 = 'cp okta-hosted-login/util/default-config.js okta-hosted-login/src/.samples.config.js';
+    command2 = 'cp custom-login/util/default-config.js custom-login/src/.samples.config.js';
+  }
+
   console.log('Copying the configuration files...');
   executeCommand(command1);
   executeCommand(command2);
@@ -31,7 +34,6 @@ function updateConfig(file) {
     return;
   }
 
-  // const file = path.join(__dirname, '..', directory, '/src/.samples.config.js');
   const data = fs.readFileSync(file, 'utf8');
   let result = data.replace(/{clientId}/g, process.env.CLIENT_ID);
   result = result.replace(/https:\/\/{yourOktaDomain}.com\/oauth2\/default/g, process.env.ISSUER);
@@ -51,14 +53,9 @@ function cloneRepository(repository, directory) {
 }
 
 copyConfig();
-// Wait for 2 seconds for copy to complete
-sleep(2000).then(() => {
-  updateConfig(path.join(__dirname, '..', 'okta-hosted-login', '/src/.samples.config.js'));
-  updateConfig(path.join(__dirname, '..', 'custom-login', '/src/.samples.config.js'));
-});
-
+updateConfig(path.join(__dirname, '..', 'okta-hosted-login', '/src/.samples.config.js'));
+updateConfig(path.join(__dirname, '..', 'custom-login', '/src/.samples.config.js'));
 cloneRepository('https://github.com/okta/samples-nodejs-express-4.git', 'samples-nodejs-express-4');
-executeCommand('cd samples-nodejs-express-4; npm install;');
-cloneRepository('https://github.com/okta/okta-oidc-tck.git', 'okta-oidc-tck');
-
+executeCommand(`cd ${path.join(__dirname, '..', 'samples-nodejs-express-4')} && npm install`);
 updateConfig(path.join(__dirname, '..', 'samples-nodejs-express-4', '.samples.config.json'));
+cloneRepository('https://github.com/okta/okta-oidc-tck.git', 'okta-oidc-tck');
