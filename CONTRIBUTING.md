@@ -65,10 +65,10 @@ export PASSWORD={password}
 ```
 
 For Windows, please set the following environment variables:
-- ISSUER
-- CLIENT_ID
-- USER_NAME
-- PASSWORD
+- `ISSUER`
+- `CLIENT_ID`
+- `USER_NAME`
+- `PASSWORD`
 
 > **NOTE:** Windows has USERNAME as a built-in system variable, hence set the USER_NAME environment variable for testing.
 
