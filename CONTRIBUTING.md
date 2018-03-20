@@ -42,8 +42,6 @@ If you do not see an exact emoji match, use the best matching emoji.
 
 ## Running E2E Tests locally before commits
 
-> **NOTE:** Due to some dependencies in the shell script, the E2E tests will not run on windows. You can test your code on *nix based machines before commiting.
-
 E2E Tests can be run against the Custom Login and Okta-Hosted Login servers
 
 In addition to running npm install in the root of the project (to install the dev dependencies for testing), you will also need to install the dependencies of each sample app. This can be performed via the `npm install` command:
@@ -52,10 +50,9 @@ In addition to running npm install in the root of the project (to install the de
 # At project root
 npm install
 ```
-
 To test both samples you will need the following configured in your developer org:
 
-* A SPA application
+* [A SPA Application](/okta-hosted-login#prerequisites)
 * A test user account with a known username and password. Note that the USERNAME should be of the form "username@email.com"
 
 Once you have those resources setup, export their details as the following environment variables:
@@ -66,14 +63,25 @@ export CLIENT_ID={yourAppClientId}
 export USERNAME={userName}
 export PASSWORD={password}
 ```
-After setting up the environment variables, run this script to copy the configuration into the JSON configuration files:
 
-```bash
-sh scripts/setup-env.sh
-```
+For Windows, please set the following environment variables:
+- `ISSUER`
+- `CLIENT_ID`
+- `USER_NAME`
+- `PASSWORD`
+
+> **NOTE:** Windows has USERNAME as a built-in system variable, hence set the USER_NAME environment variable for testing.
 
 Then run the E2E tests:
 
 ```bash
 npm test
 ```
+
+**NOTE:** If you want to execute individual tests such as `npm run test:okta-hosted-login`, you will need to update the environment by running the following node script:
+
+```bash
+node scripts/setup-env.js
+```
+
+**NOTE:** If you want to test a different org or client app, you need to delete the configuration files `custom-login/src/app/.samples.config.ts` and `okta-hosted-login/src/app/.samples.config.ts`, and start from [first step](#running-e2e-tests-locally-before-commits)
