@@ -1,3 +1,15 @@
+/*
+ * Copyright (c) 2018, Okta, Inc. and/or its affiliates. All rights reserved.
+ * The Okta software accompanied by this notice is provided pursuant to the Apache License, Version 2.0 (the "License.")
+ *
+ * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and limitations under the License.
+ */
+
 /* eslint-disable consistent-return, no-console */
 
 'use strict';
@@ -11,26 +23,10 @@ function executeCommand(command) {
   execSync(command);
 }
 
-function copyConfig() {
-  let command1;
-  let command2;
-
-  if (process.platform === 'Win32') {
-    command1 = 'copy okta-hosted-login/util/default-config.js okta-hosted-login/src/.samples.config.js';
-    command2 = 'copy custom-login/util/default-config.js custom-login/src/.samples.config.js';
-  } else {
-    command1 = 'cp okta-hosted-login/util/default-config.js okta-hosted-login/src/.samples.config.js';
-    command2 = 'cp custom-login/util/default-config.js custom-login/src/.samples.config.js';
-  }
-
-  console.log('Copying the configuration files...');
-  executeCommand(command1);
-  executeCommand(command2);
-}
-
 function updateConfig(file) {
   if (process.env.ISSUER === undefined || process.env.CLIENT_ID === undefined) {
-    console.log('[ERROR] Please set the ISSUER and CLIENT_ID Environment variables');
+    console.error('[ERROR] Please set the ISSUER and CLIENT_ID Environment variables');
+    process.exit(1);
     return;
   }
 
@@ -52,7 +48,6 @@ function cloneRepository(repository, directory) {
   executeCommand(command);
 }
 
-copyConfig();
 updateConfig(path.join(__dirname, '..', 'okta-hosted-login', '/src/.samples.config.js'));
 updateConfig(path.join(__dirname, '..', 'custom-login', '/src/.samples.config.js'));
 cloneRepository('https://github.com/okta/samples-nodejs-express-4.git', 'samples-nodejs-express-4');
