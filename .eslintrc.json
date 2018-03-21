@@ -5,7 +5,6 @@
     "strict": "off",
     "max-len": ["error", 200],
     "react/prop-types": "off",
-    "react/prefer-stateless-function": [0],
-    "linebreak-style": 0
+    "react/prefer-stateless-function": [0]
   }
 }
