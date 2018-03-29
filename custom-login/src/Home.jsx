@@ -20,6 +20,7 @@ export default withAuth(class Home extends Component {
     super(props);
     this.state = { authenticated: null, userinfo: null };
     this.checkAuthentication = checkAuthentication.bind(this);
+    this.login = this.login.bind(this);
   }
 
   async componentDidMount() {
@@ -28,6 +29,10 @@ export default withAuth(class Home extends Component {
 
   async componentDidUpdate() {
     this.checkAuthentication();
+  }
+
+  async login() {
+    this.props.auth.login('/');
   }
 
   render() {
@@ -81,7 +86,7 @@ export default withAuth(class Home extends Component {
                 After this you will be redirected back to the application with an ID token and access token.
                 The tokens will be stored in local storage for future use.
               </p>
-              <Button id="login-button" primary onClick={this.props.auth.login}>Login</Button>
+              <Button id="login-button" primary onClick={this.login}>Login</Button>
             </div>
           }
         </div>
