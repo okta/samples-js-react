@@ -70,6 +70,17 @@ For Windows, please set the following environment variables:
 - `USER_NAME`
 - `PASSWORD`
 
+As an alternative you can provide the environment variables in a file named `testenv` in the root folder.
+
+For example:
+
+```
+ISSUER=https://dev-12345.oktapreview.com/oauth2/default
+CLIENT_ID=spaclient123
+USERNAME=myuser@example.com
+PASSWORD=mypassword
+```
+
 > **NOTE:** Windows has USERNAME as a built-in system variable, hence set the USER_NAME environment variable for testing.
 
 Then run the E2E tests:
