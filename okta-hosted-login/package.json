@@ -16,7 +16,7 @@
   "scripts": {
     "start": "cross-env PORT=8080 react-scripts start",
     "build": "react-scripts build",
-    "test": "echo 'Tests not yet implemented' && exit 1",
+    "test": "npm run test:okta-hosted-login --prefix ../",
     "eject": "react-scripts eject",
     "postinstall": "node post-install.js"
   }
