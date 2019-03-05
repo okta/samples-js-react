@@ -14,8 +14,8 @@
     "pretest": "npm run webdriver-update && node scripts/setup-env.js",
     "pretest-legacy": "npm run webdriver-update-legacy && node scripts/setup-env.js",
     "postinstall": "npm run install-custom-login && npm run install-okta-hosted-login",
-    "install-custom-login": "cd custom-login && npm install",
-    "install-okta-hosted-login": "cd okta-hosted-login && npm install",
+    "install-custom-login": "cd custom-login && npm install --allow-root",
+    "install-okta-hosted-login": "cd okta-hosted-login && npm install --allow-root",
     "webdriver-update": "webdriver-manager update --gecko false",
     "webdriver-update-legacy": "webdriver-manager update --versions.chrome 2.45 --gecko false"
   },
