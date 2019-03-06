@@ -11,10 +11,13 @@
     "test:custom-login": "export TEST_TYPE=implicit || setx TEST_TYPE \"implicit\" && protractor okta-oidc-tck/e2e-tests/custom-login/conf.js",
     "resource-server": "node samples-nodejs-express-4/resource-server/server.js",
     "test:e2e": "npm run test:okta-hosted-login && npm run test:custom-login",
-    "pretest": "webdriver-manager update --gecko false && node scripts/setup-env.js",
+    "pretest": "npm run webdriver-update && node scripts/setup-env.js",
+    "pretest-legacy": "npm run webdriver-update-legacy && node scripts/setup-env.js",
     "postinstall": "npm run install-custom-login && npm run install-okta-hosted-login",
-    "install-custom-login": "cd custom-login && npm install",
-    "install-okta-hosted-login": "cd okta-hosted-login && npm install"
+    "install-custom-login": "cd custom-login && npm install --allow-root",
+    "install-okta-hosted-login": "cd okta-hosted-login && npm install",
+    "webdriver-update": "webdriver-manager update --gecko false",
+    "webdriver-update-legacy": "webdriver-manager update --versions.chrome 2.45 --gecko false"
   },
   "author": "",
   "license": "Apache-2.0",
