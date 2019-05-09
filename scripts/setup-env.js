@@ -28,8 +28,16 @@ function updateConfig(file) {
   }
 
   const data = fs.readFileSync(file, 'utf8');
-  let result = data.replace(/{clientId}/g, process.env.CLIENT_ID);
-  result = result.replace(/https:\/\/{yourOktaDomain}.com\/oauth2\/default/g, process.env.ISSUER);
+  let result = data.replace(/https:\/\/{yourOktaDomain}.com\/oauth2\/default/g, process.env.ISSUER);
+
+  if (data.indexOf('{clientId}') >= 0) {
+    result = result.replace(/{clientId}/g, process.env.CLIENT_ID);
+  }
+
+  if (data.indexOf('{spaClientId}') >= 0) {
+    result = result.replace(/{spaClientId}/g, process.env.CLIENT_ID);
+  }
+
   fs.writeFileSync(file, result, 'utf8');
 }
 
