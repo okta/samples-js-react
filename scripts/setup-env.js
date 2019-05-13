@@ -57,5 +57,5 @@ updateConfig(path.join(__dirname, '..', 'okta-hosted-login', '/src/.samples.conf
 updateConfig(path.join(__dirname, '..', 'custom-login', '/src/.samples.config.js'));
 cloneRepository('https://github.com/okta/samples-nodejs-express-4.git', 'samples-nodejs-express-4');
 execSync(`cd ${path.join(__dirname, '..', 'samples-nodejs-express-4')} && npm install --unsafe-perm`);
-updateConfig(path.join(__dirname, '..', 'samples-nodejs-express-4', '.samples.config.json'));
+updateConfig(path.join(__dirname, '..', 'samples-nodejs-express-4', '.samples.config.js'));
 cloneRepository('https://github.com/okta/okta-oidc-tck.git', 'okta-oidc-tck');
