@@ -38,6 +38,11 @@ function updateConfig(file) {
     result = result.replace(/{spaClientId}/g, process.env.CLIENT_ID);
   }
 
+  // Only used for testing to support non-https orgs
+  if (process.env.OKTA_TESTING_DISABLEHTTPSCHECK) {
+    result = result.replace(/disableHttpsCheck: false/g, 'disableHttpsCheck: true');
+  }
+
   fs.writeFileSync(file, result, 'utf8');
 }
 
