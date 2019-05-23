@@ -30,7 +30,7 @@ npm install
 Now you need to gather the following information from the Okta Developer Console:
 
 - **Client Id** - The client ID of the SPA application that you created earlier. This can be found on the "General" tab of an application, or the list of applications.  This identifies the application that tokens will be minted for.
-- **Issuer** - This is the URL of the authorization server that will perform authentication.  All Developer Accounts have a "default" authorization server.  The issuer is a combination of your Org URL (found in the upper right of the console home page) and `/oauth2/default`. For example, `https://dev-1234.oktapreview.com/oauth2/default`.
+- **Issuer** - This is the URL of the authorization server that will perform authentication, containing your custom your Okta OrgURL, which can be found in the upper right of your developer console home page. (This is not the same as the URL you access your dev console at.) Once you copy/paste, it should look like: `https://dev-1234.oktapreview.com/oauth2/default`.
 
 Now place these values into the file `src/.samples.config.js` that was created for you in this project:
 
@@ -38,7 +38,7 @@ Now place these values into the file `src/.samples.config.js` that was created f
 export default {
   oidc: {
     clientId: '{clientId}',
-    issuer: 'https://{yourOktaDomain}.com/oauth2/default',
+    issuer: '{yourOktaOrgURL}/oauth2/default',
     redirectUri: 'http://localhost:8080/implicit/callback',
     scope: 'openid profile email',
   },
