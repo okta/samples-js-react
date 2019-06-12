@@ -9,7 +9,7 @@
     "test:okta-hosted-login": "export TEST_TYPE=implicit || setx TEST_TYPE \"implicit\" && protractor okta-oidc-tck/e2e-tests/okta-hosted-login/conf.js",
     "custom-login-server": "npm start --prefix custom-login/",
     "test:custom-login": "export TEST_TYPE=implicit || setx TEST_TYPE \"implicit\" && protractor okta-oidc-tck/e2e-tests/custom-login/conf.js",
-    "resource-server": "node scripts/start-resource-server.js",
+    "resource-server": "node scripts/startResourceServer.js",
     "test:e2e": "npm run test:okta-hosted-login && npm run test:custom-login",
     "pretest": "npm run webdriver-update --versions.standalone=3.141.59 && node scripts/setup-env.js",
     "pretest-legacy": "npm run webdriver-update-legacy && node scripts/setup-env.js",

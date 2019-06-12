@@ -21,31 +21,6 @@ const path = require('path');
 // Users can also provide the testenv configuration at the root folder
 require('dotenv').config({ path: path.join(__dirname, '..', 'testenv') });
 
-function updateConfig(file) {
-  if (!process.env.ISSUER || !process.env.CLIENT_ID || !process.env.USERNAME || !process.env.PASSWORD) {
-    console.log('[ERROR] Please set the necessary Environment variables (ISSUER, CLIENT_ID, USERNAME, PASSWORD)');
-    process.exit(1);
-  }
-
-  const data = fs.readFileSync(file, 'utf8');
-  let result = data.replace(/https:\/\/{yourOktaDomain}.com\/oauth2\/default/g, process.env.ISSUER);
-
-  if (data.indexOf('{clientId}') >= 0) {
-    result = result.replace(/{clientId}/g, process.env.CLIENT_ID);
-  }
-
-  if (data.indexOf('{spaClientId}') >= 0) {
-    result = result.replace(/{spaClientId}/g, process.env.CLIENT_ID);
-  }
-
-  // Only used for testing to support non-https orgs
-  if (process.env.OKTA_TESTING_DISABLEHTTPSCHECK) {
-    result = result.replace(/disableHttpsCheck: false/g, 'disableHttpsCheck: true');
-  }
-
-  fs.writeFileSync(file, result, 'utf8');
-}
-
 function cloneRepository(repository, directory) {
   const dir = path.join(__dirname, '..', directory);
   if (fs.existsSync(dir)) {
@@ -58,7 +33,8 @@ function cloneRepository(repository, directory) {
   execSync(command);
 }
 
-updateConfig(path.join(__dirname, '..', 'okta-hosted-login', '/src/.samples.config.js'));
-updateConfig(path.join(__dirname, '..', 'custom-login', '/src/.samples.config.js'));
-cloneRepository('https://github.com/okta/samples-java-spring.git', 'samples-java-spring');
+
+cloneRepository('https://github.com/okta/samples-nodejs-express-4.git', 'samples-nodejs-express-4');
+execSync(`cd ${path.join(__dirname, '..', 'samples-nodejs-express-4')} && npm install --unsafe-perm`);
+
 cloneRepository('https://github.com/okta/okta-oidc-tck.git', 'okta-oidc-tck');
