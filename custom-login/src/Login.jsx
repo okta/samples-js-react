@@ -15,7 +15,7 @@ import * as OktaSignIn from '@okta/okta-signin-widget';
 import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
 import '@okta/okta-signin-widget/dist/css/okta-theme.css';
 
-import config from './.samples.config';
+import config from './config';
 
 export default class LoginPage extends Component {
   constructor(props) {

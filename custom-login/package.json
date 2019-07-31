@@ -15,10 +15,12 @@
     "semantic-ui-react": "^0.77.1"
   },
   "scripts": {
-    "start": "cross-env PORT=8080 react-scripts start",
-    "build": "react-scripts build",
+    "start": "cross-env PORT=8080 react-app-rewired start",
+    "build": "react-app-rewired build",
     "test": "echo 'Tests not yet implemented' && exit 1",
-    "eject": "react-scripts eject",
-    "postinstall": "node post-install.js"
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "react-app-rewired": "^2.1.3"
   }
 }
