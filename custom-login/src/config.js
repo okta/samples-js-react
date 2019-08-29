@@ -6,7 +6,8 @@ export default {
     clientId: CLIENT_ID,
     issuer: ISSUER,
     redirectUri: 'http://localhost:8080/implicit/callback',
-    scope: 'openid profile email',
+    scopes: ['openid', 'profile', 'email'],
+    pkce: true,
   },
   resourceServer: {
     messagesUrl: 'http://localhost:8000/api/messages',

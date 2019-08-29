@@ -1,6 +1,6 @@
 # Okta React + Okta Hosted Login Example
 
-This example shows you how to use the [Okta React Library][] to login a user to a React application.  The login is achieved through the [Implicit Flow][], where the user is redirected to the Okta-Hosted login page.  After the user authenticates they are redirected back to the application with an ID token and access token.
+This example shows you how to use the [Okta React Library][] to login a user to a React application.  The login is achieved through the [PKCE Flow][], where the user is redirected to the Okta-Hosted login page.  After the user authenticates they are redirected back to the application with an ID token and access token.
 
 This example is built with [Create React App][].
 
@@ -62,8 +62,8 @@ If you were able to successfully login in the previous section you can continue 
 
 Once you have the resource server running (it will run on port 8000) you can visit the `/messages` page within the React application to see the authentication flow.  The React application will use its stored access token to authenticate itself with the resource server, you will see this as the `Authorization: Bearer <access_token>` header on the request if you inspect the network traffic in the browser.
 
-[Create React App]: https://github.com/facebookincubator/create-react-app
-[Implicit Flow]: https://developer.okta.com/authentication-guide/implementing-authentication/implicit
+[Create React App]: https://github.com/facebook/create-react-app
 [Okta React Library]: https://github.com/okta/okta-oidc-js/tree/master/packages/okta-react
-[OIDC SPA Setup Instructions]: https://developer.okta.com/authentication-guide/implementing-authentication/implicit#1-setting-up-your-application
+[OIDC SPA Setup Instructions]: https://developer.okta.com/docs/guides/sign-into-spa/react/before-you-begin
+[PKCE Flow]: https://developer.okta.com/docs/guides/implement-auth-code-pkce
 [Okta Sign In Widget]: https://github.com/okta/okta-signin-widget

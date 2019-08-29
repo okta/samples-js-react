@@ -26,10 +26,18 @@ Please find the sample that fits your use-case from the table below.
 
 [Okta React Library]: https://github.com/okta/okta-oidc-js/tree/master/packages/okta-react
 
+## Running the resource server
+The samples include a page which accesses a protected resource (messages). To start the sample resource server:
+
+```
+npm run resource-server
+```
+
 ## Running the tests
 
 In addition to the other environment vars, you will need credentials for a test user.
-Set the values for `USERNAME` and `PASSWORD`, either exported as shell variables, or as entries in your `testenv` file:
+Set the values for `USERNAME` and `PASSWORD` and export as shell variables. 
+(At this time, the `testenv` file is not supported)
 
 ```ini
 ISSUER=https://yourOktaDomain.com/oauth2/default

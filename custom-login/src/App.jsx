@@ -32,9 +32,7 @@ class App extends Component {
       <div>
         <Router>
           <Security
-            issuer={config.oidc.issuer}
-            client_id={config.oidc.clientId}
-            redirect_uri={config.oidc.redirectUri}
+            {...config.oidc}
             onAuthRequired={customAuthHandler}
           >
             <Navbar />

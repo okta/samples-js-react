@@ -59,7 +59,8 @@ You can login with the same account that you created when signing up for your De
 
 This sample contains the same "Messages" page that is included in the [Okta Hosted Login](/okta-hosted-login) sample, please refer to that sample for instructions on setting up the resource server.
 
-[Create React App]: https://github.com/facebookincubator/create-react-app
+[Create React App]: https://github.com/facebook/create-react-app
 [Okta React Library]: https://github.com/okta/okta-oidc-js/tree/master/packages/okta-react
-[OIDC SPA Setup Instructions]: https://developer.okta.com/authentication-guide/implementing-authentication/implicit#1-setting-up-your-application
+[OIDC SPA Setup Instructions]: https://developer.okta.com/docs/guides/sign-into-spa/react/before-you-begin
+[PKCE Flow]: https://developer.okta.com/docs/guides/implement-auth-code-pkce
 [Okta Sign In Widget]: https://github.com/okta/okta-signin-widget
