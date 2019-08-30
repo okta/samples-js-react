@@ -24,11 +24,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Security
-          issuer={config.oidc.issuer}
-          client_id={config.oidc.clientId}
-          redirect_uri={config.oidc.redirectUri}
-        >
+        <Security {...config.oidc}>
           <Navbar />
           <Container text style={{ marginTop: '7em' }}>
             <Route path="/" exact component={Home} />

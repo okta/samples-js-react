@@ -51,7 +51,7 @@ export default withAuth(class Home extends Component {
       <div>
         {this.state.authenticated !== null &&
         <div>
-          <Header as="h1">Implicit Flow w/ Okta Hosted Login Page</Header>
+          <Header as="h1">PKCE Flow w/ Okta Hosted Login Page</Header>
           {this.state.authenticated &&
             <div>
               <p>Welcome back, {this.state.userinfo.name}!</p>
@@ -75,7 +75,7 @@ export default withAuth(class Home extends Component {
                 <span>This example shows you how to use the </span>
                 <a href="https://github.com/okta/okta-oidc-js/tree/master/packages/okta-react">Okta React Library</a>
                 <span> to add the </span>
-                <a href="https://developer.okta.com/authentication-guide/implementing-authentication/implicit">Implicit Flow</a>
+                <a href="https://developer.okta.com/docs/guides/implement-auth-code-pkce">PKCE Flow</a>
                 <span> to your application.</span>
               </p>
               <p>

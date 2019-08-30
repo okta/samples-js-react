@@ -18,9 +18,6 @@ const fs = require('fs');
 const { execSync } = require('child_process');
 const path = require('path');
 
-// Users can also provide the testenv configuration at the root folder
-require('dotenv').config({ path: path.join(__dirname, '..', 'testenv') });
-
 function cloneRepository(repository, directory) {
   const dir = path.join(__dirname, '..', directory);
   if (fs.existsSync(dir)) {
@@ -32,7 +29,6 @@ function cloneRepository(repository, directory) {
   console.log(`Cloning repository ${directory}`);
   execSync(command);
 }
-
 
 cloneRepository('https://github.com/okta/samples-nodejs-express-4.git', 'samples-nodejs-express-4');
 execSync(`cd ${path.join(__dirname, '..', 'samples-nodejs-express-4')} && npm install --unsafe-perm`);

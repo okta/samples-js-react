@@ -77,7 +77,7 @@ export default withAuth(class Home extends Component {
                 <span> and the </span>
                 <a href="https://github.com/okta/okta-signin-widget">Okta Sign-In Widget</a>
                 <span> to add the </span>
-                <a href="https://developer.okta.com/authentication-guide/implementing-authentication/implicit">Implicit Flow</a>
+                <a href="https://developer.okta.com/docs/guides/implement-auth-code-pkce">PKCE Flow</a>
                 <span> to your application. This combination is useful when you want to leverage the features of the Sign-In Widget, </span>
                 <span> and the authentication helper components from the <code>okta-react</code> module.</span>
               </p>
