@@ -38,6 +38,7 @@ function startResourceServer() {
       ISSUER: process.env.ISSUER,
       SPA_CLIENT_ID: process.env.CLIENT_ID,
       PATH: process.env.PATH,
+      OKTA_TESTING_DISABLEHTTPSCHECK: process.env.OKTA_TESTING_DISABLEHTTPSCHECK,
     },
   };
   exec(command, options, (err, stdout) => {
