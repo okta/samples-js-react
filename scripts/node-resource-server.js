@@ -14,6 +14,7 @@ if (fs.existsSync(TESTENV)) {
   });
 }
 process.env.CLIENT_ID = process.env.CLIENT_ID || process.env.SPA_CLIENT_ID;
+process.env.OKTA_TESTING_DISABLEHTTPSCHECK = process.env.OKTA_TESTING_DISABLEHTTPSCHECK || false;
 
 function startResourceServer() {
   const dir = path.join(__dirname, '..', 'samples-nodejs-express-4');
@@ -38,6 +39,7 @@ function startResourceServer() {
       ISSUER: process.env.ISSUER,
       SPA_CLIENT_ID: process.env.CLIENT_ID,
       PATH: process.env.PATH,
+      OKTA_TESTING_DISABLEHTTPSCHECK: process.env.OKTA_TESTING_DISABLEHTTPSCHECK,
     },
   };
   exec(command, options, (err, stdout) => {

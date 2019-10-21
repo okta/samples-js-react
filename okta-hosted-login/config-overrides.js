@@ -15,6 +15,7 @@ if (fs.existsSync(TESTENV)) {
   });
 }
 process.env.CLIENT_ID = process.env.CLIENT_ID || process.env.SPA_CLIENT_ID;
+process.env.OKTA_TESTING_DISABLEHTTPSCHECK = process.env.OKTA_TESTING_DISABLEHTTPSCHECK || false;
 
 const webpack = require('webpack');
 
@@ -24,6 +25,7 @@ const env = {};
 [
   'ISSUER',
   'CLIENT_ID',
+  'OKTA_TESTING_DISABLEHTTPSCHECK'
 ].forEach((key) => {
   if (!process.env[key]) {
     throw new Error(`Environment variable ${key} must be set. See README.md`);
