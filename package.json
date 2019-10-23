@@ -12,7 +12,7 @@
     "resource-server": "node scripts/node-resource-server.js",
     "test:e2e": "npm run test:okta-hosted-login && npm run test:custom-login",
     "preresource-server": "npm run setup-env",
-    "pretest": "./scripts/updateSeDrivers.sh && npm run setup-env",
+    "pretest": "./scripts/update-se-drivers.sh && npm run setup-env",
     "pretest-legacy": "npm run webdriver-update-legacy && npm run setup-env",
     "postinstall": "npm run install-custom-login && npm run install-okta-hosted-login",
     "setup-env": "node scripts/setup-env.js",
