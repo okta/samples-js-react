@@ -37,7 +37,17 @@ export default withAuth(class Navbar extends Component {
   }
 
   async logout() {
-    this.props.auth.logout('/');
+    let loginRedirect = this.login
+    // Redirect to '/' after logout
+    //if session is active
+    this.props.auth.logout('/')
+    .then(function (out){
+      console.log("session is deleted");
+    })
+    .catch(function (error) {
+      //if session is inactive
+      loginRedirect();
+    })
   }
 
   render() {
