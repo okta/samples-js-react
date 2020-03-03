@@ -23,7 +23,7 @@ const Profile = () => {
       // When user isn't authenticated, forget any user info
       setUserInfo(null);
     } else {
-      authService.getUserInfo().then((info) => {
+      authService.getUser().then((info) => {
         setUserInfo(info);
       });
     }
@@ -53,7 +53,7 @@ const Profile = () => {
             </tr>
           </thead>
           <tbody>
-            {userInfo.map((claimEntry) => {
+            {Object.entries(userInfo).map((claimEntry) => {
               const claimName = claimEntry[0];
               const claimValue = claimEntry[1];
               const claimId = `claim-${claimName}`;
