@@ -20,19 +20,17 @@ import Messages from './Messages';
 import Navbar from './Navbar';
 import Profile from './Profile';
 
-const App = () => { 
-  return (
-    <Router>
-      <Security {...config.oidc}>
-        <Navbar />
-        <Container text style={{ marginTop: '7em' }}>
-          <Route path="/" exact component={Home} />
-          <Route path="/implicit/callback" component={LoginCallback} />
-          <SecureRoute path="/messages" component={Messages} />
-          <SecureRoute path="/profile" component={Profile} />
-        </Container>
-      </Security>
-    </Router>
-  );
-};
+const App = () => (
+  <Router>
+    <Security {...config.oidc}>
+      <Navbar />
+      <Container text style={{ marginTop: '7em' }}>
+        <Route path="/" exact component={Home} />
+        <Route path="/implicit/callback" component={LoginCallback} />
+        <SecureRoute path="/messages" component={Messages} />
+        <SecureRoute path="/profile" component={Profile} />
+      </Container>
+    </Security>
+  </Router>
+);
 export default App;

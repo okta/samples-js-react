@@ -16,8 +16,8 @@ import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
 
 import config from './config';
 
-const Login = () => { 
-  useEffect( () => { 
+const Login = () => {
+  useEffect(() => {
     const { pkce, issuer, clientId, redirectUri, scopes } = config.oidc;
     const widget = new OktaSignIn({
       /**

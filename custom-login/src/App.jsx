@@ -26,26 +26,24 @@ function customAuthHandler() {
   window.location.assign(`${window.location.origin}/login`);
 }
 
-const App = () => { 
-  return (
-    <div>
-      <Router>
-        <Security
-          {...config.oidc}
-          onAuthRequired={customAuthHandler}
-        >
-          <Navbar />
-          <Container text style={{ marginTop: '7em' }}>
-            <Route path="/" exact component={Home} />
-            <Route path="/implicit/callback" component={LoginCallback} />
-            <Route path="/login" component={CustomLoginComponent} />
-            <SecureRoute path="/messages" component={Messages} />
-            <SecureRoute path="/profile" component={Profile} />
-          </Container>
-        </Security>
-      </Router>
-    </div>
-  );
-}
+const App = () => (
+  <div>
+    <Router>
+      <Security
+        {...config.oidc}
+        onAuthRequired={customAuthHandler}
+      >
+        <Navbar />
+        <Container text style={{ marginTop: '7em' }}>
+          <Route path="/" exact component={Home} />
+          <Route path="/implicit/callback" component={LoginCallback} />
+          <Route path="/login" component={CustomLoginComponent} />
+          <SecureRoute path="/messages" component={Messages} />
+          <SecureRoute path="/profile" component={Profile} />
+        </Container>
+      </Security>
+    </Router>
+  </div>
+);
 
 export default App;
