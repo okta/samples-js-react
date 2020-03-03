@@ -10,51 +10,56 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-import { withAuth } from '@okta/okta-react';
-import React, { Component } from 'react';
+import { useOktaAuth } from '@okta/okta-react';
+import React, { useState, useEffect } from 'react';
 import { Button, Header } from 'semantic-ui-react';
-import { checkAuthentication } from './helpers';
 
-export default withAuth(class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { authenticated: null, userinfo: null };
-    this.checkAuthentication = checkAuthentication.bind(this);
-    this.login = this.login.bind(this);
+const Home = () => { 
+  const { authState, authService } = useOktaAuth();
+  const [ userInfo, setUserInfo ] = useState(null);
+
+  useEffect(() => { 
+    if(!authState.isAuthenticated) { 
+      // When user isn't authenticated, forget any user info
+      setUserInfo(null);
+    } else { 
+      authService.getUser().then( info => { 
+        setUserInfo(info);
+      });
+    }
+  }, [authState, authService]); // Update if authState changes
+
+  const login = async () => { 
+    authService.login('/');
+  };
+
+  const resourceServerExamples = [
+    {
+      label: 'Node/Express Resource Server Example',
+      url: 'https://github.com/okta/samples-nodejs-express-4/tree/master/resource-server',
+    },
+    {
+      label: 'Java/Spring MVC Resource Server Example',
+      url: 'https://github.com/okta/samples-java-spring-mvc/tree/master/resource-server',
+    },
+  ];
+
+  if(authState.isPending) { 
+    return null; // wait for authState to be figured out
   }
 
-  async componentDidMount() {
-    this.checkAuthentication();
-  }
-
-  async componentDidUpdate() {
-    this.checkAuthentication();
-  }
-
-  async login() {
-    this.props.auth.login('/');
-  }
-
-  render() {
-    const resourceServerExamples = [
-      {
-        label: 'Node/Express Resource Server Example',
-        url: 'https://github.com/okta/samples-nodejs-express-4/tree/master/resource-server',
-      },
-      {
-        label: 'Java/Spring MVC Resource Server Example',
-        url: 'https://github.com/okta/samples-java-spring-mvc/tree/master/resource-server',
-      },
-    ];
-
-    return (
+  return (
+    <div>
       <div>
-        {this.state.authenticated !== null &&
-        <div>
-          <Header as="h1">PKCE Flow w/ Okta Hosted Login Page</Header>
-          {this.state.authenticated &&
+        <Header as="h1">PKCE Flow w/ Okta Hosted Login Page</Header>
+
+        { authState.isAuthenticated && !userInfo && 
+            <div>Loading user information...</div>
+        }
+
+        {authState.isAuthenticated && userInfo &&
             <div>
-              <p>Welcome back, {this.state.userinfo.name}!</p>
+              <p>Welcome back, {userInfo.name}!</p>
               <p>
                 You have successfully authenticated against your Okta org, and have been redirected back to this application.  You now have an ID token and access token in local storage.
                 Visit the <a href="/profile">My Profile</a> page to take a look inside the ID token.
@@ -67,8 +72,9 @@ export default withAuth(class Home extends Component {
               </ul>
               <p>Once you have downloaded and started the example resource server, you can visit the <a href="/messages">My Messages</a> page to see the authentication process in action.</p>
             </div>
-          }
-          {!this.state.authenticated &&
+        }
+
+        {!authState.isAuthenticated &&
             <div>
               <p>If you&lsquo;re viewing this page then you have successfully started this React application.</p>
               <p>
@@ -82,13 +88,12 @@ export default withAuth(class Home extends Component {
                 When you click the login button below, you will be redirected to the login page on your Okta org.
                 After you authenticate, you will be returned to this application with an ID token and access token.  These tokens will be stored in local storage and can be retrieved at a later time.
               </p>
-              <Button id="login-button" primary onClick={this.login}>Login</Button>
+              <Button id="login-button" primary onClick={login}>Login</Button>
             </div>
-          }
-
-        </div>
         }
+
       </div>
-    );
-  }
-});
+    </div>
+  );
+};
+export default Home;

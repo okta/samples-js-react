@@ -10,71 +10,70 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-import { withAuth } from '@okta/okta-react';
-import React, { Component } from 'react';
+import { useOktaAuth } from '@okta/okta-react';
+import React, { useState, useEffect } from 'react';
 import { Header, Icon, Message, Table } from 'semantic-ui-react';
 
 import config from './config';
 
-export default withAuth(class Profile extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { messages: null, failed: null };
-  }
+const Messages = () => {
 
-  componentDidMount() {
-    this.getMessages();
-  }
+  const { authState } = useOktaAuth();
+  const [ messages, setMessages ] = useState(null);
+  const [ messageFetchFailed, setMessageFetchFailed ] = useState(false);
 
-  async getMessages() {
-    if (!this.state.messages) {
-      try {
-        const accessToken = await this.props.auth.getAccessToken();
-        /* global fetch */
-        const response = await fetch(config.resourceServer.messagesUrl, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
+  // fetch messages
+  useEffect( () => {
+    if(authState.isAuthorized) {
+      const accessToken = authState.accessToken;
+      /* global fetch */
+      fetch(config.resourceServer.messagesUrl, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+        .then( response => { 
+
+          if (!response.ok) {
+            return Promise.reject();
+          }
+          return response.json();
+        })
+        .then( data => { 
+          let index = 0;
+          const messages = data.messages.map((message) => {
+            const date = new Date(message.date);
+            const day = date.toLocaleDateString();
+            const time = date.toLocaleTimeString();
+            index += 1;
+            return {
+              date: `${day} ${time}`,
+              text: message.text,
+              id: `message-${index}`,
+            };
+          });
+          setMessages(messages);
+          setMessageFetchFailed(false);
+        })
+        .catch( (err) => {
+          setMessageFetchFailed(true);
+          /* eslint-disable no-console */
+          console.error(err);
         });
-
-        if (response.status !== 200) {
-          this.setState({ failed: true });
-          return;
-        }
-
-        let index = 0;
-        const data = await response.json();
-        const messages = data.messages.map((message) => {
-          const date = new Date(message.date);
-          const day = date.toLocaleDateString();
-          const time = date.toLocaleTimeString();
-          index += 1;
-          return {
-            date: `${day} ${time}`,
-            text: message.text,
-            id: `message-${index}`,
-          };
-        });
-        this.setState({ messages, failed: false });
-      } catch (err) {
-        this.setState({ failed: true });
-        /* eslint-disable no-console */
-        console.error(err);
-      }
     }
-  }
+  }, [authState]);
 
-  render() {
-    const possibleErrors = [
-      'You\'ve downloaded one of our resource server examples, and it\'s running on port 8000.',
-      'Your resource server example is using the same Okta authorization server (issuer) that you have configured this React application to use.',
-    ];
-    return (
-      <div>
-        <Header as="h1"><Icon name="mail outline" /> My Messages</Header>
-        {this.state.failed === true && <Message error header="Failed to fetch messages.  Please verify the following:" list={possibleErrors} />}
-        {this.state.failed === null && <p>Fetching Messages..</p>}
-        {this.state.messages &&
+  const possibleErrors = [
+    'You\'ve downloaded one of our resource server examples, and it\'s running on port 8000.',
+    'Your resource server example is using the same Okta authorization server (issuer) that you have configured this React application to use.',
+  ];
+
+  return (
+    <div>
+      <Header as="h1"><Icon name="mail outline" />My Messages</Header>
+      {messageFetchFailed && <Message error header="Failed to fetch messages.  Please verify the following:" list={possibleErrors} />}
+      {!messages && !messageFetchFailed && <p>Fetching Messages..</p>}
+      {messages &&
           <div>
             <p>This component makes a GET request to the resource server example, which must be running at <code>localhost:8000/api/messages</code></p>
             <p>
@@ -94,12 +93,13 @@ export default withAuth(class Profile extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.messages.map(message => <tr id={message.id} key={message.id}><td>{message.date}</td><td>{message.text}</td></tr>)}
+                {messages.map(message => <tr id={message.id} key={message.id}><td>{message.date}</td><td>{message.text}</td></tr>)}
               </tbody>
             </Table>
           </div>
-        }
-      </div>
-    );
-  }
-});
+      }
+    </div>
+  );
+};
+
+export default Messages;
