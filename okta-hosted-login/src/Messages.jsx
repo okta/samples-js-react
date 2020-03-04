@@ -23,7 +23,7 @@ const Messages = () => {
 
   // fetch messages
   useEffect(() => {
-    if (authState.isAuthorized) {
+    if (authState.isAuthenticated) {
       const { accessToken } = authState;
       /* global fetch */
       fetch(config.resourceServer.messagesUrl, {
