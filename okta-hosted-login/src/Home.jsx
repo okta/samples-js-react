@@ -45,7 +45,9 @@ const Home = () => {
   ];
 
   if (authState.isPending) {
-    return null; // wait for authState to be figured out
+    return (
+      <div>Loading...</div>
+    );
   }
 
   return (
