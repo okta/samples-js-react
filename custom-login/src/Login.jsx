@@ -10,18 +10,16 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import * as OktaSignIn from '@okta/okta-signin-widget';
 import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
 
 import config from './config';
 
-export default class LoginPage extends Component {
-  constructor(props) {
-    super(props);
-
+const Login = () => {
+  useEffect(() => {
     const { pkce, issuer, clientId, redirectUri, scopes } = config.oidc;
-    this.signIn = new OktaSignIn({
+    const widget = new OktaSignIn({
       /**
        * Note: when using the Sign-In Widget for an OIDC flow, it still
        * needs to be configured with the base URL for your Okta Org. Here
@@ -43,9 +41,8 @@ export default class LoginPage extends Component {
         scopes,
       },
     });
-  }
-  componentDidMount() {
-    this.signIn.renderEl(
+
+    widget.renderEl(
       { el: '#sign-in-widget' },
       () => {
         /**
@@ -57,13 +54,12 @@ export default class LoginPage extends Component {
         throw err;
       },
     );
-  }
-  render() {
-    return (
-      <div>
-        <div id="sign-in-widget" />
-      </div>
-    );
-  }
-}
+  }, []);
 
+  return (
+    <div>
+      <div id="sign-in-widget" />
+    </div>
+  );
+};
+export default Login;
