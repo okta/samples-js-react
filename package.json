@@ -4,7 +4,7 @@
   "description": "React Sample Applications for Okta",
   "scripts": {
     "banners": "node tools/maintain-banners.js {okta-hosted-login,custom-login,tools,scripts}/{*js,src/**/*{js,jsx,css}}",
-    "lint": "eslint -c .eslintrc.json --ext .js --ext .jsx okta-hosted-login/src/ custom-login/src/ scripts/",
+    "lint": "npx eslint -c .eslintrc.json --ext .js --ext .jsx okta-hosted-login/src/ custom-login/src/ scripts/",
     "test": "npm run lint && npm run test:e2e",
     "okta-hosted-login-server": "npm start --prefix okta-hosted-login/",
     "test:okta-hosted-login": "export TEST_TYPE=implicit || setx TEST_TYPE \"implicit\" && protractor okta-oidc-tck/e2e-tests/okta-hosted-login/conf.js",
