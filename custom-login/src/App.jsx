@@ -22,9 +22,9 @@ import Navbar from './Navbar';
 import Profile from './Profile';
 
 
-const HasAccessToRouter = () => { 
+const HasAccessToRouter = () => {
   const history = useHistory(); // example from react-router
-  
+
   const customAuthHandler = () => {
     // Redirect to the /login page that has a CustomLoginComponent
     history.push('/login');
@@ -50,7 +50,7 @@ const HasAccessToRouter = () => {
 const App = () => (
   <div>
     <Router>
-      <HasAccessToRouter/>        
+      <HasAccessToRouter />
     </Router>
   </div>
 );
