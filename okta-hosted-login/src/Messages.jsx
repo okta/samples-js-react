@@ -68,34 +68,58 @@ const Messages = () => {
 
   return (
     <div>
-      <Header as="h1"><Icon name="mail outline" />My Messages</Header>
+      <Header as="h1">
+        <Icon name="mail outline" />
+        My Messages
+      </Header>
       {messageFetchFailed && <Message error header="Failed to fetch messages.  Please verify the following:" list={possibleErrors} />}
       {!messages && !messageFetchFailed && <p>Fetching Messages..</p>}
-      {messages &&
+      {messages
+      && (
       <div>
-        <p>This component makes a GET request to the resource server example, which must be running at <code>localhost:8000/api/messages</code></p>
         <p>
-          It attaches your current access token in the <code>Authorization</code> header on the request,
-          and the resource server will attempt to authenticate this access token.
-          If the token is valid the server will return a list of messages.  If the token is not valid
-          or the resource server is incorrectly configured, you will see a 401 <code>Unauthorized response</code>.
+          This component makes a GET request to the resource server example, which must be running at
+          <code>localhost:8000/api/messages</code>
         </p>
         <p>
-          This route is protected with the <code>&lt;SecureRoute&gt;</code> component, which will
+          It attaches your current access token in the
+          {' '}
+          <code>Authorization</code>
+          {' '}
+          header on the request,
+          and the resource server will attempt to authenticate this access token.
+          If the token is valid the server will return a list of messages.  If the token is not valid
+          or the resource server is incorrectly configured, you will see a 401
+          {' '}
+          <code>Unauthorized response</code>
+          .
+        </p>
+        <p>
+          This route is protected with the
+          {' '}
+          <code>&lt;SecureRoute&gt;</code>
+          {' '}
+          component, which will
           ensure that this page cannot be accessed until you have authenticated and have an access token in local storage.
         </p>
         <Table>
           <thead>
             <tr>
-              <th>Date</th><th>Message</th>
+              <th>Date</th>
+              <th>Message</th>
             </tr>
           </thead>
           <tbody>
-            {messages.map(message => <tr id={message.id} key={message.id}><td>{message.date}</td><td>{message.text}</td></tr>)}
+            {messages.map((message) => (
+              <tr id={message.id} key={message.id}>
+                <td>{message.date}</td>
+                <td>{message.text}</td>
+              </tr>
+            ))}
           </tbody>
         </Table>
       </div>
-      }
+      )}
     </div>
   );
 };
