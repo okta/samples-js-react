@@ -34,3 +34,6 @@ cloneRepository('https://github.com/okta/samples-nodejs-express-4.git', 'samples
 execSync(`cd ${path.join(__dirname, '..', 'samples-nodejs-express-4')} && npm install --unsafe-perm`);
 
 cloneRepository('https://github.com/okta/okta-oidc-tck.git', 'okta-oidc-tck');
+
+const command = 'cd okta-oidc-tck; git checkout vm-debug-tests; cd ..';
+execSync(command);
