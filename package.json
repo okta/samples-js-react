@@ -4,7 +4,8 @@
   "description": "React Sample Applications for Okta",
   "scripts": {
     "banners": "node tools/maintain-banners.js {okta-hosted-login,custom-login,tools,scripts}/{*js,src/**/*{js,jsx,css}}",
-    "test": "eslint -c .eslintrc.json --ext .js --ext .jsx okta-hosted-login/src/ custom-login/src/ scripts/ -- --fix && npm run test:e2e",
+    "lint": "npx eslint -c .eslintrc.json --ext .js --ext .jsx okta-hosted-login/src/ custom-login/src/ scripts/",
+    "test": "npm run lint && npm run test:e2e",
     "okta-hosted-login-server": "npm start --prefix okta-hosted-login/",
     "test:okta-hosted-login": "export TEST_TYPE=implicit || setx TEST_TYPE \"implicit\" && protractor okta-oidc-tck/e2e-tests/okta-hosted-login/conf.js",
     "custom-login-server": "npm start --prefix custom-login/",
@@ -30,18 +31,19 @@
   "bugs": "https://github.com/okta/samples-js-react/issues",
   "homepage": "https://github.com/okta/samples-js-react",
   "devDependencies": {
-    "eslint": "^4.13.1",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.5.1",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react-hooks": "^2.5.0",
     "find-process": "^1.1.0",
-    "forever-monitor": "^1.7.1",
-    "globby": "^8.0.0",
+    "forever-monitor": "^2.0.0",
+    "globby": "^11.0.0",
     "jasmine-reporters": "^2.2.0",
     "platform": "^1.3.5",
-    "protractor": "^5.4",
-    "wait-on": "^2.0.2"
+    "protractor": "^5.4.3",
+    "wait-on": "^4.0.1"
   },
   "bin": {},
   "dependencies": {
