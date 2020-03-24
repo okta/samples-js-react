@@ -22,7 +22,8 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "react-app-rewired": "^2.1.5"
+    "react-app-rewired": "^2.1.5",
+    "source-map-loader": "^0.2.4"
   },
   "browserslist": {
     "production": [

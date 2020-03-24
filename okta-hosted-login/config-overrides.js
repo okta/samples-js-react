@@ -45,6 +45,14 @@ module.exports = {
         'process.env': env,
       }),
     ]);
+
+    config.module.rules.push(   
+    // load external source maps
+    {
+      test: /\.js$/,
+      use: ['source-map-loader'],
+      enforce: 'pre'
+    });
     return config;
   },
 };

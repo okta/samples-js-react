@@ -19,6 +19,7 @@ import Home from './Home';
 import Messages from './Messages';
 import Navbar from './Navbar';
 import Profile from './Profile';
+import AlertPage from './AlertPage';
 
 const App = () => (
   <Router>
@@ -29,6 +30,8 @@ const App = () => (
         <Route path="/implicit/callback" component={LoginCallback} />
         <SecureRoute path="/messages" component={Messages} />
         <SecureRoute path="/profile" component={Profile} />
+        { /* SecureRoute logic runs on callback. will cause loop unless "exact" is added. */}
+        <SecureRoute path="/" component={AlertPage} />
       </Container>
     </Security>
   </Router>
