@@ -38,6 +38,7 @@ const Login = () => {
         pkce,
         issuer,
         display: 'page',
+        responseMode: pkce ? 'query' : 'fragment',
         scopes,
       },
     });
