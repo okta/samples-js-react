@@ -1,16 +1,17 @@
 language: node_js
-
 node_js:
-- '12.16.1'
-
+- 12.16.1
 addons:
   chrome: stable
-
 install:
 - npm install
-
 script:
 - npm test
-
 before_install:
-  - "npm install -g npm@latest"
+- npm install -g npm@latest
+notifications:
+  slack:
+    if: type = cron
+    secure: m930AIv4/BRdNuh+M0aHUbZx1UyNTFPynbSP7mLgXeLclyWCUzBqcX+WLJnjJRYwqQNQAnzJIvHNH5FQZWLmDW11DW/wzS9vdiOk/l4e58qVPhYAkXfY2ltQUV5y5C5K6YN/8oiiJBnt/EhDlaMeYkHWeVpNUTK5jGYJWsrQb3vVojW9nnUNpU8mqiuFQQOvrmxeuoFzBdxRCPr8Ny5IF5BoQVZlxP4lOjbZyz9N4TfW6fi4Mbmkyw1E4IZQ3uca4vdO7UcbnOMXqEfO2N0ScO1wGkyG9BU/vncLeXgCU8vvZ0DTMBTfpe50thud0AFXWOCQ9XgCrNEguCuFsRoRe/CjdI6pnHgWGQaHfA3lqLXmJWMrek+0WFaCXN2KeH0IrbLL/qztRmd1dSzPPduVHhGrVgLv1QZFYf9j2ZzdgOfqTwJVaSiPdXVfsWHtKVN/mh7Faa2LdfCBpPmtsPlGdMut88+wGXZH9oejONmJ2qNj9FWXgvaQoTfQCK1XA9+m/9XdaVUEZxuKuymWSNByfSEweoYj6xxr+xpnh4JI5ueTBXVMj0uA+InY/Bqg6KkInoD6Yxpx5haqXo3lgxfTAfbL2VSpG1iIOUT9xjR2cerHmWsgoTae8UCRXrApnByVeL5I2Hu2mTK4Be8H9l4n6uuSt8I0M+4ug0Ib+gRXC1U=
+    on_success: never
+    on_failure: always
