@@ -26,7 +26,7 @@ const App = () => (
       <Navbar />
       <Container text style={{ marginTop: '7em' }}>
         <Route path="/" exact component={Home} />
-        <Route path="/implicit/callback" component={LoginCallback} />
+        <Route path="/callback" component={LoginCallback} />
         <SecureRoute path="/messages" component={Messages} />
         <SecureRoute path="/profile" component={Profile} />
       </Container>
