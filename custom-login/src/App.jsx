@@ -37,7 +37,7 @@ const HasAccessToRouter = () => {
       <Navbar />
       <Container text style={{ marginTop: '7em' }}>
         <Route path="/" exact component={Home} />
-        <Route path="/callback" component={LoginCallback} />
+        <Route path="/login/callback" component={LoginCallback} />
         <Route path="/login" component={CustomLoginComponent} />
         <SecureRoute path="/messages" component={Messages} />
         <SecureRoute path="/profile" component={Profile} />

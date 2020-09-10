@@ -13,7 +13,7 @@ Register your application by selecting **Applications** > **Add Application**. O
 On the following screen, edit the application settings. For React applications running in developer mode, the port number should be 3000. Configure your app as follows:
 
 * **Base URI**: `http://localhost:3000`
-* **Login redirect URI**: `http://localhost:3000/callback` 
+* **Login redirect URI**: `http://localhost:3000/login/callback` 
 * **Logout redirect URI**: `http://localhost:3000` 
 
 Once you have completed the form, you will be given a **client ID**. You will also need the **issuer** value for your Okta org. 
@@ -46,9 +46,7 @@ npm run resource-server
 
 ## Running the tests
 
-In addition to the other environment vars, you will need credentials for a test user.
-Set the values for `USERNAME` and `PASSWORD` and export as shell variables. 
-(At this time, the `testenv` file is not supported)
+In addition to the other environment vars, you will need credentials for a test user. Add the values for your Okta org and user in a `testenv` file.
 
 ```ini
 ISSUER=https://yourOktaDomain.com/oauth2/default
