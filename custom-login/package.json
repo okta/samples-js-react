@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@okta/okta-react": "^3.0.0",
-    "@okta/okta-signin-widget": "^3.9.0",
+    "@okta/okta-signin-widget": "^4.5.0",
     "colors": "^1.1.2",
     "cross-env": "^5.1.3",
     "dotenv": "^8.1.0",
