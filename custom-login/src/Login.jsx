@@ -9,7 +9,6 @@
  *
  * See the License for the specific language governing permissions and limitations under the License.
  */
-
 import React, { useEffect } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
 import * as OktaSignIn from '@okta/okta-signin-widget';
