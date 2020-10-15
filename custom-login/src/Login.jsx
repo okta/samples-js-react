@@ -9,16 +9,18 @@
  *
  * See the License for the specific language governing permissions and limitations under the License.
  */
-
 import React, { useEffect } from 'react';
+import { useOktaAuth } from '@okta/okta-react';
 import * as OktaSignIn from '@okta/okta-signin-widget';
 import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
 
 import config from './config';
 
 const Login = () => {
+  const { authService } = useOktaAuth();
+
   useEffect(() => {
-    const { pkce, issuer, clientId, redirectUri, scopes } = config.oidc;
+    const { issuer, clientId, redirectUri, scopes } = config.oidc;
     const widget = new OktaSignIn({
       /**
        * Note: when using the Sign-In Widget for an OIDC flow, it still
@@ -35,27 +37,29 @@ const Login = () => {
         },
       },
       authParams: {
-        pkce,
+        // To avoid redirect do not set "pkce" or "display" here. OKTA-335945
         issuer,
-        display: 'page',
-        responseMode: pkce ? 'query' : 'fragment',
         scopes,
       },
     });
 
     widget.renderEl(
       { el: '#sign-in-widget' },
-      () => {
-        /**
-         * In this flow, the success handler will not be called beacuse we redirect
-         * to the Okta org for the authentication workflow.
-         */
+      ({ tokens }) => {
+        // Add tokens to storage
+        const tokenManager = authService.getTokenManager();
+        tokenManager.add('idToken', tokens.idToken);
+        tokenManager.add('accessToken', tokens.accessToken);
+
+        // Return to the original URL (if auth was initiated from a secure route), falls back to the origin
+        const fromUri = authService.getFromUri();
+        window.location.assign(fromUri);
       },
       (err) => {
         throw err;
       },
     );
-  }, []);
+  }, [authService]);
 
   return (
     <div>

@@ -1,3 +1,4 @@
+/* eslint no-console: 0 */
 const axios = require('axios');
 const { execSync } = require('child_process');
 

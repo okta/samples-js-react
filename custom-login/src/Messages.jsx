@@ -25,7 +25,6 @@ const Messages = () => {
   useEffect(() => {
     if (authState.isAuthenticated) {
       const { accessToken } = authState;
-      /* global fetch */
       fetch(config.resourceServer.messagesUrl, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
