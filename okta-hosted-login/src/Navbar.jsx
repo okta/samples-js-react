@@ -13,12 +13,13 @@
 import { useOktaAuth } from '@okta/okta-react';
 import React from 'react';
 import { Container, Icon, Image, Menu } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-  const { authState, authService } = useOktaAuth();
+  const { oktaAuth, authState } = useOktaAuth();
 
-  const login = async () => authService.login('/');
-  const logout = async () => authService.logout('/');
+  const login = async () => oktaAuth.signInWithRedirect('/');
+  const logout = async () => oktaAuth.signOut('/');
 
   return (
     <div>
@@ -35,7 +36,7 @@ const Navbar = () => {
             Messages
           </Menu.Item>
           )}
-          {authState.isAuthenticated && <Menu.Item id="profile-button" as="a" href="/profile">Profile</Menu.Item>}
+          {authState.isAuthenticated && <Menu.Item id="profile-button"><Link to="/profile">My Profile</Link></Menu.Item>}
           {authState.isAuthenticated && <Menu.Item id="logout-button" as="a" onClick={logout}>Logout</Menu.Item>}
           {!authState.isPending && !authState.isAuthenticated && <Menu.Item as="a" onClick={login}>Login</Menu.Item>}
         </Container>

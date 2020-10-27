@@ -11,8 +11,9 @@
  */
 
 import React from 'react';
-import { BrowserRouter as Router, Route, useHistory } from 'react-router-dom';
-import { Security, SecureRoute, LoginCallback } from '@okta/okta-react';
+import { Route, useHistory, Switch } from 'react-router-dom';
+import { OktaAuth } from '@okta/okta-auth-js';
+import { Security, SecureRoute } from '@okta/okta-react';
 import { Container } from 'semantic-ui-react';
 import config from './config';
 import Home from './Home';
@@ -21,8 +22,9 @@ import Messages from './Messages';
 import Navbar from './Navbar';
 import Profile from './Profile';
 
+const oktaAuth = new OktaAuth(config.oidc);
 
-const HasAccessToRouter = () => {
+const App = () => {
   const history = useHistory(); // example from react-router
 
   const customAuthHandler = () => {
@@ -32,27 +34,20 @@ const HasAccessToRouter = () => {
 
   return (
     <Security
-      {...config.oidc}
+      oktaAuth={oktaAuth}
       onAuthRequired={customAuthHandler}
     >
       <Navbar />
       <Container text style={{ marginTop: '7em' }}>
-        <Route path="/" exact component={Home} />
-        <Route path="/implicit/callback" component={LoginCallback} />
-        <Route path="/login" component={CustomLoginComponent} />
-        <SecureRoute path="/messages" component={Messages} />
-        <SecureRoute path="/profile" component={Profile} />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/login" component={CustomLoginComponent} />
+          <SecureRoute path="/messages" component={Messages} />
+          <SecureRoute path="/profile" component={Profile} />
+        </Switch>
       </Container>
     </Security>
   );
 };
-
-const App = () => (
-  <div>
-    <Router>
-      <HasAccessToRouter />
-    </Router>
-  </div>
-);
 
 export default App;

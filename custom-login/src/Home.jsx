@@ -13,24 +13,26 @@
 import { useOktaAuth } from '@okta/okta-react';
 import React, { useState, useEffect } from 'react';
 import { Button, Header } from 'semantic-ui-react';
+import { Link, useHistory } from 'react-router-dom';
 
 const Home = () => {
-  const { authState, authService } = useOktaAuth();
+  const { authState, oktaAuth } = useOktaAuth();
   const [userInfo, setUserInfo] = useState(null);
+  const history = useHistory();
 
   useEffect(() => {
     if (!authState.isAuthenticated) {
       // When user isn't authenticated, forget any user info
       setUserInfo(null);
     } else {
-      authService.getUser().then((info) => {
+      oktaAuth.getUser().then((info) => {
         setUserInfo(info);
       });
     }
-  }, [authState, authService]); // Update if authState changes
+  }, [authState, oktaAuth]); // Update if authState changes
 
   const login = async () => {
-    authService.login('/');
+    history.push('/login');
   };
 
   const resourceServerExamples = [
@@ -70,7 +72,7 @@ const Home = () => {
             You have successfully authenticated against your Okta org, and have been redirected back to this application.  You now have an ID token and access token in local storage.
             Visit the
             {' '}
-            <a href="/profile">My Profile</a>
+            <Link to="/profile">My Profile</Link>
             {' '}
             page to take a look inside the ID token.
           </p>
@@ -82,7 +84,7 @@ const Home = () => {
           </ul>
           <p>
             Once you have downloaded and started the example resource server, you can visit the
-            <a href="/messages">My Messages</a>
+            <Link to="/messages">My Messages</Link>
             {' '}
             page to see the authentication process in action.
           </p>

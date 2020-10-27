@@ -12,13 +12,15 @@
 
 import { useOktaAuth } from '@okta/okta-react';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { Container, Icon, Image, Menu } from 'semantic-ui-react';
 
 const Navbar = () => {
-  const { authState, authService } = useOktaAuth();
+  const history = useHistory();
+  const { oktaAuth, authState } = useOktaAuth();
 
-  const login = async () => authService.login('/');
-  const logout = async () => authService.logout('/');
+  const login = async () => history.push('/login');
+  const logout = async () => oktaAuth.signOut('/');
 
   return (
     <div>

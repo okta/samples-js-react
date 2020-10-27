@@ -11,7 +11,8 @@
  */
 
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import { OktaAuth } from '@okta/okta-auth-js';
 import { Security, SecureRoute, LoginCallback } from '@okta/okta-react';
 import { Container } from 'semantic-ui-react';
 import config from './config';
@@ -20,17 +21,20 @@ import Messages from './Messages';
 import Navbar from './Navbar';
 import Profile from './Profile';
 
+const oktaAuth = new OktaAuth(config.oidc);
+
 const App = () => (
-  <Router>
-    <Security {...config.oidc}>
-      <Navbar />
-      <Container text style={{ marginTop: '7em' }}>
+  <Security oktaAuth={oktaAuth}>
+    <Navbar />
+    <Container text style={{ marginTop: '7em' }}>
+      <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/implicit/callback" component={LoginCallback} />
         <SecureRoute path="/messages" component={Messages} />
         <SecureRoute path="/profile" component={Profile} />
-      </Container>
-    </Security>
-  </Router>
+      </Switch>
+    </Container>
+  </Security>
 );
+
 export default App;

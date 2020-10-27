@@ -10,6 +10,7 @@
  * See the License for the specific language governing permissions and limitations under the License.
  */
 import React, { useEffect } from 'react';
+import { toRelativeUrl } from '@okta/okta-auth-js';
 import { useOktaAuth } from '@okta/okta-react';
 import * as OktaSignIn from '@okta/okta-signin-widget';
 import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
@@ -17,7 +18,7 @@ import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
 import config from './config';
 
 const Login = () => {
-  const { authService } = useOktaAuth();
+  const { oktaAuth } = useOktaAuth();
 
   useEffect(() => {
     const { issuer, clientId, redirectUri, scopes } = config.oidc;
@@ -47,19 +48,22 @@ const Login = () => {
       { el: '#sign-in-widget' },
       ({ tokens }) => {
         // Add tokens to storage
-        const tokenManager = authService.getTokenManager();
-        tokenManager.add('idToken', tokens.idToken);
-        tokenManager.add('accessToken', tokens.accessToken);
+        oktaAuth.tokenManager.setTokens(tokens);
 
         // Return to the original URL (if auth was initiated from a secure route), falls back to the origin
-        const fromUri = authService.getFromUri();
-        window.location.assign(fromUri);
+        const fromUri = oktaAuth.getFromUri();
+        oktaAuth.removeFromUri();
+        history.replace(
+          toRelativeUrl(fromUri, window.location.origin)
+        );
       },
       (err) => {
         throw err;
       },
     );
-  }, [authService]);
+
+    return () => widget.remove();
+  }, [oktaAuth]);
 
   return (
     <div>
