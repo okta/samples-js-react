@@ -10,11 +10,11 @@ If you haven't done so already, register for a free account at [developer.okta.c
 
 Register your application by selecting **Applications** > **Add Application**. On the next screen, choose **Single Page App** and click **Next**.
 
-On the following screen, edit the application settings. For React applications running in developer mode, the port number should be 3000. Configure your app as follows:
+On the following screen, edit the application settings. For React applications running in developer mode, the port number should be 8080. Configure your app as follows:
 
-* **Base URI**: `http://localhost:3000`
-* **Login redirect URI**: `http://localhost:3000/login/callback` 
-* **Logout redirect URI**: `http://localhost:3000` 
+* **Base URI**: `http://localhost:8080`
+* **Login redirect URI**: `http://localhost:8080/login/callback` 
+* **Logout redirect URI**: `http://localhost:8080` 
 
 Once you have completed the form, you will be given a **client ID**. You will also need the **issuer** value for your Okta org. 
 
@@ -55,7 +55,6 @@ USERNAME=testuser@email.com
 PASSWORD=testpass
 ```
 
-**NOTE**: The test suite expects you to use `8080` for your port number instead of `3000`. Make sure your Okta app has redirect URIs for both if you want to test these samples.
+**NOTE**: The test suite expects you to use `8080` for your port number. Make sure your Okta app has the redirect URI if you want to test these samples.
 
 With these variables set, you should be able to run `npm test` and bask in the glory of passing tests.
-
