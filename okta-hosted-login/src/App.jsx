@@ -11,7 +11,7 @@
  */
 
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { OktaAuth } from '@okta/okta-auth-js';
 import { Security, SecureRoute, LoginCallback } from '@okta/okta-react';
 import { Container } from 'semantic-ui-react';
@@ -28,12 +28,12 @@ const App = () => (
     <Security oktaAuth={oktaAuth}>
       <Navbar />
       <Container text style={{ marginTop: '7em' }}>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/login/callback" component={LoginCallback} />
-          <SecureRoute path="/messages" component={Messages} />
-          <SecureRoute path="/profile" component={Profile} />
-        </Switch>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login/callback" element={<LoginCallback />} />
+          <SecureRoute path="/messages/*" element={<Messages />} />
+          <SecureRoute path="/profile/*" element={<Profile />} />
+        </Routes>
       </Container>
     </Security>
   </Router>
