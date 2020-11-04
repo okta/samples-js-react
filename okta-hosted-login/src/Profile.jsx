@@ -15,7 +15,7 @@ import { useOktaAuth } from '@okta/okta-react';
 import { Header, Icon, Table } from 'semantic-ui-react';
 
 const Profile = () => {
-  const { authState, authService } = useOktaAuth();
+  const { authState, oktaAuth } = useOktaAuth();
   const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
@@ -23,11 +23,11 @@ const Profile = () => {
       // When user isn't authenticated, forget any user info
       setUserInfo(null);
     } else {
-      authService.getUser().then((info) => {
+      oktaAuth.getUser().then((info) => {
         setUserInfo(info);
       });
     }
-  }, [authState, authService]); // Update if authState changes
+  }, [authState, oktaAuth]); // Update if authState changes
 
   if (!userInfo) {
     return (

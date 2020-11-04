@@ -3,6 +3,7 @@
   "version": "0.2.0",
   "private": true,
   "dependencies": {
+    "@okta/okta-auth-js": "^4.1.0",
     "@okta/okta-react": "file:.yalc/@okta/okta-react",
     "colors": "^1.4.0",
     "cross-env": "^7.0.2",
