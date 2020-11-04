@@ -12,9 +12,9 @@
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "^3.4.0",
+    "react-scripts": "^4.0.0",
     "semantic-ui-css": "^2.2.12",
-    "semantic-ui-react": "^0.77.1",
+    "semantic-ui-react": "^2.0.1",
     "text-encoding": "^0.7.0"
   },
   "scripts": {
@@ -25,8 +25,8 @@
   },
   "devDependencies": {
     "h": "^1.0.0",
-    "react-app-rewired": "^2.1.5",
-    "source-map-loader": "^0.2.4"
+    "react-app-rewired": "^2.1.6",
+    "source-map-loader": "^1.1.0"
   },
   "browserslist": {
     "production": [
