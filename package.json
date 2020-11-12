@@ -11,7 +11,7 @@
     "custom-login-server": "npm start --prefix custom-login/",
     "test:custom-login": "export TEST_TYPE=implicit || setx TEST_TYPE \"implicit\" && protractor okta-oidc-tck/e2e-tests/custom-login/conf.js",
     "resource-server": "node scripts/node-resource-server.js",
-    "test:e2e": "npm run test:okta-hosted-login && npm run test:custom-login",
+    "test:e2e": "npm run test:okta-hosted-login && npm run stop && npm run test:custom-login",
     "preresource-server": "npm run setup-env",
     "pretest": "node ./scripts/update-se-drivers.js && npm run setup-env",
     "pretest-legacy": "npm run webdriver-update-legacy && npm run setup-env",
@@ -20,7 +20,8 @@
     "install-custom-login": "cd custom-login && npm install",
     "install-okta-hosted-login": "cd okta-hosted-login && npm install",
     "webdriver-update": "webdriver-manager update --versions.standalone=3.141.59 --gecko false",
-    "webdriver-update-legacy": "webdriver-manager update --versions.standalone=3.141.59 --versions.chrome 2.45 --gecko false"
+    "webdriver-update-legacy": "webdriver-manager update --versions.standalone=3.141.59 --versions.chrome 2.45 --gecko false",
+    "stop": "kill -s TERM $(lsof -t -i:8080 -sTCP:LISTEN) || true"
   },
   "author": "",
   "license": "Apache-2.0",
