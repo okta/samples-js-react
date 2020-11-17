@@ -34,6 +34,20 @@ Please find the sample that fits your use-case from the table below.
 | [Okta-Hosted Login](/okta-hosted-login) | A React application that will redirect the user to the Okta-Hosted login page of your Org for authentication.  The user is redirected back to the React application after authenticating. |
 | [Custom Login Page](/custom-login) | A React application that uses the Okta Sign-In Widget within the React application to authenticate the user. |
 
+To run the examples, pull the project code, set the required environment vars (described below),  cd to project root (samples-js-react)  and run ...
+```
+npm install
+```
+then run either  of the samples using 
+```
+npm run okta-hosted-login-server
+```
+or 
+
+```
+npm run custom-login
+```
+
 
 [Okta React Library]: https://github.com/okta/okta-oidc-js/tree/master/packages/okta-react
 
