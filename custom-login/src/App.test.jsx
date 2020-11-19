@@ -7,7 +7,6 @@ import App from './App';
 jest.mock('./Login', () => () => <div>Login</div>);
 
 let container;
-
 beforeEach(() => {
   container = document.createElement('div');
   document.body.appendChild(container);
