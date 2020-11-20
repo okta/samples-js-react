@@ -23,6 +23,7 @@ config.specs = config.specs.map(function (path) {
 });
 
 ['CLIENT_ID', 'ISSUER', 'USERNAME', 'PASSWORD'].forEach(function(key) {
+  console.log('ENVIRONMENT VAR "' + key + '"', process.env[key]); // TODO: REMOVEME
   if (!process.env[key]) {
     throw new Error('Environment variable "' + key + '" is not set');
   }
