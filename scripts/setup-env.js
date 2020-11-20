@@ -18,14 +18,17 @@ const fs = require('fs');
 const { execSync } = require('child_process');
 const path = require('path');
 
-function cloneRepository(repository, directory) {
+function cloneRepository(repository, directory, branch) {
   const dir = path.join(__dirname, '..', directory);
   if (fs.existsSync(dir)) {
     console.log(`${directory} is already cloned.`);
     return;
   }
 
-  const command = `git clone ${repository}`;
+  let command = `git clone ${repository}`;
+  if (branch) {
+    command = `git clone --single-branch --branch ${branch} ${repository}`;
+  }
   console.log(`Cloning repository ${directory}`);
   execSync(command);
 }
@@ -33,4 +36,4 @@ function cloneRepository(repository, directory) {
 cloneRepository('https://github.com/okta/samples-nodejs-express-4.git', 'samples-nodejs-express-4');
 execSync(`cd ${path.join(__dirname, '..', 'samples-nodejs-express-4')} && npm install --unsafe-perm`);
 
-cloneRepository('https://github.com/okta/okta-oidc-tck.git', 'okta-oidc-tck');
+cloneRepository('https://github.com/okta/okta-oidc-tck.git', 'okta-oidc-tck', 'sw-fix-okta-react-e2e');
