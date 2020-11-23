@@ -12,10 +12,12 @@
 
 import { useOktaAuth } from '@okta/okta-react';
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Button, Header } from 'semantic-ui-react';
 
 const Home = () => {
-  const { authState, authService } = useOktaAuth();
+  const history = useHistory();
+  const { authState, oktaAuth } = useOktaAuth();
   const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
@@ -23,14 +25,14 @@ const Home = () => {
       // When user isn't authenticated, forget any user info
       setUserInfo(null);
     } else {
-      authService.getUser().then((info) => {
+      oktaAuth.getUser().then((info) => {
         setUserInfo(info);
       });
     }
-  }, [authState, authService]); // Update if authState changes
+  }, [authState, oktaAuth]); // Update if authState changes
 
   const login = async () => {
-    authService.login('/');
+    history.push('/login');
   };
 
   const resourceServerExamples = [

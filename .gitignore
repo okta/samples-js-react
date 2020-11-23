@@ -16,3 +16,4 @@ testenv
 .yalc
 .env
 .idea/
+yalc.lock

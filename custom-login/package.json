@@ -3,7 +3,8 @@
   "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "@okta/okta-react": "^3.0.8",
+    "@okta/okta-auth-js": "^4.2.0",
+    "@okta/okta-react": "^4.0.0",
     "@okta/okta-signin-widget": "^4.5.0",
     "colors": "^1.1.2",
     "cross-env": "^5.1.3",
