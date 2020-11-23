@@ -37,6 +37,7 @@ axios.get(chromeDriverUrl).then((response) => {
   console.log(`Chrome Driver Version - ${chromeDriverVersion}`);
 
   execSync(`${__dirname}/../node_modules/protractor/bin/webdriver-manager update --versions.chrome ${chromeDriverVersion} --gecko false --versions.standalone latest`);
+  console.log('Webdriver was updated');
 }).catch((err) => {
   console.log(err);
 });
