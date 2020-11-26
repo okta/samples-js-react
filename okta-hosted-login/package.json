@@ -19,7 +19,7 @@
   "scripts": {
     "start": "cross-env PORT=8080 react-app-rewired start",
     "build": "react-app-rewired build",
-    "test": "echo 'Tests not yet implemented' && exit 1",
+    "test": "react-app-rewired test --watchAll=false",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
@@ -36,5 +36,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^@okta/okta-auth-js$": "<rootDir>/node_modules/@okta/okta-auth-js/dist/okta-auth-js.umd.js"
+    }
   }
 }
