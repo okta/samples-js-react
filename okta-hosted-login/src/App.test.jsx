@@ -1,6 +1,7 @@
 /* global beforeEach, afterEach, it, expect */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { act } from 'react-dom/test-utils';
 import App from './App';
 
@@ -18,7 +19,7 @@ afterEach(() => {
 
 it('renders title link', async () => {
   await act(async () => {
-    ReactDOM.render(<App />, container);
+    ReactDOM.render(<MemoryRouter><App /></MemoryRouter>, container);
   });
 
   const linkElement = container.querySelector('a');
