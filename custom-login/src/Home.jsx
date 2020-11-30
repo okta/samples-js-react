@@ -55,7 +55,7 @@ const Home = () => {
   return (
     <div>
       <div>
-        <Header as="h1">PKCE Flow w/ Okta Hosted Login Page</Header>
+        <Header as="h1">PKCE Flow w/ Custom Login</Header>
 
         { authState.isAuthenticated && !userInfo
         && <div>Loading user information...</div>}
@@ -64,7 +64,7 @@ const Home = () => {
         && (
         <div>
           <p>
-            Welcome back,
+            Welcome back,&nbsp;
             {userInfo.name}
             !
           </p>

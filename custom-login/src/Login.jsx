@@ -43,17 +43,19 @@ const Login = () => {
       },
     });
 
-    widget.renderEl(
-      { el: '#sign-in-widget' },
-      ({ tokens }) => {
-        oktaAuth.handleLoginRedirect(tokens);
-      },
-      (err) => {
-        throw err;
-      },
-    );
+    widget.showSignInToGetTokens({
+      el: '#sign-in-widget',
+      scopes,
+    }).then((tokens) => {
 
-    return () => widget.remove();
+      // Remove the widget
+      widget.remove();
+
+      // Add tokens to storage
+      oktaAuth.handleLoginRedirect(tokens);
+    }).catch((err) => {
+      throw err;
+    });
   }, [oktaAuth]);
 
   return (
