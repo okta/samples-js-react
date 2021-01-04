@@ -36,4 +36,4 @@ function cloneRepository(repository, directory, branch) {
 cloneRepository('https://github.com/okta/samples-nodejs-express-4.git', 'samples-nodejs-express-4');
 execSync(`cd ${path.join(__dirname, '..', 'samples-nodejs-express-4')} && npm install --unsafe-perm`);
 
-cloneRepository('https://github.com/okta/okta-oidc-tck.git', 'okta-oidc-tck', 'sw-fix-okta-react-e2e');
+cloneRepository('https://github.com/okta/okta-oidc-tck.git', 'okta-oidc-tck', 'master');
