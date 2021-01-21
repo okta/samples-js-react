@@ -13,17 +13,20 @@ Before running this sample, you will need the following:
 
 ## Running This Example
 
-To run this application, you first need to clone this repo and then enter into this directory:
+To run this application, you first need to clone this repo:
 
 ```bash
 git clone https://github.com/okta/samples-js-react.git
-cd samples-js-react/okta-hosted-login
 ```
 
 Then install dependencies:
 
 ```bash
 npm install
+```
+Enter into okta-hosted-login directory:
+```bash
+cd samples-js-react/okta-hosted-login
 ```
 
 Now you need to gather the following information from the Okta Developer Console:
@@ -42,6 +45,11 @@ With variables set, start the app server:
 
 ```
 npm start
+```
+
+You could also start the app server from root directory like:
+```
+npm run okta-hosted-login-server
 ```
 
 Now navigate to http://localhost:8080 in your browser.
