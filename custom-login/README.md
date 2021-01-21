@@ -13,11 +13,10 @@ Before running this sample, you will need the following:
 
 ## Running This Example
 
-To run this application, you first need to clone this repo and then enter into this directory:
+To run this application, you first need to clone this repo:
 
 ```bash
 git clone https://github.com/okta/samples-js-react.git
-cd samples-js-react/custom-login
 ```
 
 Then install dependencies:
@@ -25,7 +24,10 @@ Then install dependencies:
 ```bash
 npm install
 ```
-
+Enter into custom-login directory:
+```bash
+cd samples-js-react/custom-login
+```
 Now you need to gather the following information from the Okta Developer Console:
 
 - **Client Id** - The client ID of the SPA application that you created earlier. This can be found on the "General" tab of an application, or the list of applications.  This identifies the application that tokens will be minted for.
@@ -43,6 +45,11 @@ With variables set, start the app server:
 
 ```
 npm start
+```
+You could also start the app server from root directory like:
+
+```
+npm run custom-login-server
 ```
 
 Now navigate to http://localhost:8080 in your browser.
