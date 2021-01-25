@@ -40,7 +40,11 @@ const Home = () => {
     },
     {
       label: 'Java/Spring MVC Resource Server Example',
-      url: 'https://github.com/okta/samples-java-spring-mvc/tree/master/resource-server',
+      url: 'https://github.com/okta/samples-java-spring/tree/master/resource-server',
+    },
+    {
+      label: 'ASP.NET Core Resource Server Example',
+      url: 'https://github.com/okta/samples-aspnetcore/tree/master/samples-aspnetcore-3x/resource-server',
     },
   ];
 
@@ -62,7 +66,7 @@ const Home = () => {
         && (
         <div>
           <p>
-            Welcome back,
+            Welcome back,&nbsp;
             {userInfo.name}
             !
           </p>
