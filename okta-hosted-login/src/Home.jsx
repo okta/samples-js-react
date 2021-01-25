@@ -62,7 +62,9 @@ const Home = () => {
         && (
         <div>
           <p>
-            Welcome back, {userInfo.name}!
+            Welcome back,&nbsp;
+            {userInfo.name}
+            !
           </p>
           <p>
             You have successfully authenticated against your Okta org, and have been redirected back to this application.  You now have an ID token and access token in local storage.
