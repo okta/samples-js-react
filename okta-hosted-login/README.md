@@ -71,7 +71,7 @@ If you were able to successfully login in the previous section you can continue 
 Once you have the resource server running (it will run on port 8000) you can visit the `/messages` page within the React application to see the authentication flow.  The React application will use its stored access token to authenticate itself with the resource server, you will see this as the `Authorization: Bearer <access_token>` header on the request if you inspect the network traffic in the browser.
 
 [Create React App]: https://github.com/facebook/create-react-app
-[Okta React Library]: https://github.com/okta/okta-oidc-js/tree/master/packages/okta-react
+[Okta React Library]: https://github.com/okta/okta-react
 [OIDC SPA Setup Instructions]: https://developer.okta.com/docs/guides/sign-into-spa/react/before-you-begin
 [PKCE Flow]: https://developer.okta.com/docs/guides/implement-auth-code-pkce
 [Okta Sign In Widget]: https://github.com/okta/okta-signin-widget
