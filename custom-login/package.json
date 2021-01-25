@@ -22,12 +22,19 @@
     "start": "cross-env PORT=8080 react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-scripts test --watchAll=false",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "npx eslint -c .eslintrc.json --ext .js --ext .jsx src/"
   },
   "devDependencies": {
     "h": "^1.0.0",
     "react-app-rewired": "^2.1.6",
-    "source-map-loader": "^1.1.0"
+    "source-map-loader": "^1.1.0",
+    "eslint": "^7.12.1",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.1"
   },
   "browserslist": {
     "production": [
