@@ -41,7 +41,7 @@ const Profile = () => {
     <div>
       <div>
         <Header as="h1">
-          <Icon name="drivers license outline" />
+          <Icon name="drivers license" />
           {' '}
           My User Profile (ID Token Claims)
           {' '}
@@ -54,6 +54,7 @@ const Profile = () => {
         </p>
         <p>
           This route is protected with the
+          {' '}
           <code>&lt;SecureRoute&gt;</code>
           {' '}
           component, which will ensure that this page cannot be accessed until you have authenticated.
@@ -73,7 +74,7 @@ const Profile = () => {
               return (
                 <tr key={claimName}>
                   <td>{claimName}</td>
-                  <td id={claimId}>{claimValue}</td>
+                  <td id={claimId}>{claimValue.toString()}</td>
                 </tr>
               );
             })}

@@ -65,12 +65,13 @@ You can login with the same account that you created when signing up for your De
 If you were able to successfully login in the previous section you can continue with the resource server example.  Please download and run one of these sample applications in another terminal:
 
 * [Node/Express Resource Server Example](https://github.com/okta/samples-nodejs-express-4/tree/master/resource-server)
-* [Java/Spring MVC Resource Server Example](https://github.com/okta/samples-java-spring-mvc/tree/master/resource-server)
+* [Java/Spring MVC Resource Server Example](https://github.com/okta/samples-java-spring/tree/master/resource-server)
+* [ASP.NET](https://github.com/okta/samples-aspnet/tree/master/resource-server) and [ASP.NET Core](https://github.com/okta/samples-aspnetcore/tree/master/samples-aspnetcore-3x/resource-server) Resource Server Examples
 
 Once you have the resource server running (it will run on port 8000) you can visit the `/messages` page within the React application to see the authentication flow.  The React application will use its stored access token to authenticate itself with the resource server, you will see this as the `Authorization: Bearer <access_token>` header on the request if you inspect the network traffic in the browser.
 
-[Create React App]: https://github.com/facebook/create-react-app
-[Okta React Library]: https://github.com/okta/okta-oidc-js/tree/master/packages/okta-react
+[Create React App]: https://create-react-app.dev
+[Okta React Library]: https://github.com/okta/okta-react
 [OIDC SPA Setup Instructions]: https://developer.okta.com/docs/guides/sign-into-spa/react/before-you-begin
 [PKCE Flow]: https://developer.okta.com/docs/guides/implement-auth-code-pkce
 [Okta Sign In Widget]: https://github.com/okta/okta-signin-widget

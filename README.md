@@ -35,7 +35,7 @@ Please find the sample that fits your use-case from the table below.
 | [Custom Login Page](/custom-login) | A React application that uses the Okta Sign-In Widget within the React application to authenticate the user. |
 
 
-[Okta React Library]: https://github.com/okta/okta-oidc-js/tree/master/packages/okta-react
+[Okta React Library]: https://github.com/okta/okta-react
 
 ## Running the resource server
 The samples include a page which accesses a protected resource (messages). To start the sample resource server:

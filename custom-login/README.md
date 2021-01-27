@@ -33,7 +33,6 @@ Now you need to gather the following information from the Okta Developer Console
 - **Client Id** - The client ID of the SPA application that you created earlier. This can be found on the "General" tab of an application, or the list of applications.  This identifies the application that tokens will be minted for.
 - **Issuer** - This is the URL of the authorization server that will perform authentication.  All Developer Accounts have a "default" authorization server.  The issuer is a combination of your Org URL (found in the upper right of the console home page) and `/oauth2/default`. For example, `https://dev-1234.oktapreview.com/oauth2/default`.
 
-
 These values must exist as environment variables. They can be exported in the shell, or saved in a file named `testenv`, at the root of this repository. (This is the parent directory, relative to this README) See [dotenv](https://www.npmjs.com/package/dotenv) for more details on this file format.
 
 ```ini
@@ -60,13 +59,12 @@ You can login with the same account that you created when signing up for your De
 
 **Note:** If you are currently using your Developer Console, you already have a Single Sign-On (SSO) session for your Org.  You will be automatically logged into your application as the same user that is using the Developer Console.  You may want to use an incognito tab to test the flow from a blank slate.
 
-
 ## Integrating The Resource Server
 
 This sample contains the same "Messages" page that is included in the [Okta Hosted Login](/okta-hosted-login) sample, please refer to that sample for instructions on setting up the resource server.
 
-[Create React App]: https://github.com/facebook/create-react-app
-[Okta React Library]: https://github.com/okta/okta-oidc-js/tree/master/packages/okta-react
+[Create React App]: https://create-react-app.dev
+[Okta React Library]: https://github.com/okta/okta-react
 [OIDC SPA Setup Instructions]: https://developer.okta.com/docs/guides/sign-into-spa/react/before-you-begin
 [PKCE Flow]: https://developer.okta.com/docs/guides/implement-auth-code-pkce
 [Okta Sign In Widget]: https://github.com/okta/okta-signin-widget
