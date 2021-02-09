@@ -35,7 +35,8 @@ if ! run_tests; then
   echo "e2e tests failed! Exiting..."
   exit ${TEST_FAILURE}
 fi
-
+cd build2
+ls -a
 echo ${TEST_SUITE_TYPE} > ${TEST_SUITE_TYPE_FILE}
 echo ${TEST_RESULT_FILE_DIR} > ${TEST_RESULT_FILE_DIR_FILE}
 exit ${PUBLISH_TYPE_AND_RESULT_DIR}
