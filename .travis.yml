@@ -6,7 +6,7 @@ addons:
 install:
 - npm install
 script:
-- npm test
+- npm run lint
 before_install:
 - npm install -g npm@latest
 notifications:
