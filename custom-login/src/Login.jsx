@@ -46,17 +46,19 @@ const Login = () => {
         issuer,
         scopes,
       },
+      useInteractionCodeFlow: true,
     });
 
-    widget.showSignInToGetTokens({
-      el: widgetRef.current,
-      scopes,
-    }).then((tokens) => {
-      // Add tokens to storage
-      oktaAuth.handleLoginRedirect(tokens);
-    }).catch((err) => {
-      throw err;
-    });
+    widget.renderEl(
+      { el: widgetRef.current },
+      (res) => {
+        console.log(res);
+        oktaAuth.handleLoginRedirect(res.tokens);
+      },
+      (err) => {
+        throw err;
+      },
+    );
 
     return () => widget.remove();
   }, [oktaAuth]);
