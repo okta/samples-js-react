@@ -46,7 +46,7 @@ const Login = () => {
         issuer,
         scopes,
       },
-      useInteractionCodeFlow: true,
+      useInteractionCodeFlow: false, // Set to true, if your org is OIE enabled
     });
 
     widget.renderEl(
