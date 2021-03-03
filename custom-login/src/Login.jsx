@@ -46,17 +46,19 @@ const Login = () => {
         issuer,
         scopes,
       },
+      useInteractionCodeFlow: false, // Set to true, if your org is OIE enabled
     });
 
-    widget.showSignInToGetTokens({
-      el: widgetRef.current,
-      scopes,
-    }).then((tokens) => {
-      // Add tokens to storage
-      oktaAuth.handleLoginRedirect(tokens);
-    }).catch((err) => {
-      throw err;
-    });
+    widget.renderEl(
+      { el: widgetRef.current },
+      (res) => {
+        console.log(res);
+        oktaAuth.handleLoginRedirect(res.tokens);
+      },
+      (err) => {
+        throw err;
+      },
+    );
 
     return () => widget.remove();
   }, [oktaAuth]);

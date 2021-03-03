@@ -68,7 +68,7 @@ const Home = () => {
         && (
         <div>
           <p>
-            Welcome back,&nbsp;
+            Welcome, &nbsp;
             {userInfo.name}
             !
           </p>
@@ -102,14 +102,14 @@ const Home = () => {
           <p>If you&lsquo;re viewing this page then you have successfully started this React application.</p>
           <p>
             <span>This example shows you how to use the </span>
-            <a href="https://github.com/okta/okta-oidc-js/tree/master/packages/okta-react">Okta React Library</a>
+            <a href="https://github.com/okta/okta-react/tree/master">Okta React Library</a>
             <span> to add the </span>
             <a href="https://developer.okta.com/docs/guides/implement-auth-code-pkce">PKCE Flow</a>
             <span> to your application.</span>
           </p>
           <p>
-            When you click the login button below, you will be redirected to the login page on your Okta org.
-            After you authenticate, you will be returned to this application with an ID token and access token.  These tokens will be stored in local storage and can be retrieved at a later time.
+            When you click the login button below, you will be presented the login page on the Okta Sign-In Widget hosted within the application.
+            After you authenticate, you will be logged in to this application with an ID token and access token. These tokens will be stored in local storage and can be retrieved at a later time.
           </p>
           <Button id="login-button" primary onClick={login}>Login</Button>
         </div>
