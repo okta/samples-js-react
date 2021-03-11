@@ -9,17 +9,20 @@
  *
  * See the License for the specific language governing permissions and limitations under the License.
  */
-import React, { useEffect } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
 import * as OktaSignIn from '@okta/okta-signin-widget';
 import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
 
 import config from './config';
 
+const USE_INTERACTION_CODE_FLOW = process.env.USE_INTERACTION_CODE_FLOW || false;
+
 const Login = () => {
   const { oktaAuth } = useOktaAuth();
+  const widgetRef = useRef();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const { issuer, clientId, redirectUri, scopes } = config.oidc;
     const widget = new OktaSignIn({
       /**
@@ -41,11 +44,11 @@ const Login = () => {
         issuer,
         scopes,
       },
-      useInteractionCodeFlow: false, // Set to true if your org is OIE enabled
+      useInteractionCodeFlow: USE_INTERACTION_CODE_FLOW, // Set to true if your org is OIE enabled
     });
 
     widget.showSignInToGetTokens({
-      el: '#sign-in-widget',
+      el: widgetRef.current,
       scopes,
     }).then((tokens) => {
       // Remove the widget
@@ -60,7 +63,7 @@ const Login = () => {
 
   return (
     <div>
-      <div id="sign-in-widget" />
+      <div ref={widgetRef} />
     </div>
   );
 };
