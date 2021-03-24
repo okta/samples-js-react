@@ -25,7 +25,7 @@ const Login = () => {
       return false;
     }
 
-    const { issuer, clientId, redirectUri, scopes } = config.oidc;
+    const { issuer, clientId, redirectUri, scopes, useInteractionCode } = config.oidc;
     const widget = new OktaSignIn({
       /**
        * Note: when using the Sign-In Widget for an OIDC flow, it still
@@ -46,7 +46,7 @@ const Login = () => {
         issuer,
         scopes,
       },
-      useInteractionCodeFlow: false, // Set to true, if your org is OIE enabled
+      useInteractionCodeFlow: useInteractionCode, // Set to true, if your org is OIE enabled
     });
 
     widget.renderEl(

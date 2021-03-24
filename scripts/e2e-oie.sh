@@ -14,8 +14,10 @@ export DBUS_SESSION_BUS_ADDRESS=/dev/null
 export TEST_SUITE_TYPE="junit"
 export TEST_RESULT_FILE_DIR="${REPO}/build2/reports"
 
-export ISSUER=https://samples-javascript.okta.com/oauth2/default
-export CLIENT_ID=0oapmwm72082GXal14x6
+export ORG_OIE_ENABLED=true # This flag ensures the TCK tests run OIE tests
+export USE_INTERACTION_CODE=true # This flag ensures that the self hosted widget uses interact code flow
+export ISSUER=https://oie-widget-tests.sigmanetcorp.us/oauth2/default
+export CLIENT_ID=0oa3nv55b0KjBuxEq0g7
 export USERNAME=george@acme.com
 get_secret prod/okta-sdk-vars/password PASSWORD
 export DEFAULT_TIMEOUT_INTERVAL=45000
