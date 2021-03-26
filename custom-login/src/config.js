@@ -7,8 +7,6 @@ if (process.env.USE_INTERACTION_CODE === 'true') {
   USE_INTERACTION_CODE = true;
 }
 
-console.log(USE_INTERACTION_CODE);
-
 export default {
   oidc: {
     clientId: CLIENT_ID,
