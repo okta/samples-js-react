@@ -60,7 +60,7 @@ const Navbar = () => {
         <Modal.Description>
           <p>Seems like logout API call resulted with CORS error.</p>
           <p>
-            You need to add your origin
+            You may need to add your origin
             {' '}
             {window.location.origin}
             {' '}
