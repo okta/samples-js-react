@@ -20,22 +20,28 @@ import Home from './Home';
 import Messages from './Messages';
 import Navbar from './Navbar';
 import Profile from './Profile';
+import CorsErrorModal from './CorsErrorModal';
 
 const oktaAuth = new OktaAuth(config.oidc);
 
-const App = () => (
-  <Router>
-    <Security oktaAuth={oktaAuth}>
-      <Navbar />
-      <Container text style={{ marginTop: '7em' }}>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/login/callback" component={LoginCallback} />
-          <SecureRoute path="/messages" component={Messages} />
-          <SecureRoute path="/profile" component={Profile} />
-        </Switch>
-      </Container>
-    </Security>
-  </Router>
-);
+const App = () => {
+  const [corsErrorModalOpen, setCorsErrorModalOpen] = React.useState(false);
+
+  return (
+    <Router>
+      <Security oktaAuth={oktaAuth}>
+        <Navbar {...{ setCorsErrorModalOpen }} />
+        <CorsErrorModal {...{ corsErrorModalOpen, setCorsErrorModalOpen }} />
+        <Container text style={{ marginTop: '7em' }}>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/login/callback" component={LoginCallback} />
+            <SecureRoute path="/messages" component={Messages} />
+            <SecureRoute path="/profile" component={Profile} />
+          </Switch>
+        </Container>
+      </Security>
+    </Router>
+  );
+};
 export default App;

@@ -21,6 +21,7 @@ import CustomLoginComponent from './Login';
 import Messages from './Messages';
 import Navbar from './Navbar';
 import Profile from './Profile';
+import CorsErrorModal from './CorsErrorModal';
 
 const oktaAuth = new OktaAuth(config.oidc);
 
@@ -32,17 +33,20 @@ const App = () => {
     history.push('/login');
   };
 
+  const [corsErrorModalOpen, setCorsErrorModalOpen] = React.useState(false);
+
   return (
     <Security
       oktaAuth={oktaAuth}
       onAuthRequired={customAuthHandler}
     >
-      <Navbar />
+      <Navbar {...{ setCorsErrorModalOpen }} />
+      <CorsErrorModal {...{ corsErrorModalOpen, setCorsErrorModalOpen }} />
       <Container text style={{ marginTop: '7em' }}>
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/login/callback" component={LoginCallback} />
-          <Route path="/login" component={CustomLoginComponent} />
+          <Route path="/login" render={() => <CustomLoginComponent {...{ setCorsErrorModalOpen }} />} />
           <SecureRoute path="/messages" component={Messages} />
           <SecureRoute path="/profile" component={Profile} />
         </Switch>
