@@ -52,6 +52,7 @@ const Login = ({ setCorsErrorModalOpen }) => {
     widget.renderEl(
       { el: widgetRef.current },
       (res) => {
+        console.log(res);
         oktaAuth.handleLoginRedirect(res.tokens);
       },
       (err) => {
