@@ -19,6 +19,7 @@ export USE_INTERACTION_CODE=true # This flag ensures that the self hosted widget
 export ISSUER=https://oie-widget-tests.sigmanetcorp.us/oauth2/default
 export CLIENT_ID=0oa3nv55b0KjBuxEq0g7
 export USERNAME=george@acme.com
+export EMAIL_MFA_USERNAME=email-login@email.ghostinspector.com
 get_secret prod/okta-sdk-vars/password PASSWORD
 export DEFAULT_TIMEOUT_INTERVAL=45000
 
