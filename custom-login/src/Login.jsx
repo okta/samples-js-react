@@ -16,7 +16,7 @@ import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
 
 import config from './config';
 
-const Login = () => {
+const Login = ({ setCorsErrorModalOpen }) => {
   const { oktaAuth } = useOktaAuth();
   const widgetRef = useRef();
 
@@ -59,6 +59,15 @@ const Login = () => {
         throw err;
       },
     );
+
+    // Note: Can't distinguish CORS error from other network errors
+    const isCorsError = (err) => (err.name === 'AuthApiError' && !err.statusCode);
+
+    widget.on('afterError', (_context, error) => {
+      if (isCorsError(error)) {
+        setCorsErrorModalOpen(true);
+      }
+    });
 
     return () => widget.remove();
   }, [oktaAuth]);

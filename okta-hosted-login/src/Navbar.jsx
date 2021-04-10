@@ -15,11 +15,25 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Icon, Image, Menu } from 'semantic-ui-react';
 
-const Navbar = () => {
+const Navbar = ({ setCorsErrorModalOpen }) => {
   const { authState, oktaAuth } = useOktaAuth();
 
+  // Note: Can't distinguish CORS error from other network errors
+  const isCorsError = (err) => (err.name === 'AuthApiError' && !err.errorCode && err.xhr.message === 'Failed to fetch');
+
   const login = async () => oktaAuth.signInWithRedirect();
-  const logout = async () => oktaAuth.signOut();
+
+  const logout = async () => {
+    try {
+      await oktaAuth.signOut();
+    } catch (err) {
+      if (isCorsError(err)) {
+        setCorsErrorModalOpen(true);
+      } else {
+        throw err;
+      }
+    }
+  };
 
   return (
     <div>
