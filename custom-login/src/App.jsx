@@ -12,7 +12,7 @@
 
 import React from 'react';
 import { Route, useHistory, Switch } from 'react-router-dom';
-import { OktaAuth } from '@okta/okta-auth-js';
+import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
 import { Security, SecureRoute, LoginCallback } from '@okta/okta-react';
 import { Container } from 'semantic-ui-react';
 import config from './config';
@@ -28,6 +28,10 @@ const oktaAuth = new OktaAuth(config.oidc);
 const App = () => {
   const history = useHistory(); // example from react-router
 
+  const restoreOriginalUri = async (_oktaAuth, originalUri) => {
+    history.replace(toRelativeUrl(originalUri, window.location.origin));
+  };
+
   const customAuthHandler = () => {
     // Redirect to the /login page that has a CustomLoginComponent
     history.push('/login');
@@ -39,6 +43,7 @@ const App = () => {
     <Security
       oktaAuth={oktaAuth}
       onAuthRequired={customAuthHandler}
+      restoreOriginalUri={restoreOriginalUri}
     >
       <Navbar {...{ setCorsErrorModalOpen }} />
       <CorsErrorModal {...{ corsErrorModalOpen, setCorsErrorModalOpen }} />
