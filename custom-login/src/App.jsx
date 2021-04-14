@@ -12,7 +12,7 @@
 
 import React from 'react';
 import { Route, useHistory, Switch } from 'react-router-dom';
-import { OktaAuth } from '@okta/okta-auth-js';
+import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
 import { Security, SecureRoute, LoginCallback } from '@okta/okta-react';
 import { Container } from 'semantic-ui-react';
 import config from './config';
@@ -26,9 +26,16 @@ const oktaAuth = new OktaAuth(config.oidc);
 
 const App = () => {
   const history = useHistory(); // example from react-router
+  const restoreOriginalUri = async (_oktaAuth, originalUri) => {
+    history.replace(toRelativeUrl(originalUri, window.location.origin));
+  };
 
   const customAuthHandler = () => {
     // Redirect to the /login page that has a CustomLoginComponent
+    history.push('/login');
+  };
+
+  const onAuthResume = async () => {
     history.push('/login');
   };
 
@@ -36,12 +43,14 @@ const App = () => {
     <Security
       oktaAuth={oktaAuth}
       onAuthRequired={customAuthHandler}
+      onAuthResume={onAuthResume}
+      restoreOriginalUri={restoreOriginalUri}
     >
       <Navbar />
       <Container text style={{ marginTop: '7em' }}>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/login/callback" component={LoginCallback} />
+          <Route path="/login/callback" render={(props) => <LoginCallback {...props} onAuthResume={onAuthResume} />} />
           <Route path="/login" component={CustomLoginComponent} />
           <SecureRoute path="/messages" component={Messages} />
           <SecureRoute path="/profile" component={Profile} />
