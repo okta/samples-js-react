@@ -3,8 +3,8 @@
   "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "@okta/okta-auth-js": "^4.6.1",
-    "@okta/okta-react": "^4.1.0",
+    "@okta/okta-auth-js": "^4.8.0",
+    "@okta/okta-react": "^5.1.1",
     "colors": "^1.4.0",
     "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
