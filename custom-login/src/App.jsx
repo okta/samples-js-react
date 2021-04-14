@@ -37,6 +37,10 @@ const App = () => {
     history.push('/login');
   };
 
+  const onAuthResume = async () => {
+    history.push('/login');
+  };
+
   const [corsErrorModalOpen, setCorsErrorModalOpen] = React.useState(false);
 
   return (
@@ -50,7 +54,7 @@ const App = () => {
       <Container text style={{ marginTop: '7em' }}>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/login/callback" component={LoginCallback} />
+          <Route path="/login/callback" render={(props) => <LoginCallback {...props} onAuthResume={onAuthResume} />} />
           <Route path="/login" render={() => <CustomLoginComponent {...{ setCorsErrorModalOpen }} />} />
           <SecureRoute path="/messages" component={Messages} />
           <SecureRoute path="/profile" component={Profile} />
