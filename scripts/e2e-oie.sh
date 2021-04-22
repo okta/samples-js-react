@@ -20,7 +20,10 @@ export ISSUER=https://oie-widget-tests.sigmanetcorp.us/oauth2/default
 export CLIENT_ID=0oa3nv55b0KjBuxEq0g7
 export USERNAME=george@acme.com
 export EMAIL_MFA_USERNAME=email-login@email.ghostinspector.com
+export SMS_MFA_USERNAME=sms-login@okta.com
 get_secret prod/okta-sdk-vars/password PASSWORD
+export FB_USERNAME=ycfjikukbl_1613767309@tfbnw.net
+get_secret prod/okta-sdk-vars/fb_password FB_PASSWORD
 export DEFAULT_TIMEOUT_INTERVAL=45000
 
 cd ${OKTA_HOME}/${REPO}
