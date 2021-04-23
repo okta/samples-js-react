@@ -22,6 +22,8 @@ export USERNAME=george@acme.com
 export EMAIL_MFA_USERNAME=email-login@email.ghostinspector.com
 get_secret prod/okta-sdk-vars/password PASSWORD
 export SMS_MFA_USERNAME=sms-login@okta.com
+export FB_USERNAME=ycfjikukbl_1613767309@tfbnw.net
+get_secret prod/okta-sdk-vars/fb_password FB_PASSWORD
 get_secret prod/okta-sdk-vars/twilio_account TWILIO_ACCOUNT
 get_secret prod/okta-sdk-vars/twilio_api_token TWILIO_API_TOKEN
 export DEFAULT_TIMEOUT_INTERVAL=45000
