@@ -29,7 +29,9 @@ const App = () => {
   const history = useHistory(); // example from react-router
 
   const restoreOriginalUri = async (_oktaAuth, originalUri) => {
-    history.replace(toRelativeUrl(originalUri, window.location.origin));
+    if (originalUri) {
+      history.replace(toRelativeUrl(originalUri, window.location.origin));
+    }
   };
 
   const customAuthHandler = () => {

@@ -19,7 +19,7 @@ const Home = () => {
   const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
-    if (!authState.isAuthenticated) {
+    if (!authState || !authState.isAuthenticated) {
       // When user isn't authenticated, forget any user info
       setUserInfo(null);
     } else {
@@ -30,7 +30,7 @@ const Home = () => {
   }, [authState, oktaAuth]); // Update if authState changes
 
   const login = async () => {
-    oktaAuth.signInWithRedirect();
+    oktaAuth.signInWithRedirect({ originalUri: '/' });
   };
 
   const resourceServerExamples = [
@@ -48,7 +48,7 @@ const Home = () => {
     },
   ];
 
-  if (authState.isPending) {
+  if (!authState) {
     return (
       <div>Loading...</div>
     );
