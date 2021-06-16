@@ -40,6 +40,10 @@ ISSUER=https://yourOktaDomain.com/oauth2/default
 CLIENT_ID=123xxxxx123
 ```
 
+> NOTE: If you are running the sample against an org that has [Okta's Identity
+Engine](https://developer.okta.com/docs/concepts/ie-intro/) enabled, you will need to add the following environment variable to your `testenv` file 
+> USE_INTERACTION_CODE=true
+
 With variables set, start the app server:
 
 ```
