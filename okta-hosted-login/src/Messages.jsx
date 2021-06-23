@@ -23,7 +23,7 @@ const Messages = () => {
 
   // fetch messages
   useEffect(() => {
-    if (authState.isAuthenticated) {
+    if (authState && authState.isAuthenticated) {
       const accessToken = oktaAuth.getAccessToken();
       fetch(config.resourceServer.messagesUrl, {
         headers: {

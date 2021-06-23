@@ -1,10 +1,10 @@
 {
   "name": "samples-js-react",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "dependencies": {
-    "@okta/okta-auth-js": "^4.8.0",
-    "@okta/okta-react": "^5.1.1",
+    "@okta/okta-auth-js": "^5.0.0",
+    "@okta/okta-react": "^6.0.0",
     "@okta/okta-signin-widget": "^5.4.0",
     "colors": "^1.4.0",
     "cross-env": "^7.0.3",

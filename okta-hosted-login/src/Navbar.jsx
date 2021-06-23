@@ -35,6 +35,10 @@ const Navbar = ({ setCorsErrorModalOpen }) => {
     }
   };
 
+  if (!authState) {
+    return null;
+  }
+
   return (
     <div>
       <Menu fixed="top" inverted>
