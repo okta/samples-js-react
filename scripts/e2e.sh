@@ -24,9 +24,9 @@ cd ${OKTA_HOME}/${REPO}
 
 function run_tests() {
     npm run pretest
-    npm run test:okta-hosted-login
-    kill -s TERM $(lsof -t -i:8080 -sTCP:LISTEN)
-    kill -s TERM $(lsof -t -i:8000 -sTCP:LISTEN)
+    # npm run test:okta-hosted-login
+    # kill -s TERM $(lsof -t -i:8080 -sTCP:LISTEN)
+    # kill -s TERM $(lsof -t -i:8000 -sTCP:LISTEN)
     npm run test:custom-login
 }
 
