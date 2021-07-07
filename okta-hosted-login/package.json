@@ -1,5 +1,5 @@
 {
-  "name": "samples-js-react",
+  "name": "okta-hosted-login",
   "version": "0.3.0",
   "private": true,
   "dependencies": {
@@ -24,13 +24,13 @@
     "lint": "npx eslint -c .eslintrc.json --ext .js --ext .jsx src/"
   },
   "devDependencies": {
-    "react-app-rewired": "^2.1.8",
     "eslint": "^7.12.1",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.6",
-    "eslint-plugin-react-hooks": "^4.1.1"
+    "eslint-plugin-react-hooks": "^4.1.1",
+    "react-app-rewired": "^2.1.8"
   },
   "browserslist": {
     "production": [

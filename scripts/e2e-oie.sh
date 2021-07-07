@@ -26,7 +26,7 @@ export FB_USERNAME=ycfjikukbl_1613767309@tfbnw.net
 get_secret prod/okta-sdk-vars/fb_password FB_PASSWORD
 get_secret prod/okta-sdk-vars/twilio_account TWILIO_ACCOUNT
 get_secret prod/okta-sdk-vars/twilio_api_token TWILIO_API_TOKEN
-export DEFAULT_TIMEOUT_INTERVAL=45000
+export DEFAULT_TIMEOUT_INTERVAL=90000
 
 cd ${OKTA_HOME}/${REPO}
 
