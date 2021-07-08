@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Okta, Inc. and/or its affiliates. All rights reserved.
+ * Copyright (c) 2018-Present, Okta, Inc. and/or its affiliates. All rights reserved.
  * The Okta software accompanied by this notice is provided pursuant to the Apache License, Version 2.0 (the "License.")
  *
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
@@ -17,7 +17,6 @@ import 'semantic-ui-css/semantic.min.css';
 import './polyfills';
 import App from './App';
 import './index.css';
-import registerServiceWorker from './registerServiceWorker';
 
 /* eslint-disable react/jsx-filename-extension */
 ReactDOM.render(
@@ -26,4 +25,3 @@ ReactDOM.render(
   </Router>,
   document.getElementById('root'),
 );
-registerServiceWorker();

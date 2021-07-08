@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Okta, Inc. and/or its affiliates. All rights reserved.
+ * Copyright (c) 2018-Present, Okta, Inc. and/or its affiliates. All rights reserved.
  * The Okta software accompanied by this notice is provided pursuant to the Apache License, Version 2.0 (the "License.")
  *
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
@@ -12,17 +12,16 @@
 
 import { useOktaAuth } from '@okta/okta-react';
 import React from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Container, Icon, Image, Menu } from 'semantic-ui-react';
 
 const Navbar = ({ setCorsErrorModalOpen }) => {
-  const history = useHistory();
   const { authState, oktaAuth } = useOktaAuth();
-
-  const login = async () => history.push('/login');
 
   // Note: Can't distinguish CORS error from other network errors
   const isCorsError = (err) => (err.name === 'AuthApiError' && !err.errorCode && err.xhr.message === 'Failed to fetch');
+
+  const login = async () => history.push('/login');
 
   const logout = async () => {
     try {
@@ -60,8 +59,12 @@ const Navbar = ({ setCorsErrorModalOpen }) => {
               <Link to="/profile">Profile</Link>
             </Menu.Item>
           )}
-          {authState.isAuthenticated && <Menu.Item id="logout-button" onClick={logout}>Logout</Menu.Item>}
-          {!authState.isPending && !authState.isAuthenticated && <Menu.Item onClick={login}>Login</Menu.Item>}
+          {authState.isAuthenticated && (
+            <Menu.Item id="logout-button" onClick={logout}>Logout</Menu.Item>
+          )}
+          {!authState.isPending && !authState.isAuthenticated && (
+            <Menu.Item onClick={login}>Login</Menu.Item>
+          )}
         </Container>
       </Menu>
     </div>
