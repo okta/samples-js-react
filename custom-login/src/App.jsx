@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Okta, Inc. and/or its affiliates. All rights reserved.
+ * Copyright (c) 2018-Present, Okta, Inc. and/or its affiliates. All rights reserved.
  * The Okta software accompanied by this notice is provided pursuant to the Apache License, Version 2.0 (the "License.")
  *
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
@@ -31,7 +31,7 @@ const App = () => {
   const restoreOriginalUri = async (_oktaAuth, originalUri) => {
     history.replace(toRelativeUrl(originalUri || '/', window.location.origin));
   };
-
+  
   const customAuthHandler = () => {
     // Redirect to the /login page that has a CustomLoginComponent
     history.push('/login');
@@ -40,7 +40,7 @@ const App = () => {
   const onAuthResume = async () => {
     history.push('/login');
   };
-
+  
   const [corsErrorModalOpen, setCorsErrorModalOpen] = React.useState(false);
 
   return (
