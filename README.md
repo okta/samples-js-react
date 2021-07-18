@@ -58,3 +58,13 @@ PASSWORD=testpass
 **NOTE**: The test suite expects you to use `8080` for your port number. Make sure your Okta app has the redirect URI if you want to test these samples.
 
 With these variables set, you should be able to run `npm test` and bask in the glory of passing tests.
+
+## Setup Okta Initated Login
+
+In your Okta Application, from the **General** tab edit the **General Settings** section:
+* `Grant Type` select `implicit`
+* `Login initiated by` select `Either Okta or App`
+* `Application visibility` select `Display application icon to users`
+* `Login flow` select `Redirect to app to initiate login (OIDC Compliant)`
+* `Initiate login URI` set `http://localhost:8080/okta/initiated`
+
