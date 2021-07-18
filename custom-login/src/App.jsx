@@ -22,6 +22,7 @@ import Messages from './Messages';
 import Navbar from './Navbar';
 import Profile from './Profile';
 import CorsErrorModal from './CorsErrorModal';
+import OidcCompliant from './OidcCompliant';
 
 const oktaAuth = new OktaAuth(config.oidc);
 
@@ -58,6 +59,7 @@ const App = () => {
           <Route path="/login" render={() => <CustomLoginComponent {...{ setCorsErrorModalOpen }} />} />
           <SecureRoute path="/messages" component={Messages} />
           <SecureRoute path="/profile" component={Profile} />
+          <Route path="/okta/initiated" component={OidcCompliant} />
         </Switch>
       </Container>
     </Security>
