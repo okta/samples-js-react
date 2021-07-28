@@ -72,3 +72,13 @@ This sample contains the same "Messages" page that is included in the [Okta Host
 [OIDC SPA Setup Instructions]: https://developer.okta.com/docs/guides/sign-into-spa/react/before-you-begin
 [PKCE Flow]: https://developer.okta.com/docs/guides/implement-auth-code-pkce
 [Okta Sign In Widget]: https://github.com/okta/okta-signin-widget
+
+## Setup Okta Initated Login
+
+In your Okta Application, from the **General** tab edit the **General Settings** section:
+* `Grant Type` select `implicit`
+* `Login initiated by` select `Either Okta or App`
+* `Application visibility` select `Display application icon to users`
+* `Login flow` select `Redirect to app to initiate login (OIDC Compliant)`
+* `Initiate login URI` set `http://localhost:8080/okta/initiated`
+
