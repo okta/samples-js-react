@@ -32,6 +32,21 @@ const App = () => {
     history.replace(toRelativeUrl(originalUri || '/', window.location.origin));
   };
 
+  oktaAuth.session.exists()
+    .then((exists) => {
+      if (exists) {
+        oktaAuth.token.getWithoutPrompt({
+          responseType: ['id_token', 'token'],
+        })
+          .then((res) => {
+            oktaAuth.tokenManager.setTokens(res.tokens);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    });
+
   return (
     <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>
       <Navbar {...{ setCorsErrorModalOpen }} />

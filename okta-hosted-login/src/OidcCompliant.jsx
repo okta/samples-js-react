@@ -5,7 +5,8 @@ import { useOktaAuth } from '@okta/okta-react';
 const OidcCompliant = () => {
   const { oktaAuth, authState } = useOktaAuth();
 
-  const login = async () => oktaAuth.signInWithRedirect('/');
+  // const login = async () => oktaAuth.signInWithRedirect({ idp: '0oa1fsszhHgd3W89O5d6' });
+  const login = async () => oktaAuth.signInWithRedirect();
 
   const searchParams = new URLSearchParams(useLocation().search);
   const iss = searchParams.get('iss');
