@@ -25,6 +25,8 @@ const Profile = () => {
     } else {
       oktaAuth.getUser().then((info) => {
         setUserInfo(info);
+      }).catch((err) => {
+        console.error(err);
       });
     }
   }, [authState, oktaAuth]); // Update if authState changes
