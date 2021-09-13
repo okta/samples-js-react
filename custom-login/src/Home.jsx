@@ -27,6 +27,8 @@ const Home = () => {
     } else {
       oktaAuth.getUser().then((info) => {
         setUserInfo(info);
+      }).catch((err) => {
+        console.error(err);
       });
     }
   }, [authState, oktaAuth]); // Update if authState changes
@@ -57,9 +59,9 @@ const Home = () => {
   }
 
   return (
-    <div>
+    <div id="home">
       <div>
-        <Header as="h1">PKCE Flow w/ Custom Login</Header>
+        <Header as="h1">PKCE Flow w/ Custom Login Page</Header>
 
         { authState.isAuthenticated && !userInfo
         && <div>Loading user information...</div>}
@@ -67,7 +69,7 @@ const Home = () => {
         {authState.isAuthenticated && userInfo
         && (
         <div>
-          <p>
+          <p id="welcome">
             Welcome, &nbsp;
             {userInfo.name}
             !

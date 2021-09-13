@@ -31,14 +31,12 @@ const App = () => {
   const restoreOriginalUri = async (_oktaAuth, originalUri) => {
     history.replace(toRelativeUrl(originalUri || '/', window.location.origin));
   };
-  
-  
+
   const [corsErrorModalOpen, setCorsErrorModalOpen] = React.useState(false);
 
   return (
     <Security
       oktaAuth={oktaAuth}
-      onAuthRequired={customAuthHandler}
       restoreOriginalUri={restoreOriginalUri}
     >
       <Navbar {...{ setCorsErrorModalOpen }} />

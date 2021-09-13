@@ -1,3 +1,4 @@
+/* eslint-disable */
 module.exports = function () {
   let oktaEnv;
   try {
@@ -11,6 +12,6 @@ module.exports = function () {
 
     throw err;
   }
-  
+
   return oktaEnv;
 };

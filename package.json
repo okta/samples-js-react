@@ -25,7 +25,7 @@
     "webdriver-update": "webdriver-manager update --versions.standalone=3.141.59 --gecko false",
     "webdriver-update-legacy": "webdriver-manager update --versions.standalone=3.141.59 --versions.chrome 2.45 --gecko false",
     "stop": "kill -s TERM $(lsof -t -i:8080 -sTCP:LISTEN) || true",
-    "gulp": "gulp"
+    "pull-samples": "gulp pull-samples"
   },
   "license": "Apache-2.0",
   "repository": {

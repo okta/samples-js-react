@@ -7,28 +7,28 @@ const cleanDir = dir => () => {
     .pipe(clean({ force: true }));
 }
 
-const cloneAuthJS = (done) => {
-  shell.exec('git clone --single-branch --branch sw-generate-react-samples-OKTA-405811 https://github.com/okta/okta-auth-js.git');
+const cloneOktaReact = (done) => {
+  shell.exec('git clone --single-branch --branch master https://github.com/okta/okta-react.git');
   done();
 }
 
 const copySample = sample =>() => {
-  return src(`okta-auth-js/generated/react/${sample}/**/*`)
+  return src(`okta-react/generated/samples/${sample}/**/*`)
     .pipe(dest(`${sample}/`));
 }
 
 module.exports = {
-  default: series(
+  'pull-samples': series(
     parallel(
-      cleanDir('okta-auth-js'),
+      cleanDir('okta-react'),
       cleanDir('custom-login'),
       cleanDir('okta-hosted-login')
     ),
-    cloneAuthJS,
+    cloneOktaReact,
     parallel(
       copySample('okta-hosted-login'),
       copySample('custom-login')
     ),
-    cleanDir('okta-auth-js')
+    cleanDir('okta-react')
   )
 };
