@@ -17,7 +17,8 @@
     "semantic-ui-react": "^2.0.3",
     "text-encoding": "^0.7.0",
     "react-app-rewired": "^2.1.8",
-    "react-scripts": "^4.0.3"
+    "react-scripts": "^4.0.3",
+    "source-map-loader": "^1.1.0"
   },
   "scripts": {
     "start": "cross-env PORT=8080 react-app-rewired start",
@@ -33,8 +34,7 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.1.1",
-    "h": "^1.0.0",
-    "source-map-loader": "^1.1.0"
+    "h": "^1.0.0"
   },
   "browserslist": {
     "production": [
