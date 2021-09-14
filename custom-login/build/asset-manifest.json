@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/custom-login/static/css/main.792bc02e.chunk.css",
+    "main.js": "/custom-login/static/js/main.8dd3b0f1.chunk.js",
+    "main.js.map": "/custom-login/static/js/main.8dd3b0f1.chunk.js.map",
+    "runtime-main.js": "/custom-login/static/js/runtime-main.f7d7106f.js",
+    "runtime-main.js.map": "/custom-login/static/js/runtime-main.f7d7106f.js.map",
+    "static/css/2.5c9cfe7d.chunk.css": "/custom-login/static/css/2.5c9cfe7d.chunk.css",
+    "static/js/2.80bfbc60.chunk.js": "/custom-login/static/js/2.80bfbc60.chunk.js",
+    "static/js/2.80bfbc60.chunk.js.map": "/custom-login/static/js/2.80bfbc60.chunk.js.map",
+    "index.html": "/custom-login/index.html",
+    "static/css/2.5c9cfe7d.chunk.css.map": "/custom-login/static/css/2.5c9cfe7d.chunk.css.map",
+    "static/css/main.792bc02e.chunk.css.map": "/custom-login/static/css/main.792bc02e.chunk.css.map",
+    "static/js/2.80bfbc60.chunk.js.LICENSE.txt": "/custom-login/static/js/2.80bfbc60.chunk.js.LICENSE.txt",
+    "static/media/okta-sign-in.min.css": "/custom-login/static/media/yubikeyDemo.5ebed9d6.png",
+    "static/media/semantic.min.css": "/custom-login/static/media/outline-icons.ddae9b1b.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f7d7106f.js",
+    "static/css/2.5c9cfe7d.chunk.css",
+    "static/js/2.80bfbc60.chunk.js",
+    "static/css/main.792bc02e.chunk.css",
+    "static/js/main.8dd3b0f1.chunk.js"
+  ]
+}
