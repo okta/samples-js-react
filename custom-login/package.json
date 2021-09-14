@@ -18,7 +18,13 @@
     "text-encoding": "^0.7.0",
     "react-app-rewired": "^2.1.8",
     "react-scripts": "^4.0.3",
-    "source-map-loader": "^1.1.0"
+    "source-map-loader": "^1.1.0",
+    "eslint": "^7.31.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.1.1"
   },
   "scripts": {
     "start": "cross-env PORT=8080 react-app-rewired start",
@@ -26,15 +32,6 @@
     "test": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject",
     "lint": "npx eslint -c .eslintrc.json --ext .js --ext .jsx src/"
-  },
-  "devDependencies": {
-    "eslint": "^7.31.0",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-plugin-import": "^2.23.4",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-react": "^7.24.0",
-    "eslint-plugin-react-hooks": "^4.1.1",
-    "h": "^1.0.0"
   },
   "browserslist": {
     "production": [
