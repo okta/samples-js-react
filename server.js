@@ -4,6 +4,10 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 8080;
 
+app.use('/', (req, res) => {
+  res.send('Root page');
+});
+
 app.use('/okta-hosted-login', express.static(path.join(__dirname, 'okta-hosted-login/build')));
 
 app.use('/custom-login', express.static(path.join(__dirname, 'custom-login/build')));
