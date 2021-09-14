@@ -11,11 +11,11 @@ app.use('/okta-hosted-login', express.static(path.join(__dirname, 'okta-hosted-l
 app.use('/custom-login', express.static(path.join(__dirname, 'custom-login/build')));
 
 app.use('*', (req, res) => {
-  if (req.path.startsWith('/okta-hosted-login')) {
+  if (req.originalUrl.startsWith('/okta-hosted-login')) {
     res.sendFile(path.resolve(__dirname, 'okta-hosted-login', 'build', 'index.html'));
-  } else if (req.path.startsWith('/custom-login')) {
-    res.sendFile(path.resolve(__dirname, 'cusotm-login', 'build', 'index.html'));
-  } else if (req.path === '/') {
+  } else if (req.originalUrl.startsWith('/custom-login')) {
+    res.sendFile(path.resolve(__dirname, 'custom-login', 'build', 'index.html'));
+  } else if (req.originalUrl === '/') {
     fsPromises.readFile(path.resolve(__dirname, 'README.md'), 'utf8')
       .then(file => res.send(marked(file.toString(), { gfm: true })));
   } else {
