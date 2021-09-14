@@ -26,10 +26,10 @@
     "webdriver-update-legacy": "webdriver-manager update --versions.standalone=3.141.59 --versions.chrome 2.45 --gecko false",
     "stop": "kill -s TERM $(lsof -t -i:8080 -sTCP:LISTEN) || true",
     "dev": "nodemon server.js",
-    "build:samples": "npm run build:okta-hosted-login && npm run build:custom-login",
+    "build": "npm run build:okta-hosted-login && npm run build:custom-login",
     "build:okta-hosted-login": "cd okta-hosted-login && npm run build",
     "build:custom-login": "cd custom-login && npm run build",
-    "prestart": "npm run build:samples",
+    "prestart": "npm run build",
     "start": "node server.js"
   },
   "author": "",
