@@ -37,6 +37,25 @@ Please find the sample that fits your use-case from the table below.
 
 [Okta React Library]: https://github.com/okta/okta-react
 
+## Quick Start: Automatic Setup with Heroku
+
+You need a [Heroku](https://signup.heroku.com/) account to follow these instructions.
+
+You can create a free Okta Developer org and deploy this app directly to Heroku by clicking the purple button:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+To deploy the app, you will need an Okta org setup as described in the section above.
+
+You will also need to replace the config values for `ISSUER` and `CLIENT_ID` in Heroku configuration based on your Okta org.
+Also be sure to add your Heroku app's base URL to the list of trusted origins in your Okta admin settings.
+
+After you deploy the app, click on **View** on the result screen to navigate to the newly deployed app.
+
+Click **Login** button on the app. Browser displays the sign-in page to authenticate. 
+
+You can use your Okta user credentials to login to the application. That's it! You've successfully logged in using Okta. 
+
 ## Running the resource server
 The samples include a page which accesses a protected resource (messages). To start the sample resource server:
 
