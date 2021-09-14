@@ -15,7 +15,16 @@
     "react-router-dom": "^5.2.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
-    "text-encoding": "^0.7.0",
+    "text-encoding": "^0.7.0"
+  },
+  "scripts": {
+    "start": "cross-env PORT=8080 react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-scripts test --watchAll=false",
+    "eject": "react-scripts eject",
+    "lint": "npx eslint -c .eslintrc.json --ext .js --ext .jsx src/"
+  },
+  "devDependencies": {
     "react-app-rewired": "^2.1.8",
     "react-scripts": "^4.0.3",
     "source-map-loader": "^1.1.0",
@@ -25,13 +34,6 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.1.1"
-  },
-  "scripts": {
-    "start": "cross-env PORT=8080 react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-scripts test --watchAll=false",
-    "eject": "react-scripts eject",
-    "lint": "npx eslint -c .eslintrc.json --ext .js --ext .jsx src/"
   },
   "browserslist": {
     "production": [
