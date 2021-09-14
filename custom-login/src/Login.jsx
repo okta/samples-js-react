@@ -35,7 +35,7 @@ const Login = ({ setCorsErrorModalOpen }) => {
       baseUrl: issuer.split('/oauth2')[0],
       clientId,
       redirectUri,
-      logo: '/react.svg',
+      logo: `${process.env.PUBLIC_URL}/react.svg`,
       i18n: {
         en: {
           'primaryauth.title': 'Sign in to React & Company',
