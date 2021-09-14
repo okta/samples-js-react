@@ -24,6 +24,7 @@
     "webdriver-update-legacy": "webdriver-manager update --versions.standalone=3.141.59 --versions.chrome 2.45 --gecko false",
     "stop": "kill -s TERM $(lsof -t -i:8080 -sTCP:LISTEN) || true",
     "dev": "nodemon server.js",
+    "build": "npm run build --prefix custom-login && npm run build --prefix okta-hosted-login",
     "start": "node server.js"
   },
   "author": "",
