@@ -23,11 +23,11 @@
     "webdriver-update": "webdriver-manager update --versions.standalone=3.141.59 --gecko false",
     "webdriver-update-legacy": "webdriver-manager update --versions.standalone=3.141.59 --versions.chrome 2.45 --gecko false",
     "stop": "kill -s TERM $(lsof -t -i:8080 -sTCP:LISTEN) || true",
-    "dev": "nodemon server.js",
     "build:okta-hosted-login": "cd ./okta-hosted-login && npm install --production=false && npm run build",
     "build:custom-login": "cd ./custom-login && npm install --production=false && npm run build",
     "build": "npm run build:okta-hosted-login && npm run build:custom-login",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "author": "",
   "license": "Apache-2.0",
@@ -52,7 +52,8 @@
   "dependencies": {
     "axios": "^0.21.1",
     "dotenv": "^8.6.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "marked": "^3.0.4"
   },
   "private": true
 }
