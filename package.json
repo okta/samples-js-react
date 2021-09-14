@@ -18,7 +18,7 @@
     "preresource-server": "npm run setup-env",
     "pretest": "node ./scripts/update-se-drivers.js && npm run setup-env",
     "pretest-legacy": "npm run webdriver-update-legacy && npm run setup-env",
-    "postinstall": "npm install --prefix custom-login && npm install --prefix okta-hosted-login && npm run build --prefix custom-login && npm run build --prefix okta-hosted-login",
+    "postinstall": "npm install --prefix custom-login && npm install --prefix okta-hosted-login",
     "setup-env": "node scripts/setup-env.js",
     "webdriver-update": "webdriver-manager update --versions.standalone=3.141.59 --gecko false",
     "webdriver-update-legacy": "webdriver-manager update --versions.standalone=3.141.59 --versions.chrome 2.45 --gecko false",
