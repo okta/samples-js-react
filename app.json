@@ -7,11 +7,11 @@
   "env": {
     "ISSUER": {
       "description": "Issuer URL for your org",
-      "value": "https://javascript-idx-sdk.okta.com/oauth2/default"
+      "value": "https://{yourDomain}/oauth2/default"
     },
     "CLIENT_ID": {
       "description": "Client ID for your application",
-      "value": "0oa17suj5x9khaVH75d7"
+      "value": "CLIENT_ID"
     },
     "NPM_CONFIG_PRODUCTION": {
       "description": "npm config production",
