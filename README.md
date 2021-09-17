@@ -50,9 +50,9 @@ To deploy the app, you will need an Okta org setup as described in the section a
 You will also need to replace the config values for `ISSUER` and `CLIENT_ID` in Heroku configuration based on your Okta org.
 Also be sure to add your Heroku app's base URL to the list of trusted origins in your Okta admin settings.
 
-After you deploy the app, you will also need to go to your Okta account to [enable cors](https://developer.okta.com/docs/guides/enable-cors/granting-cors/) and configure the `login` and `logout` redirect URI for your app's domain if they are not preconfigured for the newly created heroku domain. 
+After you deploy the app, you will also need to go to your Okta account to [enable cors](https://developer.okta.com/docs/guides/enable-cors/granting-cors/) and configure the `login` and `logout` redirect URI in your client application settings for the newly deployed app domain if they are not preconfigured. 
 
-**Note:** Base Url, like `/okta-hosted-login` or `/custom-login`, will be needed for the redirect uris.
+**Note:** Due to sample apps are served under different routes, base urls will be needed for the redirect uris, e.g.`https://<myapp.heroku.com>/okta-hosted-login` or `https://<myapp.heroku.com>/custom-login`.
 
 Finally, click on **View** on the result screen to navigate to the newly deployed app.
 
