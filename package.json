@@ -18,13 +18,16 @@
     "preresource-server": "npm run setup-env",
     "pretest": "node ./scripts/update-se-drivers.js && npm run setup-env",
     "pretest-legacy": "npm run webdriver-update-legacy && npm run setup-env",
-    "postinstall": "npm run install-custom-login && npm run install-okta-hosted-login",
+    "postinstall": "npm install --prefix custom-login && npm install --prefix okta-hosted-login",
     "setup-env": "node scripts/setup-env.js",
-    "install-custom-login": "cd custom-login && npm install",
-    "install-okta-hosted-login": "cd okta-hosted-login && npm install",
     "webdriver-update": "webdriver-manager update --versions.standalone=3.141.59 --gecko false",
     "webdriver-update-legacy": "webdriver-manager update --versions.standalone=3.141.59 --versions.chrome 2.45 --gecko false",
-    "stop": "kill -s TERM $(lsof -t -i:8080 -sTCP:LISTEN) || true"
+    "stop": "kill -s TERM $(lsof -t -i:8080 -sTCP:LISTEN) || true",
+    "build:okta-hosted-login": "cd ./okta-hosted-login && npm install --production=false && PUBLIC_URL=/okta-hosted-login npm run build",
+    "build:custom-login": "cd ./custom-login && npm install --production=false && PUBLIC_URL=/custom-login npm run build",
+    "build": "npm run build:okta-hosted-login && npm run build:custom-login",
+    "start": "node ./heroku/server.js",
+    "dev": "nodemon ./heroku/server.js"
   },
   "author": "",
   "license": "Apache-2.0",
@@ -39,6 +42,7 @@
     "forever-monitor": "^3.0.3",
     "globby": "^11.0.4",
     "jasmine-reporters": "^2.4.0",
+    "nodemon": "^2.0.12",
     "platform": "^1.3.6",
     "protractor": "^7.0.0",
     "typescript": "^4.3.5",
@@ -47,7 +51,8 @@
   "bin": {},
   "dependencies": {
     "axios": "^0.21.1",
-    "dotenv": "^8.6.0"
+    "dotenv": "^8.6.0",
+    "express": "^4.17.1"
   },
   "private": true
 }

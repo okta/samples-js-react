@@ -25,8 +25,9 @@ const Navbar = ({ setCorsErrorModalOpen }) => {
   const isCorsError = (err) => (err.name === 'AuthApiError' && !err.errorCode && err.xhr.message === 'Failed to fetch');
 
   const logout = async () => {
+    const basename = window.location.origin + history.createHref({ pathname: '/' });
     try {
-      await oktaAuth.signOut();
+      await oktaAuth.signOut({ postLogoutRedirectUri: basename });
     } catch (err) {
       if (isCorsError(err)) {
         setCorsErrorModalOpen(true);
@@ -45,7 +46,7 @@ const Navbar = ({ setCorsErrorModalOpen }) => {
       <Menu fixed="top" inverted>
         <Container>
           <Menu.Item header>
-            <Image size="mini" src="/react.svg" />
+            <Image size="mini" src={`${process.env.PUBLIC_URL}/react.svg`} />
             &nbsp;
             <Link to="/">Okta-React Sample Project</Link>
           </Menu.Item>

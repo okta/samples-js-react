@@ -1,0 +1,33 @@
+{
+  "name": "React Sample Applications for Okta",
+  "description": "Sample applications that demonstrate various Okta use-cases in your React application.",
+  "repository": "https://github.com/okta/samples-js-react",
+  "keywords": ["oidc", "identity", "security", "authentication"],
+  "success_url": "/",
+  "env": {
+    "ISSUER": {
+      "description": "Issuer URL for your org",
+      "value": "https://{yourDomain}/oauth2/default"
+    },
+    "CLIENT_ID": {
+      "description": "Client ID for your application",
+      "value": "CLIENT_ID"
+    },
+    "NPM_CONFIG_PRODUCTION": {
+      "description": "npm config production",
+      "value": "false"
+    },
+    "OKTA_TESTING_DISABLEHTTPSCHECK": {
+      "description": "Okta test disable https check",
+      "value": "false"
+    },
+    "USE_INTERACTION_CODE": {
+      "description": "Use interaction code flow",
+      "value": "true"
+    },
+    "YARN_PRODUCTION": {
+      "description": "Yarn production",
+      "value": "false"
+    }
+  }
+}
