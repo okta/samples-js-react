@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@okta/okta-auth-js": "^5.4.0",
-    "@okta/okta-react": "^6.1.0",
+    "@okta/okta-react": "^6.2.0",
     "colors": "^1.4.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.3",
