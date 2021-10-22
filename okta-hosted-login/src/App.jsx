@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Okta, Inc. and/or its affiliates. All rights reserved.
+ * Copyright (c) 2018-Present, Okta, Inc. and/or its affiliates. All rights reserved.
  * The Okta software accompanied by this notice is provided pursuant to the Apache License, Version 2.0 (the "License.")
  *
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
@@ -11,12 +11,13 @@
  */
 
 import React from 'react';
-import { Route, Switch, useHistory } from 'react-router-dom';
+import { Route, useHistory, Switch } from 'react-router-dom';
 import { OktaAuth, toRelativeUrl } from '@okta/okta-auth-js';
 import { Security, SecureRoute, LoginCallback } from '@okta/okta-react';
 import { Container } from 'semantic-ui-react';
 import config from './config';
 import Home from './Home';
+
 import Messages from './Messages';
 import Navbar from './Navbar';
 import Profile from './Profile';
@@ -25,14 +26,19 @@ import CorsErrorModal from './CorsErrorModal';
 const oktaAuth = new OktaAuth(config.oidc);
 
 const App = () => {
-  const [corsErrorModalOpen, setCorsErrorModalOpen] = React.useState(false);
-  const history = useHistory();
+  const history = useHistory(); // example from react-router
+
   const restoreOriginalUri = async (_oktaAuth, originalUri) => {
     history.replace(toRelativeUrl(originalUri || '/', window.location.origin));
   };
 
+  const [corsErrorModalOpen, setCorsErrorModalOpen] = React.useState(false);
+
   return (
-    <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>
+    <Security
+      oktaAuth={oktaAuth}
+      restoreOriginalUri={restoreOriginalUri}
+    >
       <Navbar {...{ setCorsErrorModalOpen }} />
       <CorsErrorModal {...{ corsErrorModalOpen, setCorsErrorModalOpen }} />
       <Container text style={{ marginTop: '7em' }}>

@@ -24,14 +24,17 @@ Then install dependencies:
 ```bash
 npm install
 ```
+
 Enter into custom-login directory:
+
 ```bash
 cd samples-js-react/custom-login
 ```
+
 Now you need to gather the following information from the Okta Developer Console:
 
-- **Client Id** - The client ID of the SPA application that you created earlier. This can be found on the "General" tab of an application, or the list of applications.  This identifies the application that tokens will be minted for.
-- **Issuer** - This is the URL of the authorization server that will perform authentication.  All Developer Accounts have a "default" authorization server.  The issuer is a combination of your Org URL (found in the upper right of the console home page) and `/oauth2/default`. For example, `https://dev-1234.oktapreview.com/oauth2/default`.
+* **Client Id** - The client ID of the SPA application that you created earlier. This can be found on the "General" tab of an application, or the list of applications.  This identifies the application that tokens will be minted for.
+* **Issuer** - This is the URL of the authorization server that will perform authentication.  All Developer Accounts have a "default" authorization server.  The issuer is a combination of your Org URL (found in the upper right of the console home page) and `/oauth2/default`. For example, `https://dev-1234.oktapreview.com/oauth2/default`.
 
 These values must exist as environment variables. They can be exported in the shell, or saved in a file named `testenv`, at the root of this repository. (This is the parent directory, relative to this README) See [dotenv](https://www.npmjs.com/package/dotenv) for more details on this file format.
 
@@ -40,18 +43,18 @@ ISSUER=https://yourOktaDomain.com/oauth2/default
 CLIENT_ID=123xxxxx123
 ```
 
-> NOTE: If you are running the sample against an org that has [Okta's Identity
-Engine](https://developer.okta.com/docs/concepts/ie-intro/) enabled, you will need to add the following environment variable to your `testenv` file 
+> NOTE: If you are running the sample against an org that has [Okta's Identity Engine](https://developer.okta.com/docs/concepts/ie-intro/) enabled, you will need to add the following environment variable to your `testenv` file
 > USE_INTERACTION_CODE=true
 
 With variables set, start the app server:
 
-```
+```bash
 npm start
 ```
+
 You could also start the app server from root directory like:
 
-```
+```bash
 npm run custom-login-server
 ```
 
@@ -65,7 +68,13 @@ You can login with the same account that you created when signing up for your De
 
 ## Integrating The Resource Server
 
-This sample contains the same "Messages" page that is included in the [Okta Hosted Login](/okta-hosted-login) sample, please refer to that sample for instructions on setting up the resource server.
+If you were able to successfully login in the previous section you can continue with the resource server example.  Please download and run one of these sample applications in another terminal:
+
+* [Node/Express Resource Server Example](https://github.com/okta/samples-nodejs-express-4/tree/master/resource-server)
+* [Java/Spring MVC Resource Server Example](https://github.com/okta/samples-java-spring/tree/master/resource-server)
+* [ASP.NET](https://github.com/okta/samples-aspnet/tree/master/resource-server) and [ASP.NET Core](https://github.com/okta/samples-aspnetcore/tree/master/samples-aspnetcore-3x/resource-server) Resource Server Examples
+
+Once you have the resource server running (it will run on port 8000) you can visit the `/messages` page within the React application to see the authentication flow.  The React application will use its stored access token to authenticate itself with the resource server, you will see this as the `Authorization: Bearer <access_token>` header on the request if you inspect the network traffic in the browser.
 
 [Create React App]: https://create-react-app.dev
 [Okta React Library]: https://github.com/okta/okta-react
