@@ -14,7 +14,7 @@ const cloneOktaReact = (done) => {
 };
 
 const copySample = sample => () => {
-  return src(`okta-react/generated/samples/${sample}/**/*`)
+  return src(['*', '.*'].map(regex => `okta-react/generated/samples/${sample}/**/${regex}`))
     .pipe(dest(`${sample}/`));
 };
 
@@ -38,11 +38,6 @@ const updateOktaReactVersion = sample => (done) => {
   done();
 };
 
-const installTask = done => {
-  shell.exec('npm install');
-  done();
-};
-
 module.exports = {
   'pull-samples': series(
     parallel(
@@ -59,7 +54,6 @@ module.exports = {
       updateOktaReactVersion('okta-hosted-login'),
       updateOktaReactVersion('custom-login')
     ),
-    cleanDir('okta-react'),
-    installTask
+    cleanDir('okta-react')
   )
 };
