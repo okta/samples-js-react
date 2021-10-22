@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, Okta, Inc. and/or its affiliates. All rights reserved.
+ * Copyright (c) 2018-Present, Okta, Inc. and/or its affiliates. All rights reserved.
  * The Okta software accompanied by this notice is provided pursuant to the Apache License, Version 2.0 (the "License.")
  *
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0.
@@ -25,6 +25,8 @@ const Home = () => {
     } else {
       oktaAuth.getUser().then((info) => {
         setUserInfo(info);
+      }).catch((err) => {
+        console.error(err);
       });
     }
   }, [authState, oktaAuth]); // Update if authState changes
@@ -55,7 +57,7 @@ const Home = () => {
   }
 
   return (
-    <div>
+    <div id="home">
       <div>
         <Header as="h1">PKCE Flow w/ Okta Hosted Login Page</Header>
 
@@ -65,7 +67,7 @@ const Home = () => {
         {authState.isAuthenticated && userInfo
         && (
         <div>
-          <p>
+          <p id="welcome">
             Welcome, &nbsp;
             {userInfo.name}
             !
@@ -87,7 +89,7 @@ const Home = () => {
           <p>
             Once you have downloaded and started the example resource server, you can visit the
             {' '}
-            <a href="/messages"> My Messages</a>
+            <a href="/messages">My Messages</a>
             {' '}
             page to see the authentication process in action.
           </p>
@@ -106,8 +108,8 @@ const Home = () => {
             <span> to your application.</span>
           </p>
           <p>
-            When you click the login button below, you will be redirected to the login page on your Okta org.
-            After you authenticate, you will be returned to this application with an ID token and access token.  These tokens will be stored in local storage and can be retrieved at a later time.
+            When you click the login button below, you will be presented the login page on the Okta Sign-In Widget hosted within the application.
+            After you authenticate, you will be logged in to this application with an ID token and access token. These tokens will be stored in local storage and can be retrieved at a later time.
           </p>
           <Button id="login-button" primary onClick={login}>Login</Button>
         </div>

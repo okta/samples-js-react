@@ -1,24 +1,12 @@
-/* global __dirname */
 /* eslint-disable import/no-extraneous-dependencies */
+const webpack = require('webpack');
+const envModule = require('./env')();
 
-// Support storing environment variables in a file named "testenv"
-const path = require('path');
-const dotenv = require('dotenv');
-const fs = require('fs');
+envModule.setEnvironmentVarsFromTestEnv(); // Set environment variables from "testenv" file
 
-// Read environment variables from "testenv". Override environment vars if they are already set.
-const TESTENV = path.resolve(__dirname, '..', 'testenv');
-if (fs.existsSync(TESTENV)) {
-  const envConfig = dotenv.parse(fs.readFileSync(TESTENV));
-  Object.keys(envConfig).forEach((k) => {
-    process.env[k] = envConfig[k];
-  });
-}
-process.env.CLIENT_ID = process.env.CLIENT_ID || process.env.SPA_CLIENT_ID;
+process.env.CLIENT_ID = process.env.SPA_CLIENT_ID || process.env.CLIENT_ID;
 process.env.OKTA_TESTING_DISABLEHTTPSCHECK = process.env.OKTA_TESTING_DISABLEHTTPSCHECK || false;
 process.env.USE_INTERACTION_CODE = process.env.USE_INTERACTION_CODE || false;
-
-const webpack = require('webpack');
 
 const env = {};
 
@@ -27,7 +15,7 @@ const env = {};
   'ISSUER',
   'CLIENT_ID',
   'OKTA_TESTING_DISABLEHTTPSCHECK',
-  'USE_INTERACTION_CODE'
+  'USE_INTERACTION_CODE',
 ].forEach((key) => {
   if (!process.env[key]) {
     throw new Error(`Environment variable ${key} must be set. See README.md`);
