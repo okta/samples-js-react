@@ -6,12 +6,7 @@ name: react to dispatch event
 on: 
   repository_dispatch:
     types: [custom_event_type]
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ sw-gh-actions ]
-  pull_request:
-    branches: [ sw-gh-actions ]
-    
+  
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
