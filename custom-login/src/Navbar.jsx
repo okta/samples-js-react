@@ -19,7 +19,9 @@ const Navbar = ({ setCorsErrorModalOpen }) => {
   const history = useHistory();
   const { authState, oktaAuth } = useOktaAuth();
 
-  const login = async () => history.push('/login');
+  // const login = async () => history.push('/login');
+  // const register = async () => history.push('/register');
+  // const recover = async () => history.push('/recover');
 
   // Note: Can't distinguish CORS error from other network errors
   const isCorsError = (err) => (err.name === 'AuthApiError' && !err.errorCode && err.xhr.message === 'Failed to fetch');
@@ -62,7 +64,23 @@ const Navbar = ({ setCorsErrorModalOpen }) => {
             </Menu.Item>
           )}
           {authState.isAuthenticated && <Menu.Item id="logout-button" onClick={logout}>Logout</Menu.Item>}
-          {!authState.isPending && !authState.isAuthenticated && <Menu.Item onClick={login}>Login</Menu.Item>}
+          {!authState.isPending && !authState.isAuthenticated && (
+            <Menu.Item>
+              <Link to="/login">Login</Link>
+            </Menu.Item>
+          )}
+          <Menu.Item>
+            <Link to="/register">Register</Link>
+          </Menu.Item>
+          <Menu.Item>
+            <Link to="/recover">Recover</Link>
+          </Menu.Item>
+          <Menu.Item>
+            <Link to="/unlock">Unlock</Link>
+          </Menu.Item>
+          <Menu.Item>
+            <Link to="/cont">Continue</Link>
+          </Menu.Item>
         </Container>
       </Menu>
     </div>

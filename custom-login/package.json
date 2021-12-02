@@ -18,7 +18,7 @@
     "text-encoding": "^0.7.0"
   },
   "scripts": {
-    "start": "cross-env PORT=8080 react-app-rewired start",
+    "start": "cross-env PORT=8080 BROWSER=none react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject",

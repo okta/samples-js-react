@@ -16,7 +16,7 @@ import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
 
 import config from './config';
 
-const Login = ({ setCorsErrorModalOpen }) => {
+const ContFlow = ({ setCorsErrorModalOpen }) => {
   const { oktaAuth } = useOktaAuth();
   const widgetRef = useRef();
 
@@ -27,7 +27,7 @@ const Login = ({ setCorsErrorModalOpen }) => {
 
     const { issuer, clientId, redirectUri, scopes, useInteractionCode } = config.oidc;
     const widget = new OktaSignIn({
-      // flow: 'authenticate', // default case
+      flow: 'continueFlow',
       /**
        * Note: when using the Sign-In Widget for an OIDC flow, it still
        * needs to be configured with the base URL for your Okta Org. Here
@@ -84,4 +84,4 @@ const Login = ({ setCorsErrorModalOpen }) => {
     </div>
   );
 };
-export default Login;
+export default ContFlow;

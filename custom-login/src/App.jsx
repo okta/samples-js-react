@@ -21,6 +21,10 @@ import CustomLoginComponent from './Login';
 import Messages from './Messages';
 import Navbar from './Navbar';
 import Profile from './Profile';
+import Register from './Register';
+import RecoverPassword from './ResetPassword';
+import UnlockAccount from './UnlockAccount';
+import ContFlow from './ContFlow';
 import CorsErrorModal from './CorsErrorModal';
 
 const oktaAuth = new OktaAuth(config.oidc);
@@ -56,6 +60,10 @@ const App = () => {
           <Route path="/" exact component={Home} />
           <Route path="/login/callback" render={(props) => <LoginCallback {...props} onAuthResume={onAuthResume} />} />
           <Route path="/login" render={() => <CustomLoginComponent {...{ setCorsErrorModalOpen }} />} />
+          <Route path="/register" render={() => <Register {...{ setCorsErrorModalOpen }} />} />
+          <Route path="/recover" render={() => <RecoverPassword {...{ setCorsErrorModalOpen }} />} />
+          <Route path="/unlock" render={() => <UnlockAccount {...{ setCorsErrorModalOpen }} />} />
+          <Route path="/cont" render={() => <ContFlow {...{ setCorsErrorModalOpen }} />} />
           <SecureRoute path="/messages" component={Messages} />
           <SecureRoute path="/profile" component={Profile} />
         </Switch>
