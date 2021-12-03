@@ -17,17 +17,20 @@ import { Security, SecureRoute, LoginCallback } from '@okta/okta-react';
 import { Container } from 'semantic-ui-react';
 import config from './config';
 import Home from './Home';
-import CustomLoginComponent from './Login';
 import Messages from './Messages';
 import Navbar from './Navbar';
 import Profile from './Profile';
-import Register from './Register';
-import RecoverPassword from './ResetPassword';
-import UnlockAccount from './UnlockAccount';
-import ContFlow from './ContFlow';
 import CorsErrorModal from './CorsErrorModal';
+import SIW from './SIW';
 
 const oktaAuth = new OktaAuth(config.oidc);
+
+const Default = ({ setCorsErrorModalOpen }) => <SIW {...{ setCorsErrorModalOpen, flow: 'default' }} />;
+const Login = ({ setCorsErrorModalOpen }) => <SIW {...{ setCorsErrorModalOpen, flow: 'login' }} />;
+const Register = ({ setCorsErrorModalOpen }) => <SIW {...{ setCorsErrorModalOpen, flow: 'signup' }} />;
+const ResetPassword = ({ setCorsErrorModalOpen }) => <SIW {...{ setCorsErrorModalOpen, flow: 'resetPassword' }} />;
+const UnlockAccount = ({ setCorsErrorModalOpen }) => <SIW {...{ setCorsErrorModalOpen, flow: 'unlockAccount' }} />;
+const Proceed = ({ setCorsErrorModalOpen }) => <SIW {...{ setCorsErrorModalOpen, flow: 'proceed' }} />;
 
 const App = () => {
   const history = useHistory(); // example from react-router
@@ -59,11 +62,12 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/login/callback" render={(props) => <LoginCallback {...props} onAuthResume={onAuthResume} />} />
-          <Route path="/login" render={() => <CustomLoginComponent {...{ setCorsErrorModalOpen }} />} />
+          <Route path="/default" render={() => <Default {...{ setCorsErrorModalOpen }} />} />
+          <Route path="/login" render={() => <Login {...{ setCorsErrorModalOpen }} />} />
           <Route path="/register" render={() => <Register {...{ setCorsErrorModalOpen }} />} />
-          <Route path="/recover" render={() => <RecoverPassword {...{ setCorsErrorModalOpen }} />} />
+          <Route path="/recover" render={() => <ResetPassword {...{ setCorsErrorModalOpen }} />} />
           <Route path="/unlock" render={() => <UnlockAccount {...{ setCorsErrorModalOpen }} />} />
-          <Route path="/cont" render={() => <ContFlow {...{ setCorsErrorModalOpen }} />} />
+          <Route path="/proceed" render={() => <Proceed {...{ setCorsErrorModalOpen }} />} />
           <SecureRoute path="/messages" component={Messages} />
           <SecureRoute path="/profile" component={Profile} />
         </Switch>

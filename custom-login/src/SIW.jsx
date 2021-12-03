@@ -16,7 +16,7 @@ import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
 
 import config from './config';
 
-const RecoverPassword = ({ setCorsErrorModalOpen }) => {
+const SIW = ({ setCorsErrorModalOpen, flow }) => {
   const { oktaAuth } = useOktaAuth();
   const widgetRef = useRef();
 
@@ -27,7 +27,7 @@ const RecoverPassword = ({ setCorsErrorModalOpen }) => {
 
     const { issuer, clientId, redirectUri, scopes, useInteractionCode } = config.oidc;
     const widget = new OktaSignIn({
-      flow: 'recoverPassword',
+      flow,
       /**
        * Note: when using the Sign-In Widget for an OIDC flow, it still
        * needs to be configured with the base URL for your Okta Org. Here
@@ -76,7 +76,7 @@ const RecoverPassword = ({ setCorsErrorModalOpen }) => {
     });
 
     return () => widget.remove();
-  }, [oktaAuth]);
+  }, [oktaAuth, widgetRef]);
 
   return (
     <div>
@@ -84,4 +84,4 @@ const RecoverPassword = ({ setCorsErrorModalOpen }) => {
     </div>
   );
 };
-export default RecoverPassword;
+export default SIW;
