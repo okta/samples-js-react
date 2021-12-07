@@ -5,7 +5,7 @@
   "dependencies": {
     "@okta/okta-auth-js": "^5.2.3",
     "@okta/okta-react": "^6.0.0",
-    "@okta/okta-signin-widget": "^5.8.4",
+    "@okta/okta-signin-widget": "^5.14.0",
     "colors": "^1.4.0",
     "cross-env": "^7.0.3",
     "dotenv": "^8.6.0",
