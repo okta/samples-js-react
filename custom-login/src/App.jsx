@@ -42,7 +42,8 @@ const App = () => {
   };
 
   const customAuthHandler = async () => {
-    if (oktaAuth.authStateManager.getPreviousAuthState()?.isAuthenticated) {
+    const previousAuthState = oktaAuth.authStateManager.getPreviousAuthState();
+    if (!previousAuthState || !previousAuthState.isAuthenticated) {
       // App initialization stage
       triggerLogin();
     } else {
