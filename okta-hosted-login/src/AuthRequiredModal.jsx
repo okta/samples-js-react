@@ -31,7 +31,7 @@ const AuthRequiredModal = ({ authRequiredModalOpen, setAuthRequiredModalOpen, tr
       closeOnDocumentClick={false}
       closeOnDimmerClick={false}
     >
-      <Modal.Header>Auth requried</Modal.Header>
+      <Modal.Header>Auth required</Modal.Header>
       <Modal.Content>
         <Modal.Description>
           <p>Do you want to re-authenticate?</p>
