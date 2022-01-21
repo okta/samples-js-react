@@ -22,26 +22,39 @@ import Messages from './Messages';
 import Navbar from './Navbar';
 import Profile from './Profile';
 import CorsErrorModal from './CorsErrorModal';
+import AuthRequiredModal from './AuthRequiredModal';
 
 const oktaAuth = new OktaAuth(config.oidc);
 
 const App = () => {
+  const [corsErrorModalOpen, setCorsErrorModalOpen] = React.useState(false);
+  const [authRequiredModalOpen, setAuthRequiredModalOpen] = React.useState(false);
+
   const history = useHistory(); // example from react-router
+
+  const triggerLogin = () => {
+    // Redirect to the /login page that has a CustomLoginComponent
+    history.push('/login');
+  };
 
   const restoreOriginalUri = async (_oktaAuth, originalUri) => {
     history.replace(toRelativeUrl(originalUri || '/', window.location.origin));
   };
 
-  const customAuthHandler = () => {
-    // Redirect to the /login page that has a CustomLoginComponent
-    history.push('/login');
+  const customAuthHandler = async () => {
+    const previousAuthState = oktaAuth.authStateManager.getPreviousAuthState();
+    if (!previousAuthState || !previousAuthState.isAuthenticated) {
+      // App initialization stage
+      triggerLogin();
+    } else {
+      // Ask the user to trigger the login process during token autoRenew process
+      setAuthRequiredModalOpen(true);
+    }
   };
-
+  
   const onAuthResume = async () => {
     history.push('/login');
   };
-
-  const [corsErrorModalOpen, setCorsErrorModalOpen] = React.useState(false);
 
   return (
     <Security
@@ -51,6 +64,7 @@ const App = () => {
     >
       <Navbar {...{ setCorsErrorModalOpen }} />
       <CorsErrorModal {...{ corsErrorModalOpen, setCorsErrorModalOpen }} />
+      <AuthRequiredModal {...{ authRequiredModalOpen, setAuthRequiredModalOpen, triggerLogin }} />
       <Container text style={{ marginTop: '7em' }}>
         <Switch>
           <Route path="/" exact component={Home} />
