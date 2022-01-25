@@ -16,7 +16,7 @@ const dotenv = require('dotenv');
 const yaml = require('js-yaml');
 const fs = require('fs');
 const path = require('path');
-const ROOT_DIR = path.resolve(__dirname, '..');
+const ROOT_DIR = path.resolve(__dirname, '../..');
 
 // Read environment variables from "testenv". Override environment vars if they are already set.
 const TESTENV = path.resolve(ROOT_DIR, 'testenv');

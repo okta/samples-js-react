@@ -3,17 +3,17 @@
   "version": "0.3.0",
   "private": true,
   "dependencies": {
-    "@okta/okta-auth-js": "^5.9.0",
-    "@okta/okta-react": "^6.3.0",
-    "@okta/okta-signin-widget": "^5.12.2",
+    "@okta/okta-auth-js": "^6.0.0",
+    "@okta/okta-react": "^6.4.1",
+    "@okta/okta-signin-widget": "^5.16.1",
     "colors": "^1.4.0",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.0.3",
-    "text-encoding": "^0.7.0",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.1"
+    "react-scripts": "^4.0.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.3",
+    "text-encoding": "^0.7.0"
   },
   "scripts": {
     "start": "cross-env PORT=8080 react-app-rewired start",
