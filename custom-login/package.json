@@ -6,7 +6,6 @@
     "@okta/okta-auth-js": "^6.0.0",
     "@okta/okta-react": "^6.4.1",
     "@okta/okta-signin-widget": "^5.16.1",
-    "colors": "1.4.0",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "react-router-dom": "5.3.0",

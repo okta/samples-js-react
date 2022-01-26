@@ -8,12 +8,12 @@ for (const sampleName of ['custom-login', 'okta-hosted-login']) {
 
   packageJson.dependencies = {
     ...packageJson.dependencies,
-    ...updateVersions(packageJson['dependencies']),
+    ...updateVersions(packageJson.dependencies),
   };
 
   packageJson.devDependencies = {
     ...packageJson.devDependencies,
-    ...updateVersions(packageJson['devDependencies']),
+    ...updateVersions(packageJson.devDependencies),
   };
 
   writeFileSync(path.join(__dirname, `../${sampleName}/package.json`), JSON.stringify(packageJson, null, 2));
