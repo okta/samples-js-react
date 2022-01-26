@@ -37,6 +37,8 @@ Please find the sample that fits your use-case from the table below.
 
 [Okta React Library]: https://github.com/okta/okta-react
 
+**Note:** npm@7 users are advised to specify `--legacy-peer-deps` flag during samples installation.
+
 ## Quick Start: Automatic Setup with Heroku
 
 You need a [Heroku](https://signup.heroku.com/) account to follow these instructions.
