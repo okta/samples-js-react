@@ -1,0 +1,19 @@
+name: react to dispatch event
+
+on: 
+  repository_dispatch:
+    types: [ update-samples ]
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # TODO: integrate with https://github.com/marketplace/actions/create-pull-request
+      
