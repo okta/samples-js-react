@@ -1,4 +1,4 @@
-name: react to dispatch event
+name: Create update samples PR
 
 on: 
   repository_dispatch:
@@ -11,9 +11,24 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Update Samples
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: npm install
+      - run: npm run pull-samples
 
-      # TODO: integrate with https://github.com/marketplace/actions/create-pull-request
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{secrets.PAT_TOKEN}}
+          commit-message: 'chore(samples): update samples'
+          branch: 'update-samples-generated'
+          delete-branch: true
+          title: 'Generated: update samples from okta-react'
+          body: |
+            `
+            Auto Generated Pull Request
+            This PR pulls latest samples from https://github.com/okta/okta-react/tree/master/samples
+            `
       
