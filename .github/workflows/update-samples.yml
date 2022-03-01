@@ -10,13 +10,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
-      - name: Update Samples
       - uses: actions/setup-node@v2
         with:
-          node-version: '14'
-      - run: npm install
-      - run: npm run pull-samples
+          node-version: '14.x'
+
+      - name: Update Samples
+        run: |
+          npm install
+          npm run pull-samples
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
