@@ -4,6 +4,8 @@ on:
   repository_dispatch:
     types: [ update-samples ]
   
+  workflow_dispatch:
+  
 jobs:
   build:
     runs-on: ubuntu-latest
