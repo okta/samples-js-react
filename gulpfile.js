@@ -14,7 +14,7 @@ const cloneOktaReact = (done) => {
 };
 
 const copySample = sample => () => {
-  return src(['*', '.*'].map(regex => `okta-react/generated/samples/${sample}/**/${regex}`))
+  return src(['*', '.*'].map(regex => `okta-react/samples/${sample}/**/${regex}`))
     .pipe(dest(`${sample}/`));
 };
 
