@@ -30,8 +30,6 @@ jobs:
           delete-branch: true
           title: 'Generated: update samples from okta-react'
           body: |
-            `
             Auto Generated Pull Request
             This PR pulls latest samples from https://github.com/okta/okta-react/tree/master/samples
-            `
       
