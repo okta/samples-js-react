@@ -24,7 +24,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{secrets.PAT_TOKEN}}
+          token: ${{secrets.OKTA_433527}}
           commit-message: 'chore(samples): update samples'
           branch: 'update-samples-generated'
           delete-branch: true
