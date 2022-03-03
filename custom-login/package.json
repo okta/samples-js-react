@@ -1,5 +1,4 @@
 {
-  "comment": "IMPORTANT: THIS FILE IS GENERATED, CHANGES SHOULD BE MADE WITHIN '@okta/generator'",
   "name": "@okta/samples.react.custom-login",
   "private": true,
   "version": "0.3.0",
