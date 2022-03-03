@@ -1,5 +1,6 @@
-/* eslint-disable */
-module.exports = function () {
+// "IMPORTANT: THIS FILE IS GENERATED, CHANGES SHOULD BE MADE WITHIN '@okta/generator'"
+
+export default function () {
   let oktaEnv;
   try {
     oktaEnv = require('@okta/env');
@@ -14,4 +15,4 @@ module.exports = function () {
   }
 
   return oktaEnv;
-};
+}
