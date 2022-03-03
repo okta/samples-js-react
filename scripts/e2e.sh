@@ -16,6 +16,7 @@ export TEST_RESULT_FILE_DIR="${REPO}/build2/reports"
 
 export ISSUER=https://samples-javascript.okta.com/oauth2/default
 export CLIENT_ID=0oapmwm72082GXal14x6
+export SPA_CLIENT_ID=0oapmwm72082GXal14x6
 export USERNAME=george@acme.com
 get_secret prod/okta-sdk-vars/password PASSWORD
 export DEFAULT_TIMEOUT_INTERVAL=90000
