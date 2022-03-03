@@ -28,11 +28,12 @@ const getPublishedModuleVersion = (module, cb) => {
 };
 
 
-const updateOktaReactVersion = sample => (done) => {
+const updatePackageJson = sample => (done) => {
   const oktaReactVersion = getPublishedModuleVersion('@okta/okta-react');
   console.log(oktaReactVersion);
   const packageJSON = JSON.parse(fs.readFileSync(`./${sample}/package.json`));
   packageJSON.dependencies['@okta/okta-react'] = `^${oktaReactVersion}`;
+  delete packageJSON.comment;
   fs.writeFileSync(`./${sample}/package.json`, JSON.stringify(packageJSON, null, 2));
   console.log(packageJSON);
   done();
@@ -51,8 +52,8 @@ module.exports = {
       copySample('custom-login')
     ),
     parallel(
-      updateOktaReactVersion('okta-hosted-login'),
-      updateOktaReactVersion('custom-login')
+      updatePackageJson('okta-hosted-login'),
+      updatePackageJson('custom-login')
     ),
     cleanDir('okta-react')
   )
