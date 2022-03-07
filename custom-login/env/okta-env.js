@@ -31,8 +31,8 @@ function getPath(currDir = __dirname) {
   // stop when find testenv file or reach to root dir
   while (!fs.existsSync(res) && currDir !== prevDir)  {
     prevDir = currDir;
-    currDir = path.resolve(currDir, '..');
     res = path.resolve(currDir, TESTENV_FILE);
+    currDir = path.resolve(currDir, '..');
   }
   return fs.existsSync(res) ? res : null;
 }
