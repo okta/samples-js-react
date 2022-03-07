@@ -22,6 +22,7 @@ jobs:
           npm run pull-samples
 
       - name: Create Pull Request
+        id: create-pr
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{secrets.OKTA_433527}}
@@ -32,4 +33,16 @@ jobs:
           body: |
             Auto Generated Pull Request
             This PR pulls latest samples from https://github.com/okta/okta-react/tree/master/samples
+      
+      - name: Merge Pull Request (Conditional)
+        if: github.event.client_payload.merge == true
+        uses: actions/github-script@v6
+        with: 
+          github-token: ${{secrets.OKTA_433527}}
+          script: |
+            github.rest.pulls.merge({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: ${{ steps.create-pr.outputs.pull-request-number }}
+            });
       
