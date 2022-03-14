@@ -4,8 +4,8 @@
   "description": "React Sample Applications for Okta",
   "scripts": {
     "banners": "node tools/maintain-banners.js {okta-hosted-login,custom-login,tools,scripts}/{*js,src/**/*{js,jsx,css}}",
-    "lint:okta-hosted-login": "npm run lint --prefix okta-hosted-login/",
-    "lint:custom-login": "npm run lint --prefix custom-login/",
+    "lint:okta-hosted-login": "eslint ./okta-hosted-login/ --ext .jsx,.tsx",
+    "lint:custom-login": "eslint ./custom-login/ --ext .jsx,.tsx",
     "lint": "npm run lint:okta-hosted-login && npm run lint:custom-login",
     "test": "npm run lint && npm run test:unit && npm run test:e2e",
     "okta-hosted-login-server": "npm start --prefix okta-hosted-login/",
@@ -42,8 +42,17 @@
     "glob-parent": "^6.0.2"
   },
   "dependencies": {
+    "@typescript-eslint/parser": "^5.15.0",
+    "@typescript-eslint/eslint-plugin": "^5.15.0",
     "axios": "^0.26.1",
     "dotenv": "^8.6.0",
+    "eslint": "^7.32.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jest": "^26.1.1",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "express": "^4.17.3",
     "find-process": "^1.4.7",
     "forever-monitor": "^3.0.3",
