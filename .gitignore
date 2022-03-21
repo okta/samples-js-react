@@ -19,6 +19,3 @@ testenv
 .idea/
 yalc.lock
 .eslintcache
-package-lock.json
-yarn.lock
-
