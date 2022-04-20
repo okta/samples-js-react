@@ -1,7 +1,7 @@
 // "IMPORTANT: THIS FILE IS GENERATED, CHANGES SHOULD BE MADE WITHIN '@okta/generator'"
 
 module.exports = {
-  port: 8080,
+  port: process.env.PORT || 8080,
   logLevel: 'silent',
   files: ['./dist/**/*.{html,htm,css,js}'],
   server: { 
