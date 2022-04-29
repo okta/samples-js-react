@@ -22,6 +22,12 @@ const Login = ({ setCorsErrorModalOpen }) => {
   const { oktaAuth } = useOktaAuth();
   const widgetRef = useRef();
 
+  // Fetch otp and state from query params from email callback verification URI
+  // Application should have http://localhost:8080/login as the email callback verification URI
+  const queryParams = new URLSearchParams(window.location.search);
+  const otp = queryParams.get('otp');
+  const state = queryParams.get('state');
+
   useEffect(() => {
     if (!widgetRef.current) {
       return false;
@@ -49,6 +55,8 @@ const Login = ({ setCorsErrorModalOpen }) => {
         scopes,
       },
       useInteractionCodeFlow: useInteractionCode, // Set to true, if your org is OIE enabled
+      state,
+      otp,
     });
 
     widget.renderEl(
