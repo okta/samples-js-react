@@ -25,6 +25,7 @@ import CorsErrorModal from './CorsErrorModal';
 import AuthRequiredModal from './AuthRequiredModal';
 
 const oktaAuth = new OktaAuth(config.oidc);
+oktaAuth.start();
 
 const App = () => {
   const [corsErrorModalOpen, setCorsErrorModalOpen] = React.useState(false);
