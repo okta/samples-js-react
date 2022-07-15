@@ -29,6 +29,7 @@ const env = {};
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/okta-hosted-login/',
   plugins: [react()],
   define: {
     'process.env': env
