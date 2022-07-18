@@ -29,10 +29,9 @@ const env = {};
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => {
-  // build for deploying sample app to the root (/)
-  const isStandaloneSampleBuild = command === 'build' && !process.env.STANDALONE_SAMPLE_BUILD;
+  const includeSampleBaseName = command === 'build' && !process.env.STANDALONE_SAMPLE_BUILD;
   return {
-    base: command === isStandaloneSampleBuild ? '/okta-hosted-login/' : '/',
+    base: command === includeSampleBaseName ? '/okta-hosted-login/' : '/',
     plugins: [react()],
     define: {
       'process.env': env

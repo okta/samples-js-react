@@ -29,10 +29,10 @@ const env = {};
 
 // https://vitejs.dev/config/
 export default defineConfig(( { command } ) => {
-  const isStandaloneSampleBuild = command === 'build' && !process.env.STANDALONE_SAMPLE_BUILD;
+  const includeSampleBaseName = command === 'build' && !process.env.STANDALONE_SAMPLE_BUILD;
 
   return {
-    base: isStandaloneSampleBuild ? '/custom-login/' : '/',
+    base: includeSampleBaseName ? '/custom-login/' : '/',
     plugins: [react()],
     define: {
       'process.env': env
