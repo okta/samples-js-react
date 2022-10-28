@@ -15,7 +15,7 @@ process.env.USE_INTERACTION_CODE = process.env.USE_INTERACTION_CODE || false;
 
 const env = {};
 
-// List of environment variables made available to the app
+// List of required environment variables made available to the app
 [
   'ISSUER',
   'CLIENT_ID',
@@ -25,6 +25,13 @@ const env = {};
   if (!process.env[key]) {
     throw new Error(`Environment variable ${key} must be set. See README.md`);
   }
+  env[key] = process.env[key];
+});
+
+// List of optional environment variables made available to the app
+[
+  'CUSTOM_SCOPES',
+].forEach((key) => {
   env[key] = process.env[key];
 });
 
