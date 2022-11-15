@@ -23,7 +23,7 @@ export default {
     clientId: CLIENT_ID,
     issuer: ISSUER,
     redirectUri: REDIRECT_URI,
-    scopes: ['openid', 'profile', 'email'].concat(CUSTOM_SCOPES),
+    scopes: ['openid', 'profile', 'email', ...CUSTOM_SCOPES],
     pkce: true,
     disableHttpsCheck: OKTA_TESTING_DISABLEHTTPSCHECK,
   },
