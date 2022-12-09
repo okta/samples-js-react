@@ -60,7 +60,7 @@ You could also start the app server from root directory like:
 npm run okta-hosted-login-server
 ```
 
-Now navigate to http://localhost:8080 in your browser.
+Now navigate to http://localhost:8081 in your browser.
 
 If you see a home page that prompts you to login, then things are working!  Clicking the **Log in** button will render a custom login page component that uses the Okta Sign-In Widget to perform authentication.
 
