@@ -1,6 +1,6 @@
 # React Sample Applications for Okta
 
-This repository contains several sample applications that demonstrate various Okta use-cases in your React application.
+[This repository](https://github.com/okta/samples-js-react) contains several sample applications that demonstrate various Okta use-cases in your React application.
 
 Each sample makes use of the [Okta React Library][].
 
