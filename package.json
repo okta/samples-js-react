@@ -37,9 +37,6 @@
   },
   "bugs": "https://github.com/okta/samples-js-react/issues",
   "homepage": "https://github.com/okta/samples-js-react",
-  "resolutions": {
-    "glob-parent": "^6.0.2"
-  },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.15.0",
     "@typescript-eslint/parser": "^5.15.0",
@@ -54,10 +51,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "express": "^4.17.3",
     "find-process": "^1.4.7",
-    "forever-monitor": "^3.0.3",
     "globby": "^11.1.0",
-    "gulp": "^4.0.2",
-    "gulp-clean": "^0.4.0",
     "jasmine-reporters": "^2.5.1",
     "minimist": "^1.2.7",
     "nodemon": "^2.0.20",
