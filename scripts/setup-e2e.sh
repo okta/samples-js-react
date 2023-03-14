@@ -21,25 +21,23 @@ function run_tests() {
     create_log_group "Pretest"
     export TEST_TYPE=implicit
 
-    PROTRACTOR="$(npx -p protractor which protractor | tail -1)"
-    export PROTRACTOR_DIR=$(dirname $PROTRACTOR)
-    export PATH=$PATH:$PROTRACTOR_DIR
+    npm i -D protractor
 
     node ./scripts/update-se-drivers.js
 
     # npm run pretest
-    npm run prepare:e2e
+    npm run setup-env
     finish_log_group $?
     create_log_group "Okta Hosted E2E"
     # npm run test:okta-hosted-login
-    protractor protractor.conf.js --sample=okta-hosted-login
+    ./node_modules/.bin/protractor protractor.conf.js --sample=okta-hosted-login
 
     finish_log_group $?
     kill -s TERM $(lsof -t -i:8080 -sTCP:LISTEN)
     kill -s TERM $(lsof -t -i:8000 -sTCP:LISTEN)
     create_log_group "Custom Login E2E"
     # npm run test:custom-login
-    protractor protractor.conf.js --sample=custom-login
+    ./node_modules/.bin/protractor protractor.conf.js --sample=custom-login
 
     finish_log_group $?
   }

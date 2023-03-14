@@ -27,8 +27,7 @@
     "build": "npm run build:okta-hosted-login && npm run build:custom-login",
     "start": "node ./heroku/server.js",
     "dev": "nodemon ./heroku/server.js",
-    "pull-samples": "gulp pull-samples",
-    "prepare:e2e": "npm run setup-env"
+    "pull-samples": "gulp pull-samples"
   },
   "author": "",
   "license": "Apache-2.0",
