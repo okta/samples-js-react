@@ -24,7 +24,7 @@ function run_tests() {
     PROTRACTOR="$(npx -p protractor which protractor | tail -1)"
     export PROTRACTOR_DIR=$(dirname $PROTRACTOR)
 
-    node ./update-se-drivers.js
+    node ./scripts/update-se-drivers.js
 
     # npm run pretest
     npm run prepare:e2e
