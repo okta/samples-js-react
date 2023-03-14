@@ -23,6 +23,7 @@ function run_tests() {
 
     PROTRACTOR="$(npx -p protractor which protractor | tail -1)"
     export PROTRACTOR_DIR=$(dirname $PROTRACTOR)
+    export PATH=$PATH:$PROTRACTOR_DIR
 
     node ./scripts/update-se-drivers.js
 
@@ -31,14 +32,14 @@ function run_tests() {
     finish_log_group $?
     create_log_group "Okta Hosted E2E"
     # npm run test:okta-hosted-login
-    $PROTRACTOR_DIR/protractor protractor.conf.js --sample=okta-hosted-login
+    protractor protractor.conf.js --sample=okta-hosted-login
 
     finish_log_group $?
     kill -s TERM $(lsof -t -i:8080 -sTCP:LISTEN)
     kill -s TERM $(lsof -t -i:8000 -sTCP:LISTEN)
     create_log_group "Custom Login E2E"
     # npm run test:custom-login
-     $PROTRACTOR_DIR/protractor protractor.conf.js --sample=custom-login
+    protractor protractor.conf.js --sample=custom-login
 
     finish_log_group $?
   }
