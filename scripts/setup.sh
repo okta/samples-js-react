@@ -31,6 +31,9 @@ if ! npm run postinstall; then
 fi
 finish_log_group $?
 
+PROTRACTOR="$(npx -p protractor which protractor | tail -1)"
+export PROTRACTOR_DIR=$(dirname $PROTRACTOR)
+
 install_beta_authjs () {
   npm config set strict-ssl false
   AUTHJS_URI=https://artifacts.aue1d.saasure.com/artifactory/npm-topic/@okta/okta-auth-js/-/@okta/okta-auth-js-${AUTHJS_VERSION}.tgz
