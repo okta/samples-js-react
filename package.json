@@ -28,7 +28,7 @@
     "start": "node ./heroku/server.js",
     "dev": "nodemon ./heroku/server.js",
     "pull-samples": "gulp pull-samples",
-    "prepare:e2e": "npx webdriver-manager update --versions.standalone=3.141.59 --gecko false"
+    "prepare:e2e": "npm run setup-env && npx webdriver-manager update --versions.standalone=3.141.59 --gecko false"
   },
   "author": "",
   "license": "Apache-2.0",
