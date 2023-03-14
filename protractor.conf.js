@@ -25,7 +25,7 @@ require('./env');
 
 // Build protractor conf
 var argv = require('minimist')(process.argv.slice(2));
-var E2E_DIR = `./okta-oidc-tck/e2e-tests/${argv.sample}/`;
+var E2E_DIR = `${__dirname}/okta-oidc-tck/e2e-tests/${argv.sample}/`;
 var config = require(E2E_DIR + 'conf.js').config;
 config.specs = config.specs.map(function (path) {
   return E2E_DIR + path;
