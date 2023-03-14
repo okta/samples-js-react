@@ -19,7 +19,8 @@ export DEFAULT_TIMEOUT_INTERVAL=90000
 function run_tests() {
   function exec_tests() {
     create_log_group "Pretest"
-    npm run pretest
+    # npm run pretest
+    npm run prepare:e2e
     finish_log_group $?
     create_log_group "Okta Hosted E2E"
     npm run test:okta-hosted-login
