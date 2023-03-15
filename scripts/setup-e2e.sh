@@ -19,15 +19,26 @@ export DEFAULT_TIMEOUT_INTERVAL=90000
 function run_tests() {
   function exec_tests() {
     create_log_group "Pretest"
-    npm run pretest
+    export TEST_TYPE=implicit
+
+    npm i -D protractor
+
+    node ./scripts/update-se-drivers.js
+
+    # npm run pretest
+    npm run setup-env
     finish_log_group $?
     create_log_group "Okta Hosted E2E"
-    npm run test:okta-hosted-login
+    # npm run test:okta-hosted-login
+    ./node_modules/.bin/protractor protractor.conf.js --sample=okta-hosted-login
+
     finish_log_group $?
     kill -s TERM $(lsof -t -i:8080 -sTCP:LISTEN)
     kill -s TERM $(lsof -t -i:8000 -sTCP:LISTEN)
-    create_log_group "Custom Logion E2E"
-    npm run test:custom-login
+    create_log_group "Custom Login E2E"
+    # npm run test:custom-login
+    ./node_modules/.bin/protractor protractor.conf.js --sample=custom-login
+
     finish_log_group $?
   }
 
