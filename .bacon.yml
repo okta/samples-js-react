@@ -14,3 +14,20 @@ test_suites:
       script_name: e2e-oie
       criteria: MERGE
       queue_name: small
+
+    - name: semgrep
+      script_path: /root/okta/samples-js-react/scripts
+      sort_order: '3'
+      timeout: '10'
+      script_name: semgrep
+      criteria: MERGE
+      queue_name: small
+
+    - name: synk
+      script_path: /root/okta/samples-js-react/scripts
+      script_name: synk
+      sort_order: '3'
+      timeout: '200'
+      criteria: MAINLINE
+      queue_name: small
+      trigger: AUTO
