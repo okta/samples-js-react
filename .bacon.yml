@@ -23,9 +23,9 @@ test_suites:
       criteria: MERGE
       queue_name: small
 
-    - name: synk
+    - name: snyk
       script_path: /root/okta/samples-js-react/scripts
-      script_name: synk
+      script_name: snyk
       sort_order: '3'
       timeout: '200'
       criteria: MAINLINE
