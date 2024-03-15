@@ -40,7 +40,7 @@
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
-    "axios": "^1.6.0",
+    "axios": "^1.6.4",
     "dotenv": "^8.6.0",
     "eslint": "^8.53.0",
     "eslint-import-resolver-typescript": "^3.6.1",
