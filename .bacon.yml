@@ -4,7 +4,7 @@ test_suites:
       sort_order: '1'
       timeout: '10'
       script_name: e2e-classic
-      criteria: OPTIONAL
+      criteria: MERGE
       queue_name: small
 
     - name: e2e-oie
@@ -12,7 +12,7 @@ test_suites:
       sort_order: '1'
       timeout: '10'
       script_name: e2e-oie
-      criteria: OPTIONAL
+      criteria: MERGE
       queue_name: small
 
     - name: semgrep
