@@ -8,7 +8,7 @@ source $DIR/local.sh
 # Can be used to run a canary build against a beta AuthJS version that has been published to artifactory.
 # This is available from the "downstream artifact" menu on any okta-auth-js build in Bacon.
 # DO NOT MERGE ANY CHANGES TO THIS LINE!!
-export AUTHJS_VERSION="7.6.0-gdcc5cc9"
+export AUTHJS_VERSION=""
 
 SAMPLES=("custom-login" "okta-hosted-login")
 
