@@ -2,11 +2,13 @@
 
 source ${OKTA_HOME}/${REPO}/scripts/setup.sh
 
-setup_service xvfb start
-setup_service java 1.8.222
-setup_service google-chrome-stable 87.0.4280.66-1
+create_log_group "Setup services"
+  setup_service xvfb start
+  setup_service java 1.8.222
+  setup_service google-chrome-stable 87.0.4280.66-1
 
-yum -y install lsof
+  yum -y install lsof
+finish_log_group $?
 
 export TRAVIS=true
 export DBUS_SESSION_BUS_ADDRESS=/dev/null
