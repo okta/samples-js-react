@@ -45,17 +45,17 @@ create_log_group "NPM Install"
 finish_log_group $?
 
 install_siw_platform_scripts () {
-  create_log_group "Install siw_platform_scripts"
-    if ! yarn global add @okta/siw-platform-scripts ; then
-      echo "siw-platform-scripts could not be installed"
-      exit ${FAILED_SETUP}
-    fi
-  finish_log_group $?
+  echo "Installing siw_platform_scripts"
+  if ! yarn global add @okta/siw-platform-scripts ; then
+    echo "siw-platform-scripts could not be installed"
+    exit ${FAILED_SETUP}
+  fi
 }
 
 install_artifact () {
   # $1 = package name
   # $2 = version
+  echo "Installing artifact $1 $2"
   if ! siw-platform install-artifact -n $1 -v $2 ; then
     echo "$1 $2 could not be installed via siw-platform"
     exit ${FAILED_SETUP}
@@ -64,39 +64,41 @@ install_artifact () {
 
 install_beta_authjs () {
   # $1 = sample dir name
-  create_log_group "Install AuthJS ${AUTHJS_VERSION} to $1"
-    # Install dependencies with yarn (siw_platform_scripts works only with yarn)
-    if ! yarn install; then
-      echo "yarn install failed! Exiting..."
-      exit ${FAILED_SETUP}
-    fi
+  echo "Installing AuthJS ${AUTHJS_VERSION} to $1"
 
-    # update package.json in samples to use beta auth-js version
-    json=$(cat ./package.json |  jq --arg version $AUTHJS_VERSION 'if .dependencies | has("@okta/okta-auth-js") then .dependencies["@okta/okta-auth-js"] = $version else . end') && \
-    echo -E "${json}" > "./package.json"
+  # install dependencies with yarn (siw_platform_scripts works only with yarn)
+  if ! yarn install; then
+    echo "yarn install failed! Exiting..."
+    exit ${FAILED_SETUP}
+  fi
 
-    # use siw_platform_scripts
-    install_artifact @okta/okta-auth-js "${AUTHJS_VERSION}"
-    echo "AUTHJS_VERSION installed: ${AUTHJS_VERSION}"
+  # update package.json to use beta auth-js version
+  json=$(cat ./package.json |  jq --arg version $AUTHJS_VERSION 'if .dependencies | has("@okta/okta-auth-js") then .dependencies["@okta/okta-auth-js"] = $version else . end') && \
+  echo -E "${json}" > "./package.json"
 
-    # verify single version of auth-js is installed
-    # NOTE: okta-signin-widget will install it's own version of auth-js, filtered out
-    AUTHJS_INSTALLS=$(find . -type d -path "*/node_modules/@okta/okta-auth-js" -not -path "*/okta-signin-widget/*" | wc -l)
-    if [ $AUTHJS_INSTALLS -gt 1 ]; then
-      echo 'More than 1 auth-js install detected!'
-      yarn why @okta/okta-auth-js
-      exit {FAILED_SETUP}
-    fi
-  finish_log_group $?
+  # use siw_platform_scripts
+  install_artifact @okta/okta-auth-js "${AUTHJS_VERSION}"
+  echo "AUTHJS_VERSION installed: ${AUTHJS_VERSION}"
+
+  # verify single version of auth-js is installed
+  # NOTE: okta-signin-widget will install it's own version of auth-js, filtered out
+  AUTHJS_INSTALLS=$(find . -type d -path "*/node_modules/@okta/okta-auth-js" -not -path "*/okta-signin-widget/*" | wc -l)
+  if [ $AUTHJS_INSTALLS -gt 1 ]; then
+    echo 'More than 1 auth-js install detected!'
+    yarn why @okta/okta-auth-js
+    exit {FAILED_SETUP}
+  fi
 }
 
 if [ ! -z "$AUTHJS_VERSION" ]; then
-  install_siw_platform_scripts
+  create_log_group "Install AuthJS ${AUTHJS_VERSION}"
+    install_siw_platform_scripts
 
-  for sample in "${SAMPLES[@]}"
-  do
-    pushd $ROOT/$sample
-      install_beta_authjs "${sample}"
-    popd
-  done
+    for sample in "${SAMPLES[@]}"
+    do
+      pushd $ROOT/$sample
+        install_beta_authjs "${sample}"
+      popd
+    done
+  finish_log_group $?
 fi
