@@ -65,15 +65,15 @@ install_artifact () {
 install_beta_authjs () {
   # $1 = sample dir name
   create_log_group "Install AuthJS ${AUTHJS_VERSION} to $1"
-    # update package.json in samples to use beta auth-js version
-    json=$(cat ./package.json |  jq --arg version $AUTHJS_VERSION 'if .dependencies | has("@okta/okta-auth-js") then .dependencies["@okta/okta-auth-js"] = $version else . end') && \
-    echo -E "${json}" > "./package.json"
-
     # Install dependencies with yarn (siw_platform_scripts works only with yarn)
     if ! yarn install; then
       echo "yarn install failed! Exiting..."
       exit ${FAILED_SETUP}
     fi
+
+    # update package.json in samples to use beta auth-js version
+    json=$(cat ./package.json |  jq --arg version $AUTHJS_VERSION 'if .dependencies | has("@okta/okta-auth-js") then .dependencies["@okta/okta-auth-js"] = $version else . end') && \
+    echo -E "${json}" > "./package.json"
 
     # use siw_platform_scripts
     install_artifact @okta/okta-auth-js "${AUTHJS_VERSION}"
