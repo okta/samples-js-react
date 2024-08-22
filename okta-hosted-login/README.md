@@ -9,7 +9,11 @@ This example is built with [Create React App][].
 Before running this sample, you will need the following:
 
 * An Okta Developer Account, you can sign up for one at https://developer.okta.com/signup/.
-* An Okta Application, configured for Single-Page App (SPA) mode. This is done from the Okta Developer Console, you can see the [OIDC SPA Setup Instructions][].  When following the wizard, use the default properties.  They are are designed to work with our sample applications.
+* An Okta Application, configured for Single-Page App (SPA) mode. This is done from the Okta Developer Console, you can see the [OIDC SPA Setup Instructions][].  When following the wizard, use the default properties.  They are designed to work with our sample applications.
+
+## Enable Refresh Tokens
+
+Add a required setting to your SPA Okta app to avoid third-party cookies. Navigate to **Applications** > **Applications** and select this application to edit. Find the **General Settings** and press **Edit**. Enable **Refresh Token** in the **Grant type** section. **Save** your changes.
 
 ## Running This Example
 
