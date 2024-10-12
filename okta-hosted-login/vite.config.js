@@ -50,8 +50,11 @@ export default defineConfig(( { command } ) => {
     },
     build: {
       rollupOptions: {
-        // always throw with build warnings
+        // Allow warnings related to circular dependencies in semantic-ui-react.
         onwarn (warning, warn) {
+          if (warning.code === "CIRCULAR_DEPENDENCY" && warning.message.includes("semantic-ui-react")) {
+            return;
+          }
           warn('\nBuild warning happened, customize "onwarn" callback in vite.config.js to handle this error.');
           throw new Error(warning);
         }

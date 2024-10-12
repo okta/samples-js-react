@@ -12,12 +12,12 @@
 
 import { useOktaAuth } from '@okta/okta-react';
 import React from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Container, Icon, Image, Menu } from 'semantic-ui-react';
 import logo from './logo.svg';
 
 const Navbar = ({ setCorsErrorModalOpen }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { authState, oktaAuth } = useOktaAuth();
 
   // Note: Can't distinguish CORS error from other network errors
@@ -26,7 +26,8 @@ const Navbar = ({ setCorsErrorModalOpen }) => {
   const login = async () => oktaAuth.signInWithRedirect();
 
   const logout = async () => {
-    const basename = window.location.origin + history.createHref({ pathname: '/' });
+    // const basename = window.location.origin + navigate.createHref({ pathname: '/' });
+    const basename = window.location.origin + '/';
     try {
       await oktaAuth.signOut({ postLogoutRedirectUri: basename });
     } catch (err) {
