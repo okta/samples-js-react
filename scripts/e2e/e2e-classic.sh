@@ -6,6 +6,6 @@ export ISSUER=https://samples-javascript.okta.com/oauth2/default
 export CLIENT_ID=0oapmwm72082GXal14x6
 export SPA_CLIENT_ID=0oapmwm72082GXal14x6
 export USERNAME=george@acme.com
-get_vault_secret_key devex/samples-javascript password PASSWORD
+get_terminus_secret "/" password PASSWORD
 
 run_tests
