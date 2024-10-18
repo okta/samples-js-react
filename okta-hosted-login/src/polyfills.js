@@ -11,7 +11,7 @@
  */
 
 // polyfill TextEncoder for IE Edge
-import { TextEncoder } from 'text-encoding';
+import { TextEncoder } from '@sinonjs/text-encoding';
 
 if (typeof window.TextEncoder === 'undefined') {
   window.TextEncoder = TextEncoder;
