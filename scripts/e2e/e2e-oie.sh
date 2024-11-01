@@ -8,6 +8,6 @@ export ISSUER=https://oie-signin-widget.okta.com/oauth2/default
 export CLIENT_ID=0oa8lrg7ojTsbJgRQ696
 export SPA_CLIENT_ID=0oa8lrg7ojTsbJgRQ696
 export USERNAME=george@acme.com
-get_vault_secret_key devex/samples-javascript password PASSWORD
+get_terminus_secret "/" PASSWORD PASSWORD
 
 run_tests
