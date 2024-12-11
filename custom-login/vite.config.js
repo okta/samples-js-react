@@ -55,7 +55,8 @@ export default defineConfig(( { command } ) => {
           warn('\nBuild warning happened, customize "onwarn" callback in vite.config.js to handle this error.');
           throw new Error(warning);
         }
-      }
+      },
+      sourcemap: true
     }
   }
 });
