@@ -13,7 +13,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
 import OktaSignIn from '@okta/okta-signin-widget';
-import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
+import '@okta/okta-signin-widget/css/okta-sign-in.min.css';
 import logo from './logo.svg';
 
 import config from './config';
@@ -54,7 +54,7 @@ const Login = ({ setCorsErrorModalOpen }) => {
         issuer,
         scopes,
       },
-      useInteractionCodeFlow: useInteractionCode, // Set to true, if your org is OIE enabled
+      useInteractionCodeFlow: !useInteractionCode, // Set to true, if your org is OIE enabled
       state,
       otp,
     });
