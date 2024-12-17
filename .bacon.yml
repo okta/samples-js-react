@@ -29,5 +29,5 @@ test_suites:
       sort_order: '3'
       timeout: '200'
       criteria: MAINLINE
-      queue_name: al2023
+      queue_name: small
       trigger: AUTO

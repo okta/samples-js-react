@@ -33,7 +33,7 @@ const Login = ({ setCorsErrorModalOpen }) => {
       return false;
     }
 
-    const { issuer, clientId, redirectUri, scopes, useInteractionCode } = config.oidc;
+    const { issuer, clientId, redirectUri, scopes, useClassicEngine } = config.oidc;
     const widget = new OktaSignIn({
       /**
        * Note: when using the Sign-In Widget for an OIDC flow, it still
@@ -54,7 +54,7 @@ const Login = ({ setCorsErrorModalOpen }) => {
         issuer,
         scopes,
       },
-      useInteractionCodeFlow: !useInteractionCode, // Set to true, if your org is OIE enabled
+      useClassicEngine, // Set to true, if your org is OIE enabled
       state,
       otp,
     });
