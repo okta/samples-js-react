@@ -12,7 +12,7 @@
   "dependencies": {
     "@okta/okta-auth-js": "*",
     "@okta/okta-react": "^6.7.0",
-    "@okta/okta-signin-widget": "^6.7.1",
+    "@okta/okta-signin-widget": "^7.26.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "5.2.0",
@@ -24,5 +24,8 @@
     "@vitejs/plugin-react": "^1.3.2",
     "dotenv": "^16.0.0",
     "vite": "^2.9.15"
+  },
+  "overrides": {
+    "cross-spawn": "7.0.6"
   }
 }

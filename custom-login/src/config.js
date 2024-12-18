@@ -16,7 +16,7 @@ const OKTA_TESTING_DISABLEHTTPSCHECK = process.env.OKTA_TESTING_DISABLEHTTPSCHEC
 const BASENAME = import.meta.env.BASE_URL || '';
 // BASENAME includes trailing slash
 const REDIRECT_URI = `${window.location.origin}${BASENAME}login/callback`;
-const USE_INTERACTION_CODE = process.env.USE_INTERACTION_CODE === 'true' || false;
+const USE_CLASSIC_ENGINE = process.env.USE_CLASSIC_ENGINE === 'true' || false;
 
 export default {
   oidc: {
@@ -26,7 +26,7 @@ export default {
     scopes: ['openid', 'profile', 'email', 'offline_access'],
     pkce: true,
     disableHttpsCheck: OKTA_TESTING_DISABLEHTTPSCHECK,
-    useInteractionCode: USE_INTERACTION_CODE,
+    useClassicEngine: USE_CLASSIC_ENGINE,
   },
   resourceServer: {
     messagesUrl: 'http://localhost:8000/api/messages',

@@ -21,9 +21,9 @@
       "description": "Okta test disable https check",
       "value": "false"
     },
-    "USE_INTERACTION_CODE": {
+    "USE_CLASSIC_ENGINE": {
       "description": "Use interaction code flow",
-      "value": "true"
+      "value": "false"
     },
     "YARN_PRODUCTION": {
       "description": "Yarn production",

@@ -13,7 +13,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
 import OktaSignIn from '@okta/okta-signin-widget';
-import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
+import '@okta/okta-signin-widget/css/okta-sign-in.min.css';
 import logo from './logo.svg';
 
 import config from './config';
@@ -33,7 +33,7 @@ const Login = ({ setCorsErrorModalOpen }) => {
       return false;
     }
 
-    const { issuer, clientId, redirectUri, scopes, useInteractionCode } = config.oidc;
+    const { issuer, clientId, redirectUri, scopes, useClassicEngine } = config.oidc;
     const widget = new OktaSignIn({
       /**
        * Note: when using the Sign-In Widget for an OIDC flow, it still
@@ -54,7 +54,7 @@ const Login = ({ setCorsErrorModalOpen }) => {
         issuer,
         scopes,
       },
-      useInteractionCodeFlow: useInteractionCode, // Set to true, if your org is OIE enabled
+      useClassicEngine, // Set to true, if your org is OIE enabled
       state,
       otp,
     });

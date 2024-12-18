@@ -11,7 +11,7 @@ getEnvModule().setEnvironmentVarsFromTestEnv(__dirname);
 
 process.env.CLIENT_ID = process.env.SPA_CLIENT_ID || process.env.CLIENT_ID;
 process.env.OKTA_TESTING_DISABLEHTTPSCHECK = process.env.OKTA_TESTING_DISABLEHTTPSCHECK || false;
-process.env.USE_INTERACTION_CODE = process.env.USE_INTERACTION_CODE || false;
+process.env.USE_CLASSIC_ENGINE = process.env.USE_CLASSIC_ENGINE || false;
 
 const env = {};
 
@@ -20,7 +20,7 @@ const env = {};
   'ISSUER',
   'CLIENT_ID',
   'OKTA_TESTING_DISABLEHTTPSCHECK',
-  'USE_INTERACTION_CODE',
+  'USE_CLASSIC_ENGINE',
 ].forEach((key) => {
   if (!process.env[key]) {
     throw new Error(`Environment variable ${key} must be set. See README.md`);
