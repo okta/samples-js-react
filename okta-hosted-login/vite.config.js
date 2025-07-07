@@ -52,6 +52,8 @@ export default defineConfig(( { command } ) => {
       rollupOptions: {
         // always throw with build warnings
         onwarn (warning, warn) {
+          const { code, message } = warning;
+          if (code === "CIRCULAR_DEPENDENCY" && message.includes("semantic-ui-react")) return;
           warn('\nBuild warning happened, customize "onwarn" callback in vite.config.js to handle this error.');
           throw new Error(warning);
         }
