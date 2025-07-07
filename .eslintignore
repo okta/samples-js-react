@@ -1,8 +1,0 @@
-node_modules
-dist
-build
-build2
-/scripts
-/tools
-okta-oidc-tck
-samples-nodejs-express-4
