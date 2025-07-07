@@ -54,6 +54,7 @@ export default defineConfig(( { command } ) => {
         onwarn (warning, warn) {
           const { code, message } = warning;
           if (code === "CIRCULAR_DEPENDENCY" && message.includes("semantic-ui-react")) return;
+          if (code === 'THIS_IS_UNDEFINED') return;
           warn('\nBuild warning happened, customize "onwarn" callback in vite.config.js to handle this error.');
           throw new Error(warning);
         }
