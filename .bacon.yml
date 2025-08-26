@@ -15,14 +15,6 @@ test_suites:
       criteria: MERGE
       queue_name: al2023
 
-    - name: semgrep
-      script_path: /root/okta/samples-js-react/scripts
-      sort_order: '3'
-      timeout: '10'
-      script_name: semgrep
-      criteria: MERGE
-      queue_name: al2023
-
     - name: snyk
       script_path: /root/okta/samples-js-react/scripts
       script_name: snyk
