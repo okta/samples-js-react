@@ -37,7 +37,7 @@
   "bugs": "https://github.com/okta/samples-js-react/issues",
   "homepage": "https://github.com/okta/samples-js-react",
   "dependencies": {
-    "axios": "^1.10.0",
+    "axios": "^1.15.0",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "find-process": "^1.4.7",
@@ -51,6 +51,7 @@
     "wait-on": "^8.0.1"
   },
   "overrides": {
+    "axios": "^1.15.0",
     "cross-spawn": "7.0.6"
   },
   "engines": {
