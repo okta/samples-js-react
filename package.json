@@ -39,7 +39,7 @@
   "dependencies": {
     "axios": "^1.15.0",
     "dotenv": "^16.4.7",
-    "express": "^4.21.2",
+    "express": "^4.22.2",
     "find-process": "^1.4.7",
     "globby": "^13.2.2",
     "jasmine-reporters": "^2.5.1",
